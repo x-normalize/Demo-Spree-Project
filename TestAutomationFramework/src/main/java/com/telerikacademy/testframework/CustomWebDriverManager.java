@@ -1,6 +1,7 @@
 package com.telerikacademy.testframework;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class CustomWebDriverManager {
@@ -25,10 +26,10 @@ public class CustomWebDriverManager {
         }
 
         private WebDriver setupBrowser() {
-            WebDriver firefoxDriver = new FirefoxDriver();
-            firefoxDriver.manage().window().maximize();
-            driver = firefoxDriver;
-            return firefoxDriver;
+            WebDriver chromeDriver = new ChromeDriver();
+            chromeDriver.manage().window().maximize();
+            driver = chromeDriver;
+            return chromeDriver;
         }
     }
 }
