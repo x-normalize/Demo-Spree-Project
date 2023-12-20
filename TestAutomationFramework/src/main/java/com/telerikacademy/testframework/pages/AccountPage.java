@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import static com.telerikacademy.testframework.pages.Constants.*;
 import static com.telerikacademy.testframework.pages.Constants.LOGOUT_BUTTON_PATH;
 
-public class AccountPage extends BasePage{
+public class AccountPage extends BasePage {
     public AccountPage(WebDriver driver) {
         super(driver, ACCOUNT_PAGE);
     }
@@ -18,4 +18,10 @@ public class AccountPage extends BasePage{
         actions.waitForElementClickable(LOGOUT_BUTTON_PATH);
         actions.clickElement(LOGOUT_BUTTON_PATH);
     }
+
+    public void assertSuccessfulLogoutMessage() {
+        actions.waitForElementPresent(SUCCESSFUL_LOGOUT_MESSAGE);
+        actions.assertElementPresent(SUCCESSFUL_LOGOUT_MESSAGE);
+    }
+
 }

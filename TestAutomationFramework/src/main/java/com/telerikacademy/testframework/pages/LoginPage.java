@@ -19,9 +19,14 @@ public class LoginPage extends BasePage{
         actions.clickElement(LOGIN_BUTTON_PATH);
     }
 
+    public void navigateToHomePage() {
+        actions.waitForElementClickable(HOME_BUTTON_PATH);
+        actions.clickElement(HOME_BUTTON_PATH);
+    }
+
     public void assertSuccessfullyLoginMessage() {
-        actions.waitForElementPresent(SUCCESSFULLY_LOGIN_MESSAGE);
-        actions.assertElementPresent(SUCCESSFULLY_LOGIN_MESSAGE);
+        actions.waitForElementPresent(SUCCESSFUL_LOGIN_MESSAGE);
+        actions.assertElementPresent(SUCCESSFUL_LOGIN_MESSAGE);
     }
 
     public void assertMyAccountSection() {
@@ -35,5 +40,16 @@ public class LoginPage extends BasePage{
         actions.waitForElementPresent(LOGOUT_BUTTON_PATH);
         actions.assertElementPresent(LOGOUT_BUTTON_PATH);
     }
+
+    public void assertLoginErrorMessage() {
+        actions.waitForElementPresent(LOGIN_ERROR_MESSAGE);
+        actions.assertElementPresent(LOGIN_ERROR_MESSAGE);
+    }
+
+    public void assertLoginPageTitle() {
+        actions.waitForElementPresent(LOGIN_PAGE_TITLE);
+        actions.assertElementPresent(LOGIN_PAGE_TITLE);
+    }
+
 
 }
