@@ -58,4 +58,12 @@ public class LoginTests extends BaseTestSetup {
         loginPage.assertLoginPageTitle();
     }
 
+    @Test
+    @Description("SDP-6 [Login] Try to log in with an invalid email and a valid password")
+    public void loginWithInvalidEmailAndValidPassword() {
+        loginPage.assertPageNavigated();
+        loginPage.login(YOLANDA_WHEELER_USERNAME, HEIDI_DIXON_PASSWORD);
+        loginPage.assertLoginErrorMessage();
+        loginPage.assertLoginPageTitle();
+    }
 }
