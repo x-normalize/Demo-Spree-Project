@@ -29,8 +29,8 @@ public class BaseTestSetup {
         UserActions.loadBrowser(HOME_PAGE);
     }
 
-//    @AfterEach
-//    public void tearDown() {
-//        UserActions.quitDriver();
-//    }
+    @AfterEach
+    public void tearDown() {
+        UserActions.quitDriver();
+    }
 }

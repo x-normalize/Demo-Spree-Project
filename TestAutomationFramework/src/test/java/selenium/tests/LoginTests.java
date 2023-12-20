@@ -40,5 +40,13 @@ public class LoginTests extends BaseTestSetup {
         loginPage.assertLoginPageTitle();
     }
 
+    @Test
+    @Description("SDP-4 [Login] Try to log in with whitespaces in email and password")
+    public void loginWithWhitespaceInEmailAndPassword() {
+        loginPage.assertPageNavigated();
+        loginPage.login(WHITESPACE_USERNAME, WHITESPACE_PASSWORD);
+        loginPage.assertLoginErrorMessage();
+        loginPage.assertLoginPageTitle();
+    }
 
 }

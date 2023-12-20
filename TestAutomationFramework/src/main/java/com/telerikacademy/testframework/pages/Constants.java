@@ -23,6 +23,8 @@ public class Constants {
     public static final String HEIDI_DIXON_PASSWORD = "spree.heidiDixon.password";
     public static final String EMPTY_USERNAME = "spree.empty.username";
     public static final String EMPTY_PASSWORD = "spree.empty.password";
+    public static final String WHITESPACE_USERNAME= "spree.whitespace.username";
+    public static final String WHITESPACE_PASSWORD= "spree.whitespace.password";
 
 
 
