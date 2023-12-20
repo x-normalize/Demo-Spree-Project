@@ -29,4 +29,11 @@ public class LoginPage extends BasePage{
         actions.assertElementPresent(MY_ACCOUNT_SECTION_TEXT);
     }
 
+    public void assertLogoutButtonIsVisible() {
+        actions.waitForElementPresent(ACCOUNT_BUTTON_PATH);
+        actions.clickElement(ACCOUNT_BUTTON_PATH);
+        actions.waitForElementPresent(LOGOUT_BUTTON_PATH);
+        actions.assertElementPresent(LOGOUT_BUTTON_PATH);
+    }
+
 }

@@ -1,6 +1,7 @@
 package selenium.tests;
 
 import com.telerikacademy.testframework.UserActions;
+import com.telerikacademy.testframework.pages.AccountPage;
 import com.telerikacademy.testframework.pages.LoginPage;
 import com.telerikacademy.testframework.pages.RegistrationPage;
 import org.junit.jupiter.api.AfterEach;
@@ -13,6 +14,8 @@ public class BaseTestSetup {
     UserActions actions;
     LoginPage loginPage;
 
+    AccountPage accountPage;
+
     RegistrationPage registerPage;
 
     @BeforeEach
@@ -21,7 +24,7 @@ public class BaseTestSetup {
 
         loginPage = new LoginPage(actions.getDriver());
         registerPage = new RegistrationPage(actions.getDriver());
-
+        accountPage = new AccountPage(actions.getDriver());
 
         UserActions.loadBrowser(HOME_PAGE);
     }

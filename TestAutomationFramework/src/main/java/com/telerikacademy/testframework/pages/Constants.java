@@ -6,11 +6,15 @@ public class Constants {
     public static final String HOME_PAGE = "spree.homePage";
     public static final String LOGIN_PAGE = "spree.loginPage";
     public static final String REGISTRATION_PAGE = "spree.registrationPage";
+    public static final String ACCOUNT_PAGE = "spree.accountPage";
 
 
     public static final String LOGIN_EMAIL_FIELD_PATH = "loginPage.emailField";
     public static final String LOGIN_PASSWORD_FIELD_PATH = "loginPage.passwordField";
     public static final String LOGIN_BUTTON_PATH = "loginPage.loginButton";
+    public static final String LOGOUT_BUTTON_PATH = "accountPage.logoutButton";
+    public static final String ACCOUNT_BUTTON_PATH = "accountPage.accountButton";
+    public static final String HOME_BUTTON_PATH = "accountPage.homeButton";
 
 
     public static final String HEIDI_DIXON_USERNAME = "spree.heidiDixon.username";

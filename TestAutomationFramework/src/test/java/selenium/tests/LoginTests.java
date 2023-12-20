@@ -15,6 +15,11 @@ public class LoginTests extends BaseTestSetup{
         loginPage.navigateToPage();
     }
 
+    @AfterEach
+    public void logout() {
+        accountPage.logout();
+    }
+
     @Test
     @Description("SDP-2 [Login] Log in with valid credentials")
     public void loginWithValidCredentials(){
@@ -22,6 +27,6 @@ public class LoginTests extends BaseTestSetup{
         loginPage.login(HEIDI_DIXON_USERNAME, HEIDI_DIXON_PASSWORD);
         loginPage.assertSuccessfullyLoginMessage();
         loginPage.assertMyAccountSection();
-
+        loginPage.assertLogoutButtonIsVisible();
     }
 }
