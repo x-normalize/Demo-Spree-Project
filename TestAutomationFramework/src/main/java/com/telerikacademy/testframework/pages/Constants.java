@@ -36,8 +36,12 @@
         public static final String SUCCESSFUL_LOGIN_MESSAGE = "loginPage.successfulLoginMessage";
         public static final String SUCCESSFUL_LOGOUT_MESSAGE = "accountPage.successfulLogoutMessage";
         public static final String MY_ACCOUNT_SECTION_TEXT = "loginPage.myAccountLoginSectionText";
+        public static final String CREATE_NEW_ACCOUNT_TEXT = "registrationPage.createNewAccountText";
         public static final String LOGIN_ERROR_MESSAGE = "loginPage.loginErrorMessage";
         public static final String LOGIN_PAGE_TITLE = "loginPage.loginPageTitle";
+        public static final String EMPTY_EMAIL_ERROR_MESSAGE = "registrationPage.emailErrorMessage";
+        public static final String EMPTY_PASSWORD_ERROR_MESSAGE = "registrationPage.passwordErrorMessage";
+
 
 
 

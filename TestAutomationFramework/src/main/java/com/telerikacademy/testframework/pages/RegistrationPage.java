@@ -32,4 +32,20 @@ public class RegistrationPage extends BasePage {
         actions.waitForElementPresent(EDIT_PROFILE_BUTTON);
         actions.assertElementPresent(EDIT_PROFILE_BUTTON);
     }
+
+    public void assertEmptyEmailErrorMessage() {
+        actions.waitForElementPresent(EMPTY_EMAIL_ERROR_MESSAGE);
+        actions.assertElementPresent(EMPTY_EMAIL_ERROR_MESSAGE);
+    }
+
+    public void assertEmptyPasswordErrorMessage() {
+        actions.waitForElementPresent(EMPTY_PASSWORD_ERROR_MESSAGE);
+        actions.assertElementPresent(EMPTY_PASSWORD_ERROR_MESSAGE);
+    }
+
+    public void assertCreateNewAccountText() {
+        actions.waitForElementPresent(CREATE_NEW_ACCOUNT_TEXT);
+        actions.assertElementPresent(CREATE_NEW_ACCOUNT_TEXT);
+    }
+
 }

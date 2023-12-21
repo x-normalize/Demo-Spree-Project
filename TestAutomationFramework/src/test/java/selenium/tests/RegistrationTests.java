@@ -30,7 +30,11 @@ public class RegistrationTests extends BaseTestSetup{
     @Description("SDP-11 [Registration] Attempt registration with empty fields")
     public void shouldFailWhenRegistrationFieldsAreEmpty() {
         registerPage.assertPageNavigated();
-
+        registerPage.fillRegisterForm(EMPTY_USERNAME, EMPTY_PASSWORD);
+        registerPage.assertEmptyEmailErrorMessage();
+        registerPage.assertEmptyPasswordErrorMessage();
+        registerPage.assertCreateNewAccountText();
+        loginPage.assertLoginButton();
     }
 
 
