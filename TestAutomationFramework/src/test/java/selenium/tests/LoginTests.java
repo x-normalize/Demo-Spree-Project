@@ -21,7 +21,7 @@ public class LoginTests extends BaseTestSetup {
 
     @Test
     @Description("SDP-2 [Login] Log in with valid credentials")
-    public void loginWithValidCredentials() {
+    public void successfullyLoginWithValidCredentials() {
         loginPage.assertPageNavigated();
         loginPage.login(HEIDI_DIXON_USERNAME, HEIDI_DIXON_PASSWORD);
         loginPage.assertSuccessfullyLoginMessage();
@@ -33,7 +33,7 @@ public class LoginTests extends BaseTestSetup {
 
     @Test
     @Description("SDP-3 [Login] Try to log in with an empty email and an empty password")
-    public void loginWithEmptyEmailAndPassword() {
+    public void shouldShowErrorMessageWhenLoginWithEmptyCredentials() {
         loginPage.assertPageNavigated();
         loginPage.login(EMPTY_USERNAME, EMPTY_PASSWORD);
         loginPage.assertLoginErrorMessage();
@@ -43,7 +43,7 @@ public class LoginTests extends BaseTestSetup {
 
     @Test
     @Description("SDP-4 [Login] Try to log in with whitespaces in email and password")
-    public void loginWithWhitespaceInEmailAndPassword() {
+    public void shouldShowErrorMessageWhenLoginWithWhitespaceCredentials() {
         loginPage.assertPageNavigated();
         loginPage.login(WHITESPACE_USERNAME, WHITESPACE_PASSWORD);
         loginPage.assertLoginErrorMessage();
@@ -53,7 +53,7 @@ public class LoginTests extends BaseTestSetup {
 
     @Test
     @Description("SDP-5 [Login] Try to log in with a valid email and invalid password")
-    public void loginWithValidEmailAndInvalidPassword() {
+    public void shouldShowErrorMessageWhenLoginWithValidEmailAndInvalidPassword() {
         loginPage.assertPageNavigated();
         loginPage.login(HEIDI_DIXON_USERNAME, LANDON_BUTLER_PASSWORD);
         loginPage.assertLoginErrorMessage();
@@ -63,7 +63,7 @@ public class LoginTests extends BaseTestSetup {
 
     @Test
     @Description("SDP-6 [Login] Try to log in with an invalid email and a valid password")
-    public void loginWithInvalidEmailAndValidPassword() {
+    public void shouldShowErrorMessageWhenLoginWithInvalidEmailAndValidPassword() {
         loginPage.assertPageNavigated();
         loginPage.login(YOLANDA_WHEELER_USERNAME, HEIDI_DIXON_PASSWORD);
         loginPage.assertLoginErrorMessage();
