@@ -27,6 +27,8 @@
         public static final String HEIDI_DIXON_PASSWORD = "spree.heidiDixon.password";
         public static final String YOLANDA_WHEELER_USERNAME = "spree.yolandaWheeler.username";
         public static final String YOLANDA_WHEELER_PASSWORD = "spree.yolandaWheeler.password";
+        public static final String LANDON_BUTLER_USERNAME = "spree.landonButler.username";
+        public static final String LANDON_BUTLER_PASSWORD = "spree.landonButler.password";
         public static final String EMPTY_USERNAME = "spree.empty.username";
         public static final String EMPTY_PASSWORD = "spree.empty.password";
         public static final String WHITESPACE_USERNAME = "spree.whitespace.username";
@@ -41,6 +43,7 @@
         public static final String LOGIN_PAGE_TITLE = "loginPage.loginPageTitle";
         public static final String EMPTY_EMAIL_ERROR_MESSAGE = "registrationPage.emailErrorMessage";
         public static final String EMPTY_PASSWORD_ERROR_MESSAGE = "registrationPage.passwordErrorMessage";
+        public static final String MINIMUM_PASSWORD_ERROR_MESSAGE = "registrationPage.minimumPasswordErrorMessage";
 
 
 

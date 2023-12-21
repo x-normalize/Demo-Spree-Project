@@ -48,4 +48,8 @@ public class RegistrationPage extends BasePage {
         actions.assertElementPresent(CREATE_NEW_ACCOUNT_TEXT);
     }
 
+    public void assertMinimumPasswordErrorMessageDisplayed() {
+        actions.waitForElementPresent(MINIMUM_PASSWORD_ERROR_MESSAGE);
+        actions.assertElementPresent(MINIMUM_PASSWORD_ERROR_MESSAGE);
+    }
 }

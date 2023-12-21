@@ -37,5 +37,17 @@ public class RegistrationTests extends BaseTestSetup{
         loginPage.assertLoginButton();
     }
 
+    @Test
+    @Description("SDP-12 [Registration] Attempt registration with 1-character password")
+    public void shouldFailWhenPasswordIsSingleCharacter() {
+        registerPage.assertPageNavigated();
+        RANDOM_USERNAME = actions.generateRandomText(MIN_LENGTH_USERNAME, MAX_LENGTH_USERNAME);
+        RANDOM_EMAIL = RANDOM_USERNAME + EMAIL_END;
+        RANDOM_PASSWORD = actions.generateRandomTextExactLength(1);
+        registerPage.fillRegisterForm(RANDOM_EMAIL, RANDOM_PASSWORD);
+        registerPage.assertMinimumPasswordErrorMessageDisplayed();
+        registerPage.assertCreateNewAccountText();
+        loginPage.assertLoginButton();
+    }
 
 }

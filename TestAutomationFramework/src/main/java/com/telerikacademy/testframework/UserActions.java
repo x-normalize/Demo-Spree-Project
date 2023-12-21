@@ -264,7 +264,7 @@ public class UserActions {
         return randomText.toString();
     }
 
-    public static String generateRandomTextExactLength(int length) {
+    public String generateRandomTextExactLength(int length) {
         String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
         Random random = new Random();
         StringBuilder builder = new StringBuilder(length);
