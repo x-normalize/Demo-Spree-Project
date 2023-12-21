@@ -51,5 +51,9 @@ public class LoginPage extends BasePage{
         actions.assertElementPresent(LOGIN_PAGE_TITLE);
     }
 
+    public void assertLoginButton() {
+        actions.waitForElementPresent(LOGIN_BUTTON_PATH);
+        actions.assertElementPresent(LOGIN_BUTTON_PATH);
+    }
 
 }

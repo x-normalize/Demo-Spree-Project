@@ -38,6 +38,7 @@ public class LoginTests extends BaseTestSetup {
         loginPage.login(EMPTY_USERNAME, EMPTY_PASSWORD);
         loginPage.assertLoginErrorMessage();
         loginPage.assertLoginPageTitle();
+        loginPage.assertLoginButton();
     }
 
     @Test
@@ -47,6 +48,7 @@ public class LoginTests extends BaseTestSetup {
         loginPage.login(WHITESPACE_USERNAME, WHITESPACE_PASSWORD);
         loginPage.assertLoginErrorMessage();
         loginPage.assertLoginPageTitle();
+        loginPage.assertLoginButton();
     }
 
     @Test
@@ -56,6 +58,7 @@ public class LoginTests extends BaseTestSetup {
         loginPage.login(HEIDI_DIXON_USERNAME, YOLANDA_WHEELER_PASSWORD);
         loginPage.assertLoginErrorMessage();
         loginPage.assertLoginPageTitle();
+        loginPage.assertLoginButton();
     }
 
     @Test
@@ -65,5 +68,6 @@ public class LoginTests extends BaseTestSetup {
         loginPage.login(YOLANDA_WHEELER_USERNAME, HEIDI_DIXON_PASSWORD);
         loginPage.assertLoginErrorMessage();
         loginPage.assertLoginPageTitle();
+        loginPage.assertLoginButton();
     }
 }
