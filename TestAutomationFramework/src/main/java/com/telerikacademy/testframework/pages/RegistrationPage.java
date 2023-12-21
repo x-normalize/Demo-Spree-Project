@@ -18,7 +18,7 @@ public class RegistrationPage extends BasePage {
         actions.waitForElementClickable(PASSWORD_FIELD_PATH);
         actions.typeValueInField(Utils.getConfigPropertyByKey(password), PASSWORD_FIELD_PATH);
         actions.waitForElementClickable(CONFIRM_PASSWORD_FIELD_PATH);
-        actions.typeValueInField(Utils.getConfigPropertyByKey(password), PASSWORD_FIELD_PATH);
+        actions.typeValueInField(Utils.getConfigPropertyByKey(password), CONFIRM_PASSWORD_FIELD_PATH);
         actions.waitForElementClickable(SIGN_UP_BUTTON_PATH);
         actions.clickElement(SIGN_UP_BUTTON_PATH);
     }
@@ -26,5 +26,10 @@ public class RegistrationPage extends BasePage {
     public void assertWelcomeMessage() {
         actions.waitForElementPresent(WELCOME_MESSAGE_PATH);
         actions.assertElementPresent(WELCOME_MESSAGE_PATH);
+    }
+
+    public void assertEditProfileButton() {
+        actions.waitForElementPresent(EDIT_PROFILE_BUTTON);
+        actions.assertElementPresent(EDIT_PROFILE_BUTTON);
     }
 }

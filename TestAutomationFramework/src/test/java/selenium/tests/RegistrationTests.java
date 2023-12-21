@@ -22,5 +22,16 @@ public class RegistrationTests extends BaseTestSetup{
         RANDOM_PASSWORD = actions.generateRandomText(MIN_LENGTH_PASSWORD, MAX_LENGTH_PASSWORD);
         registerPage.fillRegisterForm(RANDOM_EMAIL, RANDOM_PASSWORD);
         registerPage.assertWelcomeMessage();
+        registerPage.assertEditProfileButton();
+        loginPage.assertMyAccountSection();
     }
+
+    @Test
+    @Description("SDP-11 [Registration] Attempt registration with empty fields")
+    public void shouldFailWhenRegistrationFieldsAreEmpty() {
+        registerPage.assertPageNavigated();
+
+    }
+
+
 }
