@@ -63,5 +63,19 @@ public class RegistrationTests extends BaseTestSetup{
         registerPage.assertCreateNewAccountText();
     }
 
+    @Test
+    @Description("SDP-14 [Registration] Successful registration with 6-character password")
+    public void shouldSucceedRegistrationWithSixCharacterPassword() {
+        registerPage.assertPageNavigated();
+        RANDOM_USERNAME = actions.generateRandomText(MIN_LENGTH_USERNAME, MAX_LENGTH_USERNAME);
+        RANDOM_EMAIL = RANDOM_USERNAME + EMAIL_END;
+        RANDOM_PASSWORD = actions.generateRandomTextExactLength(6);
+        registerPage.fillRegisterForm(RANDOM_EMAIL, RANDOM_PASSWORD);
+        registerPage.assertWelcomeMessage();
+        registerPage.assertEditProfileButton();
+        loginPage.assertMyAccountSection();
+    }
+
+
 
 }
