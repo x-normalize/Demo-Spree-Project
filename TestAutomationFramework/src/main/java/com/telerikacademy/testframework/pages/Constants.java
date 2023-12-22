@@ -31,8 +31,6 @@
         public static final String LANDON_BUTLER_PASSWORD = "spree.landonButler.password";
         public static final String EMPTY_USERNAME = "spree.empty.username";
         public static final String EMPTY_PASSWORD = "spree.empty.password";
-        public static final String WHITESPACE_USERNAME = "spree.whitespace.username";
-        public static final String WHITESPACE_PASSWORD = "spree.whitespace.password";
 
 
         public static final String SUCCESSFUL_LOGIN_MESSAGE = "loginPage.successfulLoginMessage";

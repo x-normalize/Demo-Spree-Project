@@ -21,8 +21,8 @@ public class RegistrationTests extends BaseTestSetup {
         RANDOM_EMAIL = RANDOM_USERNAME + EMAIL_END;
         RANDOM_PASSWORD = actions.generateRandomText(MIN_LENGTH_PASSWORD, MAX_LENGTH_PASSWORD);
         registerPage.fillRegisterForm(RANDOM_EMAIL, RANDOM_PASSWORD);
-        registerPage.assertWelcomeMessage();
-        registerPage.assertEditProfileButton();
+        registerPage.assertWelcomeMessageIsPresent();
+        registerPage.assertEditProfileButtonIsPresent();
         loginPage.assertMyAccountSection();
     }
 
@@ -31,10 +31,10 @@ public class RegistrationTests extends BaseTestSetup {
     public void shouldFailWhenRegistrationFieldsAreEmpty() {
         registerPage.assertPageNavigated();
         registerPage.fillRegisterForm(EMPTY_USERNAME, EMPTY_PASSWORD);
-        registerPage.assertEmptyEmailErrorMessage();
-        registerPage.assertEmptyPasswordErrorMessage();
-        registerPage.assertCreateNewAccountText();
-        registerPage.assertSignUpButton();
+        registerPage.assertEmptyEmailErrorMessageIsPresent();
+        registerPage.assertEmptyPasswordErrorMessageIsPresent();
+        registerPage.assertCreateNewAccountTextIsPresent();
+        registerPage.assertSignUpButtonIsPresent();
     }
 
     @Test
@@ -45,9 +45,9 @@ public class RegistrationTests extends BaseTestSetup {
         RANDOM_EMAIL = RANDOM_USERNAME + EMAIL_END;
         RANDOM_PASSWORD = actions.generateRandomTextExactLength(1);
         registerPage.fillRegisterForm(RANDOM_EMAIL, RANDOM_PASSWORD);
-        registerPage.assertMinimumPasswordErrorMessageDisplayed();
-        registerPage.assertCreateNewAccountText();
-        registerPage.assertSignUpButton();
+        registerPage.assertMinimumPasswordErrorMessageIsDisplayed();
+        registerPage.assertCreateNewAccountTextIsPresent();
+        registerPage.assertSignUpButtonIsPresent();
     }
 
     @Test
@@ -58,9 +58,9 @@ public class RegistrationTests extends BaseTestSetup {
         RANDOM_EMAIL = RANDOM_USERNAME + EMAIL_END;
         RANDOM_PASSWORD = actions.generateRandomTextExactLength(5);
         registerPage.fillRegisterForm(RANDOM_EMAIL, RANDOM_PASSWORD);
-        registerPage.assertMinimumPasswordErrorMessageDisplayed();
-        registerPage.assertSignUpButton();
-        registerPage.assertCreateNewAccountText();
+        registerPage.assertMinimumPasswordErrorMessageIsDisplayed();
+        registerPage.assertSignUpButtonIsPresent();
+        registerPage.assertCreateNewAccountTextIsPresent();
     }
 
     @Test
@@ -71,8 +71,8 @@ public class RegistrationTests extends BaseTestSetup {
         RANDOM_EMAIL = RANDOM_USERNAME + EMAIL_END;
         RANDOM_PASSWORD = actions.generateRandomTextExactLength(6);
         registerPage.fillRegisterForm(RANDOM_EMAIL, RANDOM_PASSWORD);
-        registerPage.assertWelcomeMessage();
-        registerPage.assertEditProfileButton();
+        registerPage.assertWelcomeMessageIsPresent();
+        registerPage.assertEditProfileButtonIsPresent();
         loginPage.assertMyAccountSection();
     }
 
@@ -84,8 +84,8 @@ public class RegistrationTests extends BaseTestSetup {
         RANDOM_EMAIL = RANDOM_USERNAME + EMAIL_END;
         RANDOM_PASSWORD = actions.generateRandomTextExactLength(127);
         registerPage.fillRegisterForm(RANDOM_EMAIL, RANDOM_PASSWORD);
-        registerPage.assertWelcomeMessage();
-        registerPage.assertEditProfileButton();
+        registerPage.assertWelcomeMessageIsPresent();
+        registerPage.assertEditProfileButtonIsPresent();
         loginPage.assertMyAccountSection();
     }
 
@@ -97,9 +97,9 @@ public class RegistrationTests extends BaseTestSetup {
         RANDOM_EMAIL = RANDOM_USERNAME + EMAIL_END;
         RANDOM_PASSWORD = actions.generateRandomTextExactLength(129);
         registerPage.fillRegisterForm(RANDOM_EMAIL, RANDOM_PASSWORD);
-        registerPage.assertMaximumPasswordErrorMessageDisplayed();
-        registerPage.assertSignUpButton();
-        registerPage.assertCreateNewAccountText();
+        registerPage.assertMaximumPasswordErrorMessageIsDisplayed();
+        registerPage.assertSignUpButtonIsPresent();
+        registerPage.assertCreateNewAccountTextIsPresent();
         registerPage.assertPageNavigated();
     }
 
@@ -108,16 +108,21 @@ public class RegistrationTests extends BaseTestSetup {
     public void shouldFailRegistrationWithEmptyEmailAndValidPassword() {
         registerPage.assertPageNavigated();
         registerPage.fillRegisterForm(EMPTY_USERNAME, YOLANDA_WHEELER_PASSWORD);
-        registerPage.assertEmptyEmailErrorMessage();
-        registerPage.assertSignUpButton();
+        registerPage.assertEmptyEmailErrorMessageIsPresent();
+        registerPage.assertSignUpButtonIsPresent();
         registerPage.assertPageNavigated();
-        registerPage.assertCreateNewAccountText();
+        registerPage.assertCreateNewAccountTextIsPresent();
     }
 
     @Test
     @Description("SDP-21 [Registration] Attempt registration with whitespaces in email and password fields")
     public void shouldFailRegistrationWithWhitespacesInEmailAndPasswordField() {
-
+        registerPage.assertPageNavigated();
+        registerPage.fillOutRegistrationFormWithSpaces();
+        registerPage.assertEmptyEmailErrorMessageIsPresent();
+        registerPage.assertEmptyPasswordErrorMessageIsPresent();
+        registerPage.assertCreateNewAccountTextIsPresent();
+        registerPage.assertSignUpButtonIsPresent();
     }
 
 }
