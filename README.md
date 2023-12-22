@@ -20,8 +20,6 @@ The project utilizes a stack of various technologies and tools, including:
 - **Build and Dependency Management**: Apache Maven
 - **Scripts for Execution of Automated Tests**: Batch and Bash files 
 
-These technologies were instrumental in the successful development and testing of our project.
-
 ## III. Features
 
 ### User Management
