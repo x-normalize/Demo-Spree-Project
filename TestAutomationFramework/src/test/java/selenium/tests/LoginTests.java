@@ -45,7 +45,7 @@ public class LoginTests extends BaseTestSetup {
     @Description("SDP-4 [Login] Try to log in with whitespaces in email and password")
     public void shouldShowErrorMessageWhenLoginWithWhitespaceCredentials() {
         loginPage.assertPageNavigated();
-        loginPage.login(WHITESPACE_USERNAME, WHITESPACE_PASSWORD);
+        loginPage.addThreeWhitespaces();
         loginPage.assertLoginErrorMessage();
         loginPage.assertLoginPageTitle();
         loginPage.assertLoginButton();

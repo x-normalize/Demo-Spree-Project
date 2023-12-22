@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.telerikacademy.testframework.pages.Constants.*;
 
-public class RegistrationTests extends BaseTestSetup{
+public class RegistrationTests extends BaseTestSetup {
 
     @BeforeEach
     public void navigateToPage() {
@@ -112,6 +112,12 @@ public class RegistrationTests extends BaseTestSetup{
         registerPage.assertSignUpButton();
         registerPage.assertPageNavigated();
         registerPage.assertCreateNewAccountText();
+    }
+
+    @Test
+    @Description("SDP-21 [Registration] Attempt registration with whitespaces in email and password fields")
+    public void shouldFailRegistrationWithWhitespacesInEmailAndPasswordField() {
+
     }
 
 }

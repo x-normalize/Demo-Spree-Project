@@ -13,9 +13,7 @@ public class BaseTestSetup {
 
     UserActions actions;
     LoginPage loginPage;
-
     AccountPage accountPage;
-
     RegistrationPage registerPage;
 
     @BeforeEach
