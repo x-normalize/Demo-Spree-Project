@@ -44,6 +44,7 @@
         public static final String EMPTY_EMAIL_ERROR_MESSAGE = "registrationPage.emailErrorMessage";
         public static final String EMPTY_PASSWORD_ERROR_MESSAGE = "registrationPage.passwordErrorMessage";
         public static final String MINIMUM_PASSWORD_ERROR_MESSAGE = "registrationPage.minimumPasswordErrorMessage";
+        public static final String MAXIMUM_PASSWORD_ERROR_MESSAGE = "registrationPage.maximumPasswordErrorMessage";
 
 
 

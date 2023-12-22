@@ -89,5 +89,18 @@ public class RegistrationTests extends BaseTestSetup{
         loginPage.assertMyAccountSection();
     }
 
+    @Test
+    @Description("SDP-18 Registration] Attempt registration with 129-character password")
+    public void shouldFailRegistrationWithOverLengthPassword() {
+        registerPage.assertPageNavigated();
+        RANDOM_USERNAME = actions.generateRandomText(MIN_LENGTH_USERNAME, MAX_LENGTH_USERNAME);
+        RANDOM_EMAIL = RANDOM_USERNAME + EMAIL_END;
+        RANDOM_PASSWORD = actions.generateRandomTextExactLength(129);
+        registerPage.fillRegisterForm(RANDOM_EMAIL, RANDOM_PASSWORD);
+        registerPage.assertMaximumPasswordErrorMessageDisplayed();
+        registerPage.assertSignUpButton();
+        registerPage.assertCreateNewAccountText();
+        registerPage.assertPageNavigated();
+    }
 
 }
