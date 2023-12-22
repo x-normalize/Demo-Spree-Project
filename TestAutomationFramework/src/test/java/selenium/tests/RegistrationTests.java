@@ -34,7 +34,7 @@ public class RegistrationTests extends BaseTestSetup{
         registerPage.assertEmptyEmailErrorMessage();
         registerPage.assertEmptyPasswordErrorMessage();
         registerPage.assertCreateNewAccountText();
-        loginPage.assertLoginButton();
+        registerPage.assertSignUpButton();
     }
 
     @Test
@@ -47,7 +47,21 @@ public class RegistrationTests extends BaseTestSetup{
         registerPage.fillRegisterForm(RANDOM_EMAIL, RANDOM_PASSWORD);
         registerPage.assertMinimumPasswordErrorMessageDisplayed();
         registerPage.assertCreateNewAccountText();
-        loginPage.assertLoginButton();
+        registerPage.assertSignUpButton();
     }
+
+    @Test
+    @Description("SDP-13 [Registration] Attempt registration with 5-character password")
+    public void shouldFailRegistrationWithShortPassword() {
+        registerPage.assertPageNavigated();
+        RANDOM_USERNAME = actions.generateRandomText(MIN_LENGTH_USERNAME, MAX_LENGTH_USERNAME);
+        RANDOM_EMAIL = RANDOM_USERNAME + EMAIL_END;
+        RANDOM_PASSWORD = actions.generateRandomTextExactLength(5);
+        registerPage.fillRegisterForm(RANDOM_EMAIL, RANDOM_PASSWORD);
+        registerPage.assertMinimumPasswordErrorMessageDisplayed();
+        registerPage.assertSignUpButton();
+        registerPage.assertCreateNewAccountText();
+    }
+
 
 }

@@ -52,4 +52,9 @@ public class RegistrationPage extends BasePage {
         actions.waitForElementPresent(MINIMUM_PASSWORD_ERROR_MESSAGE);
         actions.assertElementPresent(MINIMUM_PASSWORD_ERROR_MESSAGE);
     }
+
+    public void assertSignUpButton() {
+        actions.waitForElementPresent(SIGN_UP_BUTTON_PATH);
+        actions.assertElementPresent(SIGN_UP_BUTTON_PATH);
+    }
 }
