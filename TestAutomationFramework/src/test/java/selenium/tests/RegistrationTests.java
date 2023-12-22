@@ -90,7 +90,7 @@ public class RegistrationTests extends BaseTestSetup{
     }
 
     @Test
-    @Description("SDP-18 Registration] Attempt registration with 129-character password")
+    @Description("SDP-18 [Registration] Attempt registration with 129-character password")
     public void shouldFailRegistrationWithOverLengthPassword() {
         registerPage.assertPageNavigated();
         RANDOM_USERNAME = actions.generateRandomText(MIN_LENGTH_USERNAME, MAX_LENGTH_USERNAME);
@@ -101,6 +101,17 @@ public class RegistrationTests extends BaseTestSetup{
         registerPage.assertSignUpButton();
         registerPage.assertCreateNewAccountText();
         registerPage.assertPageNavigated();
+    }
+
+    @Test
+    @Description("SDP-20 [Registration] Attempt registration with empty email and valid password")
+    public void shouldFailRegistrationWithEmptyEmailAndValidPassword() {
+        registerPage.assertPageNavigated();
+        registerPage.fillRegisterForm(EMPTY_USERNAME, YOLANDA_WHEELER_PASSWORD);
+        registerPage.assertEmptyEmailErrorMessage();
+        registerPage.assertSignUpButton();
+        registerPage.assertPageNavigated();
+        registerPage.assertCreateNewAccountText();
     }
 
 }
