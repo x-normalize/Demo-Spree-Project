@@ -44,6 +44,14 @@ public class RegistrationPage extends BasePage {
         actions.clickElement(SIGN_UP_BUTTON_PATH);
     }
 
+    public void fillOutRegistrationFormWithMismatchPasswords(String username, String password, String confirmPassword) {
+        actions.typeValueInField(Utils.getConfigPropertyByKey(username), USERNAME_FIELD_PATH);
+        actions.typeValueInField(Utils.getConfigPropertyByKey(password), PASSWORD_FIELD_PATH);
+        actions.typeValueInField(Utils.getConfigPropertyByKey(confirmPassword), CONFIRM_PASSWORD_FIELD_PATH);
+        actions.waitForElementClickable(SIGN_UP_BUTTON_PATH);
+        actions.clickElement(SIGN_UP_BUTTON_PATH);
+    }
+
     public void navigateToHomePage() {
         actions.waitForElementClickable(HOME_BUTTON_PATH);
         actions.clickElement(HOME_BUTTON_PATH);
@@ -87,5 +95,10 @@ public class RegistrationPage extends BasePage {
     public void assertSignUpButtonIsPresent() {
         actions.waitForElementPresent(SIGN_UP_BUTTON_PATH);
         actions.assertElementPresent(SIGN_UP_BUTTON_PATH);
+    }
+
+    public void assertMismatchPasswordMessageIsPresent() {
+        actions.waitForElementPresent(MISMATCH_PASSWORD_ERROR_MESSAGE);
+        actions.assertElementPresent(MISMATCH_PASSWORD_ERROR_MESSAGE);
     }
 }

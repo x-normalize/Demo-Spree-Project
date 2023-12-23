@@ -31,8 +31,6 @@
         public static final String LANDON_BUTLER_PASSWORD = "spree.landonButler.password";
         public static final String EMPTY_USERNAME = "spree.empty.username";
         public static final String EMPTY_PASSWORD = "spree.empty.password";
-
-
         public static final String SUCCESSFUL_LOGIN_MESSAGE = "loginPage.successfulLoginMessage";
         public static final String SUCCESSFUL_LOGOUT_MESSAGE = "accountPage.successfulLogoutMessage";
         public static final String MY_ACCOUNT_SECTION_TEXT = "loginPage.myAccountLoginSectionText";
@@ -43,6 +41,7 @@
         public static final String EMPTY_PASSWORD_ERROR_MESSAGE = "registrationPage.passwordErrorMessage";
         public static final String MINIMUM_PASSWORD_ERROR_MESSAGE = "registrationPage.minimumPasswordErrorMessage";
         public static final String MAXIMUM_PASSWORD_ERROR_MESSAGE = "registrationPage.maximumPasswordErrorMessage";
+        public static final String MISMATCH_PASSWORD_ERROR_MESSAGE = "registrationPage.mismatchPasswordErrorMessage";
 
 
 
@@ -55,6 +54,6 @@
         public static String RANDOM_USERNAME;
         public static String RANDOM_EMAIL;
         public static String RANDOM_PASSWORD;
-        public static final String EMAIL_END = "user@example.com";
+        public static final String EMAIL_END = "@example.com";
 
     }

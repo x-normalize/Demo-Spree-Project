@@ -135,5 +135,15 @@ public class RegistrationTests extends BaseTestSetup {
     @Description("SDP-22 [Registration] Attempt registration with mismatched passwords")
     public void shouldFailRegistrationWithMismatchedPasswords() {
         registerPage.navigateToPage();
+        RANDOM_USERNAME = actions.generateRandomText(MIN_LENGTH_USERNAME, MAX_LENGTH_USERNAME);
+        RANDOM_EMAIL = RANDOM_USERNAME + EMAIL_END;
+        registerPage.fillOutRegistrationFormWithMismatchPasswords(RANDOM_EMAIL, LANDON_BUTLER_PASSWORD,
+                YOLANDA_WHEELER_PASSWORD);
+        registerPage.assertMismatchPasswordMessageIsPresent();
+        registerPage.assertCreateNewAccountTextIsPresent();
+        registerPage.assertSignUpButtonIsPresent();
+        registerPage.assertPageNavigated();
     }
+
+
 }
