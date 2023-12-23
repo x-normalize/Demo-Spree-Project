@@ -101,4 +101,9 @@ public class RegistrationPage extends BasePage {
         actions.waitForElementPresent(MISMATCH_PASSWORD_ERROR_MESSAGE);
         actions.assertElementPresent(MISMATCH_PASSWORD_ERROR_MESSAGE);
     }
+
+    public void assertEmailIsAlreadyTakenErrorMessageIsPresent() {
+        actions.waitForElementPresent(EMAIL_ALREADY_TAKEN_ERROR_MESSAGE);
+        actions.assertElementPresent(EMAIL_ALREADY_TAKEN_ERROR_MESSAGE);
+    }
 }

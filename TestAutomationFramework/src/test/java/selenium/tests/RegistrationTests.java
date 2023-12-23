@@ -134,7 +134,7 @@ public class RegistrationTests extends BaseTestSetup {
     @Test
     @Description("SDP-22 [Registration] Attempt registration with mismatched passwords")
     public void shouldFailRegistrationWithMismatchedPasswords() {
-        registerPage.navigateToPage();
+        registerPage.assertPageNavigated();
         RANDOM_USERNAME = actions.generateRandomText(MIN_LENGTH_USERNAME, MAX_LENGTH_USERNAME);
         RANDOM_EMAIL = RANDOM_USERNAME + EMAIL_END;
         registerPage.fillOutRegistrationFormWithMismatchPasswords(RANDOM_EMAIL, LANDON_BUTLER_PASSWORD,
@@ -145,5 +145,15 @@ public class RegistrationTests extends BaseTestSetup {
         registerPage.assertPageNavigated();
     }
 
-
+    @Test
+    @Description("SDP-23 [Registration] Attempt registration with an already registered email")
+    public void shouldFailRegistrationWithExistingEmail() {
+        registerPage.assertPageNavigated();
+        RANDOM_PASSWORD = actions.generateRandomText(MIN_LENGTH_PASSWORD, MAX_LENGTH_PASSWORD);
+        registerPage.fillRegisterForm(LANDON_BUTLER_USERNAME, RANDOM_PASSWORD);
+        registerPage.assertEmailIsAlreadyTakenErrorMessageIsPresent();
+        registerPage.assertCreateNewAccountTextIsPresent();
+        registerPage.assertSignUpButtonIsPresent();
+        registerPage.assertPageNavigated();
+    }
 }

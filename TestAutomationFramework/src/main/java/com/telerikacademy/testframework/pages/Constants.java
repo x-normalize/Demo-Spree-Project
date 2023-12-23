@@ -42,6 +42,7 @@
         public static final String MINIMUM_PASSWORD_ERROR_MESSAGE = "registrationPage.minimumPasswordErrorMessage";
         public static final String MAXIMUM_PASSWORD_ERROR_MESSAGE = "registrationPage.maximumPasswordErrorMessage";
         public static final String MISMATCH_PASSWORD_ERROR_MESSAGE = "registrationPage.mismatchPasswordErrorMessage";
+        public static final String EMAIL_ALREADY_TAKEN_ERROR_MESSAGE = "registrationPage.emailAlreadyTakenErrorMessage";
 
 
 
