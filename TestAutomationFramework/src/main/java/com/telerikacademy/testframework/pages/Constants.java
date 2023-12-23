@@ -56,5 +56,7 @@
         public static String RANDOM_EMAIL;
         public static String RANDOM_PASSWORD;
         public static final String EMAIL_END = "@example.com";
+        public static final String FOR_EDIT_USERNAME = "edit@example.com";
+        public static final String FOR_EDIT_PASSWORD = "edit123";
 
     }
