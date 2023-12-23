@@ -1,6 +1,7 @@
 package selenium.tests;
 
 import jdk.jfr.Description;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -11,6 +12,11 @@ public class RegistrationTests extends BaseTestSetup {
     @BeforeEach
     public void navigateToPage() {
         registerPage.navigateToPage();
+    }
+
+    @AfterEach
+    public void navigateToHomePage() {
+        registerPage.navigateToHomePage();
     }
 
     @Test
@@ -125,4 +131,9 @@ public class RegistrationTests extends BaseTestSetup {
         registerPage.assertSignUpButtonIsPresent();
     }
 
+    @Test
+    @Description("SDP-22 [Registration] Attempt registration with mismatched passwords")
+    public void shouldFailRegistrationWithMismatchedPasswords() {
+        registerPage.navigateToPage();
+    }
 }

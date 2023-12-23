@@ -44,6 +44,11 @@ public class RegistrationPage extends BasePage {
         actions.clickElement(SIGN_UP_BUTTON_PATH);
     }
 
+    public void navigateToHomePage() {
+        actions.waitForElementClickable(HOME_BUTTON_PATH);
+        actions.clickElement(HOME_BUTTON_PATH);
+    }
+
     public void assertWelcomeMessageIsPresent() {
         actions.waitForElementPresent(WELCOME_MESSAGE_PATH);
         actions.assertElementPresent(WELCOME_MESSAGE_PATH);
