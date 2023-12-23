@@ -2,7 +2,7 @@
 
 ![image](https://github.com/x-normalize/Demo-Spree-Project/assets/94692820/5f57b5de-dd6f-4124-ab46-f7c49978971b)
 
-# Spree E-Commerce Website 
+# Spree E-Commerce Project 
 
 </div>
 
