@@ -31,4 +31,19 @@ public abstract class BasePage {
         Assertions.assertTrue(currentUrl.contains(url),
                 "Landed URL is not as expected. Actual URL: " + currentUrl + ". Expected URL: " + url);
     }
+
+    public void enterCredentials(String fieldPath, String value) {
+        actions.waitForElementClickable(fieldPath);
+        actions.typeValueInField(value, fieldPath);
+    }
+
+    public void clickButton(String buttonPath) {
+        actions.waitForElementClickable(buttonPath);
+        actions.clickElement(buttonPath);
+    }
+
+    public void assertElementPresent(String elementPath) {
+        actions.waitForElementPresent(elementPath);
+        actions.assertElementPresent(elementPath);
+    }
 }

@@ -23,16 +23,6 @@ public class LoginPage extends BasePage {
         clickButton(LOGIN_BUTTON_PATH);
     }
 
-    private void enterCredentials(String fieldPath, String value) {
-        actions.waitForElementClickable(fieldPath);
-        actions.typeValueInField(value, fieldPath);
-    }
-
-    private void clickButton(String buttonPath) {
-        actions.waitForElementClickable(buttonPath);
-        actions.clickElement(buttonPath);
-    }
-
     public void navigateToHomePage() {
         clickButton(HOME_BUTTON_PATH);
     }
@@ -68,8 +58,4 @@ public class LoginPage extends BasePage {
         assertElementPresent(LOGIN_BUTTON_PATH);
     }
 
-    private void assertElementPresent(String elementPath) {
-        actions.waitForElementPresent(elementPath);
-        actions.assertElementPresent(elementPath);
-    }
 }
