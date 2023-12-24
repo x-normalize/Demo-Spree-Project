@@ -1,6 +1,7 @@
 package com.telerikacademy.testframework.pages;
 
 import com.telerikacademy.testframework.Utils;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
@@ -43,6 +44,11 @@ public class LoginPage extends BasePage {
     public void assertThatLoginMessageIsSuccessful() {
         actions.waitForElementPresent(SUCCESSFUL_LOGIN_MESSAGE);
         actions.assertElementPresent(SUCCESSFUL_LOGIN_MESSAGE);
+    }
+
+    public void assertUrlsAreEquals(String expectedUrl, String actualUrl) {
+        Assertions.assertEquals(expectedUrl, actualUrl, "Expected URL is different than actual.");
+        System.out.println("URLs are equal.");
     }
 
     public void assertThatMyAccountSectionIsPresent() {

@@ -24,6 +24,7 @@ public class LoginTests extends BaseTestSetup {
     public void successfullyLoginWithValidCredentials() {
         loginPage.assertPageNavigated();
         loginPage.login(HEIDI_DIXON_USERNAME, HEIDI_DIXON_PASSWORD);
+        loginPage.assertUrlsAreEquals(ACCOUNT_PAGE, ACCOUNT_PAGE);
         loginPage.assertThatLoginMessageIsSuccessful();
         loginPage.assertThatMyAccountSectionIsPresent();
         loginPage.assertThatLogoutButtonIsVisible();
@@ -36,6 +37,7 @@ public class LoginTests extends BaseTestSetup {
     public void shouldShowErrorMessageWhenLoginWithEmptyCredentials() {
         loginPage.assertPageNavigated();
         loginPage.login(EMPTY_USERNAME, EMPTY_PASSWORD);
+        loginPage.assertUrlsAreEquals(LOGIN_PAGE, LOGIN_PAGE);
         loginPage.assertThatLoginErrorMessageIsPresent();
         loginPage.assertThatLoginPageTitleIsPresent();
         loginPage.assertLoginButtonIsPresent();
@@ -46,6 +48,7 @@ public class LoginTests extends BaseTestSetup {
     public void shouldShowErrorMessageWhenLoginWithWhitespaceCredentials() {
         loginPage.assertPageNavigated();
         loginPage.enterWhitespaceInLoginForm();
+        loginPage.assertUrlsAreEquals(LOGIN_PAGE, LOGIN_PAGE);
         loginPage.assertThatLoginErrorMessageIsPresent();
         loginPage.assertThatLoginPageTitleIsPresent();
         loginPage.assertLoginButtonIsPresent();
@@ -56,6 +59,7 @@ public class LoginTests extends BaseTestSetup {
     public void shouldShowErrorMessageWhenLoginWithValidEmailAndInvalidPassword() {
         loginPage.assertPageNavigated();
         loginPage.login(HEIDI_DIXON_USERNAME, LANDON_BUTLER_PASSWORD);
+        loginPage.assertUrlsAreEquals(LOGIN_PAGE, LOGIN_PAGE);
         loginPage.assertThatLoginErrorMessageIsPresent();
         loginPage.assertThatLoginPageTitleIsPresent();
         loginPage.assertLoginButtonIsPresent();
@@ -66,6 +70,7 @@ public class LoginTests extends BaseTestSetup {
     public void shouldShowErrorMessageWhenLoginWithInvalidEmailAndValidPassword() {
         loginPage.assertPageNavigated();
         loginPage.login(YOLANDA_WHEELER_USERNAME, HEIDI_DIXON_PASSWORD);
+        loginPage.assertUrlsAreEquals(LOGIN_PAGE, LOGIN_PAGE);
         loginPage.assertThatLoginErrorMessageIsPresent();
         loginPage.assertThatLoginPageTitleIsPresent();
         loginPage.assertLoginButtonIsPresent();
