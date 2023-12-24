@@ -2,8 +2,10 @@ package com.telerikacademy.testframework.pages;
 
 import com.telerikacademy.testframework.Utils;
 import org.junit.jupiter.api.Assertions;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import static com.telerikacademy.testframework.Utils.getUIMappingByKey;
 import static com.telerikacademy.testframework.pages.Constants.*;
 import static com.telerikacademy.testframework.pages.Constants.LOGOUT_BUTTON_PATH;
 
@@ -35,6 +37,11 @@ public class AccountPage extends BasePage {
     public void assertUrlsAreEquals(String expectedUrl, String actualUrl) {
         Assertions.assertEquals(expectedUrl, actualUrl, "Expected URL is different than actual.");
         System.out.println("URLs are equal.");
+    }
+
+    public void assertElementTextEquals(String locator, String expectedText) {
+        String actualText = driver.findElement(By.xpath(getUIMappingByKey(locator))).getText();
+        Assertions.assertEquals(expectedText, actualText, "Text does not match for element: " + locator);
     }
 
     public void assertUpdateAccountMessageIsPresent() {

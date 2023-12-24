@@ -27,10 +27,10 @@ public class AccountManagementTest extends BaseTestSetup {
     public void shouldUpdatePasswordSuccessfully() {
         accountPage.assertPageNavigated();
         accountPage.updatePassword(EDITED_PASSWORD, EDITED_PASSWORD);
-        accountPage.assertUpdateAccountMessageIsPresent();
+        accountPage.assertElementTextEquals(SUCCESSFUL_ACCOUNT_UPDATE_MESSAGE, "Account updated");
         accountPage.assertUrlsAreEquals(ACCOUNT_PAGE, ACCOUNT_PAGE);
         accountPage.updatePassword(FOR_EDIT_PASSWORD, FOR_EDIT_PASSWORD);
-        accountPage.assertUpdateAccountMessageIsPresent();
+        accountPage.assertElementTextEquals(SUCCESSFUL_ACCOUNT_UPDATE_MESSAGE, "Account updated");
         accountPage.assertUrlsAreEquals(ACCOUNT_PAGE, ACCOUNT_PAGE);
         loginPage.assertThatMyAccountSectionIsPresent();
     }

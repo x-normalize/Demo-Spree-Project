@@ -26,10 +26,12 @@ public class LoginTests extends BaseTestSetup {
         loginPage.login(HEIDI_DIXON_USERNAME, HEIDI_DIXON_PASSWORD);
         loginPage.assertUrlsAreEquals(ACCOUNT_PAGE, ACCOUNT_PAGE);
         loginPage.assertThatLoginMessageIsSuccessful();
+        actions.assertElementTextEquals(SUCCESSFUL_LOGIN_MESSAGE, "Logged in successfully");
         loginPage.assertThatMyAccountSectionIsPresent();
         loginPage.assertThatLogoutButtonIsVisible();
         accountPage.logout();
         accountPage.assertSuccessfulLogoutMessageIsPresent();
+        actions.assertElementTextEquals(SUCCESSFUL_LOGOUT_MESSAGE, "Signed out successfully.");
     }
 
     @Test
@@ -39,7 +41,7 @@ public class LoginTests extends BaseTestSetup {
         loginPage.login(EMPTY_USERNAME, EMPTY_PASSWORD);
         loginPage.assertUrlsAreEquals(LOGIN_PAGE, LOGIN_PAGE);
         loginPage.assertThatLoginErrorMessageIsPresent();
-        loginPage.assertThatLoginPageTitleIsPresent();
+        actions.assertElementTextEquals(LOGIN_ERROR_MESSAGE, "Invalid email or password.");
         loginPage.assertLoginButtonIsPresent();
     }
 
@@ -50,6 +52,7 @@ public class LoginTests extends BaseTestSetup {
         loginPage.enterWhitespaceInLoginForm();
         loginPage.assertUrlsAreEquals(LOGIN_PAGE, LOGIN_PAGE);
         loginPage.assertThatLoginErrorMessageIsPresent();
+        actions.assertElementTextEquals(LOGIN_ERROR_MESSAGE, "Invalid email or password.");
         loginPage.assertThatLoginPageTitleIsPresent();
         loginPage.assertLoginButtonIsPresent();
     }
