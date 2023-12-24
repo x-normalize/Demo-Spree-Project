@@ -20,7 +20,7 @@ public class LoginPage extends BasePage {
         actions.clickElement(LOGIN_BUTTON_PATH);
     }
 
-    public void addThreeWhitespaces() {
+    public void enterWhitespaceInLoginForm() {
         actions.waitForElementClickable(LOGIN_EMAIL_FIELD_PATH);
         actions.clickElement(LOGIN_EMAIL_FIELD_PATH);
         actions.pressKey(Keys.SPACE);
@@ -40,34 +40,34 @@ public class LoginPage extends BasePage {
         actions.clickElement(HOME_BUTTON_PATH);
     }
 
-    public void assertSuccessfullyLoginMessage() {
+    public void assertThatLoginMessageIsSuccessful() {
         actions.waitForElementPresent(SUCCESSFUL_LOGIN_MESSAGE);
         actions.assertElementPresent(SUCCESSFUL_LOGIN_MESSAGE);
     }
 
-    public void assertMyAccountSection() {
+    public void assertThatMyAccountSectionIsPresent() {
         actions.waitForElementPresent(MY_ACCOUNT_SECTION_TEXT);
         actions.assertElementPresent(MY_ACCOUNT_SECTION_TEXT);
     }
 
-    public void assertLogoutButtonIsVisible() {
+    public void assertThatLogoutButtonIsVisible() {
         actions.waitForElementPresent(ACCOUNT_BUTTON_PATH);
         actions.clickElement(ACCOUNT_BUTTON_PATH);
         actions.waitForElementPresent(LOGOUT_BUTTON_PATH);
         actions.assertElementPresent(LOGOUT_BUTTON_PATH);
     }
 
-    public void assertLoginErrorMessage() {
+    public void assertThatLoginErrorMessageIsPresent() {
         actions.waitForElementPresent(LOGIN_ERROR_MESSAGE);
         actions.assertElementPresent(LOGIN_ERROR_MESSAGE);
     }
 
-    public void assertLoginPageTitle() {
+    public void assertThatLoginPageTitleIsPresent() {
         actions.waitForElementPresent(LOGIN_PAGE_TITLE);
         actions.assertElementPresent(LOGIN_PAGE_TITLE);
     }
 
-    public void assertLoginButton() {
+    public void assertLoginButtonIsPresent() {
         actions.waitForElementPresent(LOGIN_BUTTON_PATH);
         actions.assertElementPresent(LOGIN_BUTTON_PATH);
     }

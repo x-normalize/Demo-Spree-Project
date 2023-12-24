@@ -32,7 +32,7 @@ public class AccountManagementTest extends BaseTestSetup {
         accountPage.updatePassword(FOR_EDIT_PASSWORD, FOR_EDIT_PASSWORD);
         accountPage.assertUpdateAccountMessageIsPresent();
         accountPage.assertPageNavigated();
-        loginPage.assertMyAccountSection();
+        loginPage.assertThatMyAccountSectionIsPresent();
     }
 
 

@@ -24,9 +24,9 @@ public class LoginTests extends BaseTestSetup {
     public void successfullyLoginWithValidCredentials() {
         loginPage.assertPageNavigated();
         loginPage.login(HEIDI_DIXON_USERNAME, HEIDI_DIXON_PASSWORD);
-        loginPage.assertSuccessfullyLoginMessage();
-        loginPage.assertMyAccountSection();
-        loginPage.assertLogoutButtonIsVisible();
+        loginPage.assertThatLoginMessageIsSuccessful();
+        loginPage.assertThatMyAccountSectionIsPresent();
+        loginPage.assertThatLogoutButtonIsVisible();
         accountPage.logout();
         accountPage.assertSuccessfulLogoutMessageIsPresent();
     }
@@ -36,19 +36,19 @@ public class LoginTests extends BaseTestSetup {
     public void shouldShowErrorMessageWhenLoginWithEmptyCredentials() {
         loginPage.assertPageNavigated();
         loginPage.login(EMPTY_USERNAME, EMPTY_PASSWORD);
-        loginPage.assertLoginErrorMessage();
-        loginPage.assertLoginPageTitle();
-        loginPage.assertLoginButton();
+        loginPage.assertThatLoginErrorMessageIsPresent();
+        loginPage.assertThatLoginPageTitleIsPresent();
+        loginPage.assertLoginButtonIsPresent();
     }
 
     @Test
     @Description("SDP-4 [Login] Try to log in with whitespaces in email and password")
     public void shouldShowErrorMessageWhenLoginWithWhitespaceCredentials() {
         loginPage.assertPageNavigated();
-        loginPage.addThreeWhitespaces();
-        loginPage.assertLoginErrorMessage();
-        loginPage.assertLoginPageTitle();
-        loginPage.assertLoginButton();
+        loginPage.enterWhitespaceInLoginForm();
+        loginPage.assertThatLoginErrorMessageIsPresent();
+        loginPage.assertThatLoginPageTitleIsPresent();
+        loginPage.assertLoginButtonIsPresent();
     }
 
     @Test
@@ -56,9 +56,9 @@ public class LoginTests extends BaseTestSetup {
     public void shouldShowErrorMessageWhenLoginWithValidEmailAndInvalidPassword() {
         loginPage.assertPageNavigated();
         loginPage.login(HEIDI_DIXON_USERNAME, LANDON_BUTLER_PASSWORD);
-        loginPage.assertLoginErrorMessage();
-        loginPage.assertLoginPageTitle();
-        loginPage.assertLoginButton();
+        loginPage.assertThatLoginErrorMessageIsPresent();
+        loginPage.assertThatLoginPageTitleIsPresent();
+        loginPage.assertLoginButtonIsPresent();
     }
 
     @Test
@@ -66,8 +66,8 @@ public class LoginTests extends BaseTestSetup {
     public void shouldShowErrorMessageWhenLoginWithInvalidEmailAndValidPassword() {
         loginPage.assertPageNavigated();
         loginPage.login(YOLANDA_WHEELER_USERNAME, HEIDI_DIXON_PASSWORD);
-        loginPage.assertLoginErrorMessage();
-        loginPage.assertLoginPageTitle();
-        loginPage.assertLoginButton();
+        loginPage.assertThatLoginErrorMessageIsPresent();
+        loginPage.assertThatLoginPageTitleIsPresent();
+        loginPage.assertLoginButtonIsPresent();
     }
 }

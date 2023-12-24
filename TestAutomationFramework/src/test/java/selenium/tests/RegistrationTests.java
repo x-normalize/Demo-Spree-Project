@@ -29,7 +29,7 @@ public class RegistrationTests extends BaseTestSetup {
         registerPage.fillRegisterForm(RANDOM_EMAIL, RANDOM_PASSWORD);
         registerPage.assertWelcomeMessageIsPresent();
         registerPage.assertEditProfileButtonIsPresent();
-        loginPage.assertMyAccountSection();
+        loginPage.assertThatMyAccountSectionIsPresent();
     }
 
     @Test
@@ -79,7 +79,7 @@ public class RegistrationTests extends BaseTestSetup {
         registerPage.fillRegisterForm(RANDOM_EMAIL, RANDOM_PASSWORD);
         registerPage.assertWelcomeMessageIsPresent();
         registerPage.assertEditProfileButtonIsPresent();
-        loginPage.assertMyAccountSection();
+        loginPage.assertThatMyAccountSectionIsPresent();
     }
 
     @Test
@@ -92,7 +92,7 @@ public class RegistrationTests extends BaseTestSetup {
         registerPage.fillRegisterForm(RANDOM_EMAIL, RANDOM_PASSWORD);
         registerPage.assertWelcomeMessageIsPresent();
         registerPage.assertEditProfileButtonIsPresent();
-        loginPage.assertMyAccountSection();
+        loginPage.assertThatMyAccountSectionIsPresent();
     }
 
     @Test
