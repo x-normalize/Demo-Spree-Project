@@ -21,6 +21,10 @@
         public static final String CONFIRM_PASSWORD_FIELD_PATH = "registrationPage.confirmPasswordField";
         public static final String SIGN_UP_BUTTON_PATH = "registrationPage.signUpButton";
         public static final String WELCOME_MESSAGE_PATH = "registrationPage.welcomeMessage";
+        public static final String PASSWORD_UPDATE_FIELD_PATH = "accountPage.passwordUpdateField";
+        public static final String PASSWORD_UPDATE_CONFIRMATION_FIELD_PATH = "accountPage.passwordUpdateConfirmationField";
+        public static final String PASSWORD_UPDATE_BUTTON = "accountPage.passwordUpdateButton";
+
 
 
         public static final String HEIDI_DIXON_USERNAME = "spree.heidiDixon.username";
@@ -33,6 +37,7 @@
         public static final String EMPTY_PASSWORD = "spree.empty.password";
         public static final String SUCCESSFUL_LOGIN_MESSAGE = "loginPage.successfulLoginMessage";
         public static final String SUCCESSFUL_LOGOUT_MESSAGE = "accountPage.successfulLogoutMessage";
+        public static final String SUCCESSFUL_ACCOUNT_UPDATE_MESSAGE = "accountPage.successfulAccountUpdateMessage";
         public static final String MY_ACCOUNT_SECTION_TEXT = "loginPage.myAccountLoginSectionText";
         public static final String CREATE_NEW_ACCOUNT_TEXT = "registrationPage.createNewAccountText";
         public static final String LOGIN_ERROR_MESSAGE = "loginPage.loginErrorMessage";
@@ -58,5 +63,6 @@
         public static final String EMAIL_END = "@example.com";
         public static final String FOR_EDIT_USERNAME = "edit@example.com";
         public static final String FOR_EDIT_PASSWORD = "edit123";
+        public static final String EDITED_PASSWORD= "edit123456";
 
     }

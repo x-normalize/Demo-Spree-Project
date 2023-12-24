@@ -5,8 +5,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static com.telerikacademy.testframework.pages.Constants.FOR_EDIT_PASSWORD;
-import static com.telerikacademy.testframework.pages.Constants.FOR_EDIT_USERNAME;
+import static com.telerikacademy.testframework.pages.Constants.*;
 
 public class AccountManagementTest extends BaseTestSetup {
 
@@ -26,7 +25,14 @@ public class AccountManagementTest extends BaseTestSetup {
     @Test
     @Description("SDP-27 [Account Management] Successful password update")
     public void shouldUpdatePasswordSuccessfully() {
-
+        accountPage.assertPageNavigated();
+        accountPage.updatePassword(EDITED_PASSWORD, EDITED_PASSWORD);
+        accountPage.assertUpdateAccountMessageIsPresent();
+        accountPage.assertPageNavigated();
+        accountPage.updatePassword(FOR_EDIT_PASSWORD, FOR_EDIT_PASSWORD);
+        accountPage.assertUpdateAccountMessageIsPresent();
+        accountPage.assertPageNavigated();
+        loginPage.assertMyAccountSection();
     }
 
 

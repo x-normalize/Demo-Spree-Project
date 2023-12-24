@@ -28,7 +28,7 @@ public class LoginTests extends BaseTestSetup {
         loginPage.assertMyAccountSection();
         loginPage.assertLogoutButtonIsVisible();
         accountPage.logout();
-        accountPage.assertSuccessfulLogoutMessage();
+        accountPage.assertSuccessfulLogoutMessageIsPresent();
     }
 
     @Test
