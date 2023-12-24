@@ -1,6 +1,7 @@
 package com.telerikacademy.testframework.pages;
 
 import com.telerikacademy.testframework.Utils;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 
 import static com.telerikacademy.testframework.pages.Constants.*;
@@ -29,6 +30,11 @@ public class AccountPage extends BasePage {
         actions.typeValueInField(Utils.getConfigPropertyByKey(updatePassword), PASSWORD_UPDATE_CONFIRMATION_FIELD_PATH);
         actions.waitForElementPresent(PASSWORD_UPDATE_BUTTON);
         actions.clickElement(PASSWORD_UPDATE_BUTTON);
+    }
+
+    public void assertUrlsAreEquals(String expectedUrl, String actualUrl) {
+        Assertions.assertEquals(expectedUrl, actualUrl, "Expected URL is different than actual.");
+        System.out.println("URLs are equal.");
     }
 
     public void assertUpdateAccountMessageIsPresent() {

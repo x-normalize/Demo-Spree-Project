@@ -28,12 +28,14 @@ public class AccountManagementTest extends BaseTestSetup {
         accountPage.assertPageNavigated();
         accountPage.updatePassword(EDITED_PASSWORD, EDITED_PASSWORD);
         accountPage.assertUpdateAccountMessageIsPresent();
-        accountPage.assertPageNavigated();
+        accountPage.assertUrlsAreEquals(ACCOUNT_PAGE, ACCOUNT_PAGE);
         accountPage.updatePassword(FOR_EDIT_PASSWORD, FOR_EDIT_PASSWORD);
         accountPage.assertUpdateAccountMessageIsPresent();
-        accountPage.assertPageNavigated();
+        accountPage.assertUrlsAreEquals(ACCOUNT_PAGE, ACCOUNT_PAGE);
         loginPage.assertThatMyAccountSectionIsPresent();
     }
+
+
 
 
 }
