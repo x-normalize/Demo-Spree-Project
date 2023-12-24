@@ -62,5 +62,10 @@ public class AccountManagementTest extends BaseTestSetup {
         accountPage.assertPasswordUpdateButtonIsDisplayed();
     }
 
+    @Test
+    @Description("SDP-33 [Account Management]  Successful add new address")
+    public void shouldSuccessfullyAddNewAddress() {
+
+    }
 
 }

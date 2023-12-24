@@ -25,6 +25,7 @@
         public static final String PASSWORD_UPDATE_FIELD_PATH = "accountPage.passwordUpdateField";
         public static final String PASSWORD_UPDATE_CONFIRMATION_FIELD_PATH = "accountPage.passwordUpdateConfirmationField";
         public static final String PASSWORD_UPDATE_BUTTON = "accountPage.passwordUpdateButton";
+        public static final String ADD_NEW_ADDRESS_BUTTON = "accountPage.addNewAddressButton";
 
 
 
@@ -65,5 +66,16 @@
         public static final String FOR_EDIT_USERNAME = "edit@example.com";
         public static final String FOR_EDIT_PASSWORD = "edit123";
         public static final String EDITED_PASSWORD= "edit123456";
+        public static final String ADDRESS_NAME = "HOME";
+        public static final String FIRST_NAME = "George";
+        public static final String LAST_NAME = "Bush";
+        public static final String ADDRESS = "793 Bell Street";
+        public static final String CITY = "New York";
+        public static final String ZIP_CODE = "10018";
+        public static final String PHONE = "(381) 719-2148";
+
+
+
+
 
     }
