@@ -31,11 +31,23 @@ public class AccountManagementTest extends BaseTestSetup {
         accountPage.assertUrlsAreEquals(ACCOUNT_PAGE, ACCOUNT_PAGE);
         accountPage.updatePassword(FOR_EDIT_PASSWORD, FOR_EDIT_PASSWORD);
         accountPage.assertElementTextEquals(SUCCESSFUL_ACCOUNT_UPDATE_MESSAGE, "Account updated");
-        accountPage.assertUrlsAreEquals(ACCOUNT_PAGE, ACCOUNT_PAGE);
-        loginPage.assertThatMyAccountSectionIsPresent();
+        actions.assertUrlsAreEquals(ACCOUNT_PAGE, ACCOUNT_PAGE);
+        accountPage.assertThatMyAccountSectionIsPresent();
     }
 
-
+    @Test
+    @Description("SDP-28 [Account Management] Successful password update with 128-Character")
+    public void shouldUpdatePasswordSuccessfullyWith128Characters() {
+        accountPage.assertPageNavigated();
+        RANDOM_PASSWORD = actions.generateRandomTextExactLength(128);
+        accountPage.updatePassword(RANDOM_PASSWORD, RANDOM_PASSWORD);
+        accountPage.assertElementTextEquals(SUCCESSFUL_ACCOUNT_UPDATE_MESSAGE, "Account updated");
+        accountPage.assertUrlsAreEquals(ACCOUNT_PAGE, ACCOUNT_PAGE);
+        accountPage.updatePassword(FOR_EDIT_PASSWORD, FOR_EDIT_PASSWORD);
+        accountPage.assertElementTextEquals(SUCCESSFUL_ACCOUNT_UPDATE_MESSAGE, "Account updated");
+        accountPage.assertUrlsAreEquals(ACCOUNT_PAGE, ACCOUNT_PAGE);
+        accountPage.assertThatMyAccountSectionIsPresent();
+    }
 
 
 }

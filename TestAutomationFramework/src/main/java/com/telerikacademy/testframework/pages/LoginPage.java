@@ -41,8 +41,7 @@ public class LoginPage extends BasePage {
     }
 
     public void assertThatLogoutButtonIsVisible() {
-        actions.waitForElementPresent(ACCOUNT_BUTTON_PATH);
-        actions.clickElement(ACCOUNT_BUTTON_PATH);
+        clickButton(ACCOUNT_BUTTON_PATH);
         assertElementPresent(LOGOUT_BUTTON_PATH);
     }
 

@@ -48,4 +48,8 @@ public class AccountPage extends BasePage {
         actions.assertElementPresent(SUCCESSFUL_LOGOUT_MESSAGE);
     }
 
+    public void assertThatMyAccountSectionIsPresent() {
+        assertElementPresent(MY_ACCOUNT_SECTION_TEXT);
+    }
+
 }
