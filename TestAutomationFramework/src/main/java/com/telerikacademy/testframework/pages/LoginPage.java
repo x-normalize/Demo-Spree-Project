@@ -2,7 +2,6 @@ package com.telerikacademy.testframework.pages;
 
 import com.telerikacademy.testframework.Utils;
 import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 import static com.telerikacademy.testframework.pages.Constants.*;
@@ -13,37 +12,33 @@ public class LoginPage extends BasePage {
     }
 
     public void login(String username, String password) {
-        actions.waitForElementClickable(LOGIN_EMAIL_FIELD_PATH);
-        actions.typeValueInField(Utils.getConfigPropertyByKey(username), LOGIN_EMAIL_FIELD_PATH);
-        actions.waitForElementClickable(LOGIN_PASSWORD_FIELD_PATH);
-        actions.typeValueInField(Utils.getConfigPropertyByKey(password), LOGIN_PASSWORD_FIELD_PATH);
-        actions.waitForElementClickable(LOGIN_BUTTON_PATH);
-        actions.clickElement(LOGIN_BUTTON_PATH);
+        enterCredentials(LOGIN_EMAIL_FIELD_PATH, Utils.getConfigPropertyByKey(username));
+        enterCredentials(LOGIN_PASSWORD_FIELD_PATH, Utils.getConfigPropertyByKey(password));
+        clickButton(LOGIN_BUTTON_PATH);
     }
 
     public void enterWhitespaceInLoginForm() {
-        actions.waitForElementClickable(LOGIN_EMAIL_FIELD_PATH);
-        actions.clickElement(LOGIN_EMAIL_FIELD_PATH);
-        actions.pressKey(Keys.SPACE);
-        actions.pressKey(Keys.SPACE);
-        actions.pressKey(Keys.SPACE);
-        actions.waitForElementClickable(LOGIN_PASSWORD_FIELD_PATH);
-        actions.clickElement(LOGIN_PASSWORD_FIELD_PATH);
-        actions.pressKey(Keys.SPACE);
-        actions.pressKey(Keys.SPACE);
-        actions.pressKey(Keys.SPACE);
-        actions.waitForElementClickable(LOGIN_BUTTON_PATH);
-        actions.clickElement(LOGIN_BUTTON_PATH);
+        enterCredentials(LOGIN_EMAIL_FIELD_PATH, "   ");
+        enterCredentials(LOGIN_PASSWORD_FIELD_PATH, "   ");
+        clickButton(LOGIN_BUTTON_PATH);
+    }
+
+    private void enterCredentials(String fieldPath, String value) {
+        actions.waitForElementClickable(fieldPath);
+        actions.typeValueInField(value, fieldPath);
+    }
+
+    private void clickButton(String buttonPath) {
+        actions.waitForElementClickable(buttonPath);
+        actions.clickElement(buttonPath);
     }
 
     public void navigateToHomePage() {
-        actions.waitForElementClickable(HOME_BUTTON_PATH);
-        actions.clickElement(HOME_BUTTON_PATH);
+        clickButton(HOME_BUTTON_PATH);
     }
 
     public void assertThatLoginMessageIsSuccessful() {
-        actions.waitForElementPresent(SUCCESSFUL_LOGIN_MESSAGE);
-        actions.assertElementPresent(SUCCESSFUL_LOGIN_MESSAGE);
+        assertElementPresent(SUCCESSFUL_LOGIN_MESSAGE);
     }
 
     public void assertUrlsAreEquals(String expectedUrl, String actualUrl) {
@@ -52,30 +47,29 @@ public class LoginPage extends BasePage {
     }
 
     public void assertThatMyAccountSectionIsPresent() {
-        actions.waitForElementPresent(MY_ACCOUNT_SECTION_TEXT);
-        actions.assertElementPresent(MY_ACCOUNT_SECTION_TEXT);
+        assertElementPresent(MY_ACCOUNT_SECTION_TEXT);
     }
 
     public void assertThatLogoutButtonIsVisible() {
         actions.waitForElementPresent(ACCOUNT_BUTTON_PATH);
         actions.clickElement(ACCOUNT_BUTTON_PATH);
-        actions.waitForElementPresent(LOGOUT_BUTTON_PATH);
-        actions.assertElementPresent(LOGOUT_BUTTON_PATH);
+        assertElementPresent(LOGOUT_BUTTON_PATH);
     }
 
     public void assertThatLoginErrorMessageIsPresent() {
-        actions.waitForElementPresent(LOGIN_ERROR_MESSAGE);
-        actions.assertElementPresent(LOGIN_ERROR_MESSAGE);
+        assertElementPresent(LOGIN_ERROR_MESSAGE);
     }
 
     public void assertThatLoginPageTitleIsPresent() {
-        actions.waitForElementPresent(LOGIN_PAGE_TITLE);
-        actions.assertElementPresent(LOGIN_PAGE_TITLE);
+        assertElementPresent(LOGIN_PAGE_TITLE);
     }
 
     public void assertLoginButtonIsPresent() {
-        actions.waitForElementPresent(LOGIN_BUTTON_PATH);
-        actions.assertElementPresent(LOGIN_BUTTON_PATH);
+        assertElementPresent(LOGIN_BUTTON_PATH);
     }
 
+    private void assertElementPresent(String elementPath) {
+        actions.waitForElementPresent(elementPath);
+        actions.assertElementPresent(elementPath);
+    }
 }

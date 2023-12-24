@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriver;
 
 import static com.telerikacademy.testframework.Utils.getUIMappingByKey;
 import static com.telerikacademy.testframework.pages.Constants.*;
-import static com.telerikacademy.testframework.pages.Constants.LOGOUT_BUTTON_PATH;
 
 public class AccountPage extends BasePage {
     public AccountPage(WebDriver driver) {
@@ -42,11 +41,6 @@ public class AccountPage extends BasePage {
     public void assertElementTextEquals(String locator, String expectedText) {
         String actualText = driver.findElement(By.xpath(getUIMappingByKey(locator))).getText();
         Assertions.assertEquals(expectedText, actualText, "Text does not match for element: " + locator);
-    }
-
-    public void assertUpdateAccountMessageIsPresent() {
-        actions.waitForElementPresent(SUCCESSFUL_ACCOUNT_UPDATE_MESSAGE);
-        actions.assertElementPresent(SUCCESSFUL_ACCOUNT_UPDATE_MESSAGE);
     }
 
     public void assertSuccessfulLogoutMessageIsPresent() {
