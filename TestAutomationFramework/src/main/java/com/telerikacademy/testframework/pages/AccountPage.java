@@ -44,12 +44,19 @@ public class AccountPage extends BasePage {
     }
 
     public void assertSuccessfulLogoutMessageIsPresent() {
-        actions.waitForElementPresent(SUCCESSFUL_LOGOUT_MESSAGE);
-        actions.assertElementPresent(SUCCESSFUL_LOGOUT_MESSAGE);
+        assertElementPresent(SUCCESSFUL_LOGOUT_MESSAGE);
     }
 
     public void assertThatMyAccountSectionIsPresent() {
         assertElementPresent(MY_ACCOUNT_SECTION_TEXT);
+    }
+
+    public void assertMaximumPasswordErrorMessageIsDisplayed() {
+        assertElementPresent(MAXIMUM_PASSWORD_ERROR_MESSAGE);
+    }
+
+    public void assertPasswordUpdateButtonIsDisplayed() {
+        assertElementPresent(PASSWORD_UPDATE_BUTTON);
     }
 
 }

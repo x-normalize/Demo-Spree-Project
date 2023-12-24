@@ -7,6 +7,7 @@
         public static final String LOGIN_PAGE = "spree.loginPage";
         public static final String REGISTRATION_PAGE = "spree.registrationPage";
         public static final String ACCOUNT_PAGE = "spree.accountPage";
+        public static final String EDIT_USER_ACCOUNT_PAGE = "spree.editUserAccountPage";
 
 
         public static final String LOGIN_EMAIL_FIELD_PATH = "loginPage.emailField";

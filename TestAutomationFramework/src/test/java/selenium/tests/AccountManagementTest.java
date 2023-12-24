@@ -49,5 +49,18 @@ public class AccountManagementTest extends BaseTestSetup {
         accountPage.assertThatMyAccountSectionIsPresent();
     }
 
+    @Test
+    @Description("SDP-32 [Account Management] Attempt to change password with 129 characters")
+    public void shouldFailToUpdatePasswordWith129Characters() {
+        accountPage.assertPageNavigated();
+        RANDOM_PASSWORD = actions.generateRandomTextExactLength(129);
+        accountPage.updatePassword(RANDOM_PASSWORD, RANDOM_PASSWORD);
+        accountPage.assertElementTextEquals(MAXIMUM_PASSWORD_ERROR_MESSAGE,
+                "Password is too long (maximum is 128 characters)");
+        accountPage.assertMaximumPasswordErrorMessageIsDisplayed();
+        accountPage.assertUrlsAreEquals(EDIT_USER_ACCOUNT_PAGE, EDIT_USER_ACCOUNT_PAGE);
+        accountPage.assertPasswordUpdateButtonIsDisplayed();
+    }
+
 
 }
