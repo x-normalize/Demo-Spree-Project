@@ -2,7 +2,7 @@
 
     public class Constants {
 
-
+        //#################### URL ####################
         public static final String HOME_PAGE = "spree.homePage";
         public static final String LOGIN_PAGE = "spree.loginPage";
         public static final String REGISTRATION_PAGE = "spree.registrationPage";
@@ -10,6 +10,7 @@
         public static final String EDIT_USER_ACCOUNT_PAGE = "spree.editUserAccountPage";
 
 
+        //#################### X-PATHS ####################
         public static final String LOGIN_EMAIL_FIELD_PATH = "loginPage.emailField";
         public static final String LOGIN_PASSWORD_FIELD_PATH = "loginPage.passwordField";
         public static final String LOGIN_BUTTON_PATH = "loginPage.loginButton";
@@ -40,19 +41,6 @@
         public static final String CITY_NAME_TEXT_PATH = "accountPage.cityNameText";
         public static final String DELETE_ADDRESS_BUTTON = "accountPage.deleteAddressButton";
         public static final String DELETE_ADDRESS_POPUP_BUTTON = "accountPage.deleteAddressPopupConfirmButton";
-
-
-
-
-
-
-
-        public static final String HEIDI_DIXON_USERNAME = "spree.heidiDixon.username";
-        public static final String HEIDI_DIXON_PASSWORD = "spree.heidiDixon.password";
-        public static final String YOLANDA_WHEELER_USERNAME = "spree.yolandaWheeler.username";
-        public static final String YOLANDA_WHEELER_PASSWORD = "spree.yolandaWheeler.password";
-        public static final String LANDON_BUTLER_USERNAME = "spree.landonButler.username";
-        public static final String LANDON_BUTLER_PASSWORD = "spree.landonButler.password";
         public static final String EMPTY_USERNAME = "spree.empty.username";
         public static final String EMPTY_PASSWORD = "spree.empty.password";
         public static final String SUCCESSFUL_LOGIN_MESSAGE = "loginPage.successfulLoginMessage";
@@ -74,7 +62,13 @@
 
 
 
-
+        //#################### USER DATA ####################
+        public static final String HEIDI_DIXON_USERNAME = "spree.heidiDixon.username";
+        public static final String HEIDI_DIXON_PASSWORD = "spree.heidiDixon.password";
+        public static final String YOLANDA_WHEELER_USERNAME = "spree.yolandaWheeler.username";
+        public static final String YOLANDA_WHEELER_PASSWORD = "spree.yolandaWheeler.password";
+        public static final String LANDON_BUTLER_USERNAME = "spree.landonButler.username";
+        public static final String LANDON_BUTLER_PASSWORD = "spree.landonButler.password";
         public static final int MIN_LENGTH_PASSWORD = 7;
         public static final int MAX_LENGTH_PASSWORD = 127;
         public static int MIN_LENGTH_USERNAME = 2;
