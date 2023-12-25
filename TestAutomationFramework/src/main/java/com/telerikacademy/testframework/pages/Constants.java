@@ -8,6 +8,12 @@ public class Constants {
     public static final String REGISTRATION_PAGE = "spree.registrationPage";
     public static final String ACCOUNT_PAGE = "spree.accountPage";
     public static final String EDIT_USER_ACCOUNT_PAGE = "spree.editUserAccountPage";
+    public static final String WOMEN_CATEGORIES_PAGE = "spree.womanCategoriesPage";
+    public static final String MEN_CATEGORIES_PAGE = "spree.menCategoriesPage";
+    public static final String SPORTSWEAR_CATEGORIES_PAGE = "spree.sportsWearCategoriesPage";
+    public static final String CATEGORIES_PAGE = "spree.categoriesPage";
+
+
 
 
     //#################### X-PATHS ####################

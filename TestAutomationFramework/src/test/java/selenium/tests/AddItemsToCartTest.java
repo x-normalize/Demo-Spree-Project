@@ -1,5 +1,6 @@
 package selenium.tests;
 
-public class AddItemsToCartTest extends BaseTestSetup{
+public class AddItemsToCartTest extends BaseTestSetup {
+
 
 }
