@@ -46,6 +46,7 @@
 
 
 
+
         public static final String HEIDI_DIXON_USERNAME = "spree.heidiDixon.username";
         public static final String HEIDI_DIXON_PASSWORD = "spree.heidiDixon.password";
         public static final String YOLANDA_WHEELER_USERNAME = "spree.yolandaWheeler.username";
@@ -68,6 +69,7 @@
         public static final String MAXIMUM_PASSWORD_ERROR_MESSAGE = "registrationPage.maximumPasswordErrorMessage";
         public static final String MISMATCH_PASSWORD_ERROR_MESSAGE = "registrationPage.mismatchPasswordErrorMessage";
         public static final String EMAIL_ALREADY_TAKEN_ERROR_MESSAGE = "registrationPage.emailAlreadyTakenErrorMessage";
+        public static final String DELETE_ADDRESS_MESSAGE = "accountPage.deleteAddressMessage";
 
 
 

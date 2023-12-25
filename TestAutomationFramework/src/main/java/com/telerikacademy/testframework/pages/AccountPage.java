@@ -48,7 +48,7 @@ public class AccountPage extends BasePage {
 
     public void deleteAddress() {
         clickButton(DELETE_ADDRESS_BUTTON);
-
+        clickButton(DELETE_ADDRESS_POPUP_BUTTON);
     }
 
     public void assertUrlsAreEquals(String expectedUrl, String actualUrl) {
@@ -75,6 +75,10 @@ public class AccountPage extends BasePage {
 
     public void assertPasswordUpdateButtonIsDisplayed() {
         assertElementPresent(PASSWORD_UPDATE_BUTTON);
+    }
+
+    public void assertDeleteAddressMessageIsDisplayed() {
+        assertElementPresent(DELETE_ADDRESS_MESSAGE);
     }
 
 }

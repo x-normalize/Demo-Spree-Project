@@ -66,9 +66,6 @@ public class AccountManagementTest extends BaseTestSetup {
     @Description("SDP-33 [Account Management] Successful add new address")
     public void shouldSuccessfullyAddNewAddress() {
         accountPage.assertPageNavigated();
-        loginPage.login(FOR_EDIT_USERNAME, FOR_EDIT_PASSWORD);
-        accountPage.assertUrlsAreEquals(ACCOUNT_PAGE, ACCOUNT_PAGE);
-        accountPage.assertSuccessfulLogoutMessageIsPresent();
         accountPage.addNewAddress();
         accountPage.assertElementTextEquals(SUCCESSFUL_ADD_NEW_ADDRESS_MESSAGE,
                 "New address has been successfully created");
@@ -76,7 +73,8 @@ public class AccountManagementTest extends BaseTestSetup {
         accountPage.assertElementTextEquals(FULL_NAME_TEXT_PATH, "George Bush");
         accountPage.assertElementTextEquals(ADDRESS_TEXT_PATH, "793 Bell Street ,");
         accountPage.assertElementTextEquals(CITY_NAME_TEXT_PATH, "New York, AL 10018,");
-        accountPage.assertUrlsAreEquals(ACCOUNT_PAGE, ACCOUNT_PAGE);
+        accountPage.deleteAddress();
+        accountPage.assertDeleteAddressMessageIsDisplayed();
     }
 
 }
