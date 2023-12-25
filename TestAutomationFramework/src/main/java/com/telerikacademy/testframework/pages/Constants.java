@@ -26,6 +26,23 @@
         public static final String PASSWORD_UPDATE_CONFIRMATION_FIELD_PATH = "accountPage.passwordUpdateConfirmationField";
         public static final String PASSWORD_UPDATE_BUTTON = "accountPage.passwordUpdateButton";
         public static final String ADD_NEW_ADDRESS_BUTTON = "accountPage.addNewAddressButton";
+        public static final String ADDRESS_NAME_FIELD_PATH = "accountPage.addressNameField";
+        public static final String FIRST_NAME_FIELD_PATH = "accountPage.firstNameField";
+        public static final String LAST_NAME_FIELD_PATH = "accountPage.lastNameField";
+        public static final String ADDRESS_FIELD_PATH = "accountPage.addressField";
+        public static final String CITY_FIELD_PATH = "accountPage.cityField";
+        public static final String ZIP_CODE_FIELD_PATH = "accountPage.zipCodeField";
+        public static final String PHONE_FIELD_PATH =  "accountPage.phoneField";
+        public static final String SAVE_BUTTON_FIELD_PATH = "accountPage.saveButton";
+        public static final String ADDRESS_NAME_TEXT_PATH = "accountPage.addressNameText";
+        public static final String FULL_NAME_TEXT_PATH = "accountPage.fullNameText";
+        public static final String ADDRESS_TEXT_PATH = "accountPage.fullAddressNameText";
+        public static final String CITY_NAME_TEXT_PATH = "accountPage.cityNameText";
+        public static final String DELETE_ADDRESS_BUTTON = "accountPage.deleteAddressButton";
+        public static final String DELETE_ADDRESS_POPUP_BUTTON = "accountPage.deleteAddressPopupConfirmButton";
+
+
+
 
 
 
@@ -40,6 +57,7 @@
         public static final String SUCCESSFUL_LOGIN_MESSAGE = "loginPage.successfulLoginMessage";
         public static final String SUCCESSFUL_LOGOUT_MESSAGE = "accountPage.successfulLogoutMessage";
         public static final String SUCCESSFUL_ACCOUNT_UPDATE_MESSAGE = "accountPage.successfulAccountUpdateMessage";
+        public static final String SUCCESSFUL_ADD_NEW_ADDRESS_MESSAGE = "accountPage.successfulAddNewAddressMessage";
         public static final String MY_ACCOUNT_SECTION_TEXT = "loginPage.myAccountLoginSectionText";
         public static final String CREATE_NEW_ACCOUNT_TEXT = "registrationPage.createNewAccountText";
         public static final String LOGIN_ERROR_MESSAGE = "loginPage.loginErrorMessage";

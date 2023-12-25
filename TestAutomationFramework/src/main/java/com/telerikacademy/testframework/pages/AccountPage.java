@@ -1,6 +1,7 @@
 package com.telerikacademy.testframework.pages;
 
 import com.telerikacademy.testframework.Utils;
+import org.checkerframework.checker.units.qual.C;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -31,6 +32,23 @@ public class AccountPage extends BasePage {
         actions.typeValueInField(Utils.getConfigPropertyByKey(updatePassword), PASSWORD_UPDATE_CONFIRMATION_FIELD_PATH);
         actions.waitForElementPresent(PASSWORD_UPDATE_BUTTON);
         actions.clickElement(PASSWORD_UPDATE_BUTTON);
+    }
+
+    public void addNewAddress() {
+        clickButton(ADD_NEW_ADDRESS_BUTTON);
+        enterCredentials(ADDRESS_NAME_FIELD_PATH, ADDRESS_NAME);
+        enterCredentials(FIRST_NAME_FIELD_PATH, FIRST_NAME);
+        enterCredentials(LAST_NAME_FIELD_PATH, LAST_NAME);
+        enterCredentials(ADDRESS_FIELD_PATH, ADDRESS);
+        enterCredentials(CITY_FIELD_PATH, CITY);
+        enterCredentials(ZIP_CODE_FIELD_PATH, ZIP_CODE);
+        enterCredentials(PHONE_FIELD_PATH, PHONE);
+        clickButton(SAVE_BUTTON_FIELD_PATH);
+    }
+
+    public void deleteAddress() {
+        clickButton(DELETE_ADDRESS_BUTTON);
+
     }
 
     public void assertUrlsAreEquals(String expectedUrl, String actualUrl) {
