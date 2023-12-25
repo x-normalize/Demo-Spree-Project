@@ -64,6 +64,14 @@ public class Constants {
     public static final String MISMATCH_PASSWORD_ERROR_MESSAGE = "registrationPage.mismatchPasswordErrorMessage";
     public static final String EMAIL_ALREADY_TAKEN_ERROR_MESSAGE = "registrationPage.emailAlreadyTakenErrorMessage";
     public static final String DELETE_ADDRESS_MESSAGE = "accountPage.deleteAddressMessage";
+    public static final String PRODUCT_MEN_DENIM_SHIRT_PATH = "categoriesPage.productDenimShirt";
+    public static final String ADD_TO_CARD_BUTTON = "categoriesPage.addToCardButton";
+    public static final String SUCCESSFUL_ADD_TO_CARD_MESSAGE = "categoriesPage.successfulAddToCardMessage";
+    public static final String VIEW_CARD_BUTTON = "categoriesPage.viewCartButton";
+    public static final String PRODUCT_PRICE_PATH = "categoriesPage.productPriceText";
+    public static final String PRODUCT_QUANTITY_PATH = "categoriesPage.productQuantity";
+    public static final String DELETE_ITEM_BUTTON = "categoriesPage.deleteItemButton";
+    public static final String EMPTY_CARD_MESSAGE = "categoriesPage.emptyCardMessage";
 
 
     //#################### USER DATA ####################
@@ -91,6 +99,7 @@ public class Constants {
     public static final String CITY = "New York";
     public static final String ZIP_CODE = "10018";
     public static final String PHONE = "(381) 719-2148";
+    public static final String DENIM_SHIRT_PRICE = "60.99";
 
 
 }
