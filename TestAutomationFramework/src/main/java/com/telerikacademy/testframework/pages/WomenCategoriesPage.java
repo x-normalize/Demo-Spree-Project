@@ -4,10 +4,10 @@ import org.openqa.selenium.WebDriver;
 
 import static com.telerikacademy.testframework.pages.Constants.*;
 
-public class CategoriesPage extends BasePage {
+public class WomenCategoriesPage extends BasePage {
 
-    public CategoriesPage(WebDriver driver) {
-        super(driver, CATEGORIES_PAGE);
+    public WomenCategoriesPage(WebDriver driver) {
+        super(driver, WOMEN_CATEGORIES_PAGE);
     }
 
 
