@@ -75,7 +75,11 @@ public class Constants {
     public static final String COLOR_FILTER_BUTTON = "categoriesPage.colorFilterButton";
     public static final String COLOR_BLUE_BUTTON = "categoriesPage.colorBlueButton";
     public static final String PRODUCT_PLACKET_SHIRT = "categoriesPage.productPlacketShirt";
-
+    public static final String SIZE_FILTER_BUTTON = "categoriesPage.sizeFilterButton";
+    public static final String SIZE_L_BUTTON = "categoriesPage.sizeLButton";
+    public static final String PRODUCT_ANORAK = "categoriesPage.productAnorak";
+    public static final String ADD_PRODUCT_ANORAK = "categoriesPage.addProductAnorak";
+    public static final String PRODUCT_NAME_TEXT_PATH = "categoriesPage.productNameText";
 
     //#################### USER DATA ####################
     public static final String HEIDI_DIXON_USERNAME = "spree.heidiDixon.username";

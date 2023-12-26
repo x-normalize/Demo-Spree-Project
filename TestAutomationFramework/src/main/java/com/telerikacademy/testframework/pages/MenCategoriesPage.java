@@ -34,6 +34,15 @@ public class MenCategoriesPage extends BasePage {
         clickButton(VIEW_CARD_BUTTON);
     }
 
+    public void addLSizeItemToCardFromMensCategory() {
+        clickButton(SIZE_FILTER_BUTTON);
+        clickButton(SIZE_L_BUTTON);
+        clickButton(PRODUCT_ANORAK);
+        clickButton(ADD_PRODUCT_ANORAK);
+        clickButton(ADD_TO_CARD_BUTTON);
+        clickButton(VIEW_CARD_BUTTON);
+    }
+
     public void assertItemPresentInCart(String itemName) {
         List<WebElement> itemsInCart = driver.findElements(By.cssSelector(".item-title a"));
         boolean itemFound = false;
@@ -66,6 +75,10 @@ public class MenCategoriesPage extends BasePage {
 
     public void assertSuccessfulAddToCardMessageIsPresent() {
         assertElementPresent(SUCCESSFUL_ADD_TO_CARD_MESSAGE);
+    }
+
+    public void assertProductNameIsPresent() {
+        assertElementPresent(PRODUCT_NAME_TEXT_PATH);
     }
 
     public void assertSuccessfulDeleteItemMessageIsPresent() {

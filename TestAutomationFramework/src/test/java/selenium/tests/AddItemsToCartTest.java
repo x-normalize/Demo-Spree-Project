@@ -38,7 +38,7 @@ public class AddItemsToCartTest extends BaseTestSetup {
     }
 
     @Test
-    @Description("SPD-38 [Shopping Cart] Add items to the shopping cart from men's category with blue color")
+    @Description("SDP-38 [Shopping Cart] Add items to the shopping cart from men's category with blue color")
     public void shouldAddBlueItemsFromMensCategoryToCart() {
         menCategoriesPage.navigateToPage();
         menCategoriesPage.assertPageNavigated();
@@ -52,6 +52,20 @@ public class AddItemsToCartTest extends BaseTestSetup {
         menCategoriesPage.assertSuccessfulDeleteItemMessageIsPresent();
     }
 
+    @Test
+    @Description("SDP-39 [Shopping Cart] Add Items to the shopping cart from men's category with size L")
+    public void shouldAddLSizesItemsFromMensCategoryToCart() {
+        menCategoriesPage.navigateToPage();
+        menCategoriesPage.assertPageNavigated();
+        menCategoriesPage.addLSizeItemToCardFromMensCategory();
+        menCategoriesPage.assertSuccessfulAddToCardMessageIsPresent();
+        menCategoriesPage.assertProductNameIsPresent();
+        menCategoriesPage.assertItemQuantityInCart("Anorak With Hood", 1);
+        menCategoriesPage.assertItemPresentInCart("Anorak With Hood");
+        menCategoriesPage.assertTotalPrice("$37.99");
+        menCategoriesPage.deleteItemFromCard();
+        menCategoriesPage.assertSuccessfulDeleteItemMessageIsPresent();
+    }
 
 
 }
