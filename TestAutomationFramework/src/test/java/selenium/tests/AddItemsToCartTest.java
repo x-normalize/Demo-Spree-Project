@@ -81,4 +81,11 @@ public class AddItemsToCartTest extends BaseTestSetup {
         menCategoriesPage.deleteItemFromCard();
         menCategoriesPage.assertSuccessfulDeleteItemMessageIsPresent();
     }
+
+    @Test
+    @Description("SDP-41 [Shopping Cart] Add items to the shopping cart from women's category")
+    public void shouldAddItemsToCartFromWomenSCategory() {
+
+    }
+
 }
