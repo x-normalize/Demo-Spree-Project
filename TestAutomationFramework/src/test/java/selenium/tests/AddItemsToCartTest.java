@@ -30,9 +30,12 @@ public class AddItemsToCartTest extends BaseTestSetup {
         menCategoriesPage.addItemsToCartFromMensCategory();
         menCategoriesPage.assertSuccessfulAddToCardMessageIsPresent();
         menCategoriesPage.assertElementTextEquals(PRODUCT_PRICE_PATH, "$60.99");
-        menCategoriesPage.assertQuantity();
+        menCategoriesPage.assertItemQuantityInCart("Denim Shirt", 1);
+        menCategoriesPage.assertItemPresentInCart("Denim Shirt");
+        menCategoriesPage.assertTotalPrice("$60.99");
         menCategoriesPage.deleteItemFromCard();
         menCategoriesPage.assertSuccessfulDeleteItemMessageIsPresent();
+
     }
 
 }

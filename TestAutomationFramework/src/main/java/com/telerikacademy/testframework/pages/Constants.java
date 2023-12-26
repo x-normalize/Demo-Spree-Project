@@ -74,6 +74,7 @@ public class Constants {
     public static final String EMPTY_CARD_MESSAGE = "categoriesPage.emptyCardMessage";
 
 
+
     //#################### USER DATA ####################
     public static final String HEIDI_DIXON_USERNAME = "spree.heidiDixon.username";
     public static final String HEIDI_DIXON_PASSWORD = "spree.heidiDixon.password";
