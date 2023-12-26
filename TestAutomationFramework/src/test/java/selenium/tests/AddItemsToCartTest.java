@@ -35,6 +35,11 @@ public class AddItemsToCartTest extends BaseTestSetup {
         menCategoriesPage.assertTotalPrice("$60.99");
         menCategoriesPage.deleteItemFromCard();
         menCategoriesPage.assertSuccessfulDeleteItemMessageIsPresent();
+    }
+
+    @Test
+    @Description("SPD-38 [Shopping Cart] Add items to the shopping cart from men's category with blue color")
+    public void shouldAddBlueItemsFromMensCategoryToCart() {
 
     }
 

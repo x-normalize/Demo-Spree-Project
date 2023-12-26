@@ -26,6 +26,12 @@ public class MenCategoriesPage extends BasePage {
         clickButton(DELETE_ITEM_BUTTON);
     }
 
+    public void addBlueItemsToCartFromMensCategory() {
+        clickButton(COLOR_FILTER_BUTTON);
+        clickButton(COLOR_BLUE_BUTTON);
+        clickButton(PRODUCT_PLACKET_SHIRT);
+    }
+
     public void assertItemPresentInCart(String itemName) {
         List<WebElement> itemsInCart = driver.findElements(By.cssSelector(".item-title a"));
         boolean itemFound = false;

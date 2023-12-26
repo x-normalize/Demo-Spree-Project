@@ -69,10 +69,11 @@ public class Constants {
     public static final String SUCCESSFUL_ADD_TO_CARD_MESSAGE = "categoriesPage.successfulAddToCardMessage";
     public static final String VIEW_CARD_BUTTON = "categoriesPage.viewCartButton";
     public static final String PRODUCT_PRICE_PATH = "categoriesPage.productPriceText";
-    public static final String PRODUCT_QUANTITY_PATH = "categoriesPage.productQuantity";
     public static final String DELETE_ITEM_BUTTON = "categoriesPage.deleteItemButton";
     public static final String EMPTY_CARD_MESSAGE = "categoriesPage.emptyCardMessage";
-
+    public static final String COLOR_FILTER_BUTTON = "categoriesPage.colorFilterButton";
+    public static final String COLOR_BLUE_BUTTON = "categoriesPage.colorBlueButton";
+    public static final String PRODUCT_PLACKET_SHIRT = "categoriesPage.productPlacketShirt";
 
 
     //#################### USER DATA ####################
