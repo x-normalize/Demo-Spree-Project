@@ -30,6 +30,8 @@ public class MenCategoriesPage extends BasePage {
         clickButton(COLOR_FILTER_BUTTON);
         clickButton(COLOR_BLUE_BUTTON);
         clickButton(PRODUCT_PLACKET_SHIRT);
+        clickButton(ADD_TO_CARD_BUTTON);
+        clickButton(VIEW_CARD_BUTTON);
     }
 
     public void assertItemPresentInCart(String itemName) {
@@ -44,8 +46,14 @@ public class MenCategoriesPage extends BasePage {
         assertTrue(itemFound, "Item '" + itemName + "' not found in cart!");
     }
 
-    public void assertElementTextEquals(String locator, String expectedText) {
-        actions.waitForElementPresent(PRODUCT_PRICE_PATH);
+    public void assertElementDenimShirt(String locator, String expectedText) {
+        actions.waitForElementPresent(PRODUCT_PATH);
+        String actualText = driver.findElement(By.xpath(getUIMappingByKey(locator))).getText();
+        assertEquals(expectedText, actualText, "Text does not match for element: " + locator);
+    }
+
+    public void assertElementBlueColorShirt(String locator, String expectedText) {
+        actions.waitForElementPresent(BLUE_COLOR_PRODUCT_PATH);
         String actualText = driver.findElement(By.xpath(getUIMappingByKey(locator))).getText();
         assertEquals(expectedText, actualText, "Text does not match for element: " + locator);
     }
