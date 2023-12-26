@@ -43,6 +43,14 @@ public class MenCategoriesPage extends BasePage {
         clickButton(VIEW_CARD_BUTTON);
     }
 
+    public void AddItemsFromMensCategoryWithPriceLessThan50USD() {
+        clickButton(PRICE_FILTER_BUTTON);
+        clickButton(PRICE_LESS_BUTTON);
+        clickButton(PRODUCT_POLO_SHIRT);
+        clickButton(ADD_TO_CARD_BUTTON);
+        clickButton(VIEW_CARD_BUTTON);
+    }
+
     public void assertItemPresentInCart(String itemName) {
         List<WebElement> itemsInCart = driver.findElements(By.cssSelector(".item-title a"));
         boolean itemFound = false;
@@ -55,16 +63,16 @@ public class MenCategoriesPage extends BasePage {
         assertTrue(itemFound, "Item '" + itemName + "' not found in cart!");
     }
 
-    public void assertElementDenimShirt(String locator, String expectedText) {
-        actions.waitForElementPresent(PRODUCT_PATH);
+    public void assertDenimShirtPrice(String locator, String expectedText) {
+        actions.waitForElementPresent(PRODUCT_PRICE_PATH);
         String actualText = driver.findElement(By.xpath(getUIMappingByKey(locator))).getText();
-        assertEquals(expectedText, actualText, "Text does not match for element: " + locator);
+        assertEquals(expectedText, actualText, "Price does not match for element: " + locator);
     }
 
-    public void assertElementBlueColorShirt(String locator, String expectedText) {
-        actions.waitForElementPresent(BLUE_COLOR_PRODUCT_PATH);
+    public void assertBlueColorShirtPrice(String locator, String expectedText) {
+        actions.waitForElementPresent(BLUE_COLOR_PRODUCT_PRICE_PATH);
         String actualText = driver.findElement(By.xpath(getUIMappingByKey(locator))).getText();
-        assertEquals(expectedText, actualText, "Text does not match for element: " + locator);
+        assertEquals(expectedText, actualText, "Price does not match for element: " + locator);
     }
 
     public void assertTotalPrice(String expectedTotalPrice) {
@@ -77,8 +85,12 @@ public class MenCategoriesPage extends BasePage {
         assertElementPresent(SUCCESSFUL_ADD_TO_CARD_MESSAGE);
     }
 
-    public void assertProductNameIsPresent() {
+    public void assertProductAnorakIsPresent() {
         assertElementPresent(PRODUCT_NAME_TEXT_PATH);
+    }
+
+    public void assertProductShirtIsPresent() {
+        assertElementPresent(PRODUCT_POLO_SHIRT_NAME_TEXT_PATH);
     }
 
     public void assertSuccessfulDeleteItemMessageIsPresent() {

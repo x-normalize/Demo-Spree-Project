@@ -26,10 +26,9 @@ public class AddItemsToCartTest extends BaseTestSetup {
     public void shouldAddItemsToCartFromMensCategory() {
         menCategoriesPage.navigateToPage();
         menCategoriesPage.assertPageNavigated();
-        menCategoriesPage.assertElementPresent(PRODUCT_MEN_DENIM_SHIRT_PATH);
         menCategoriesPage.addItemsToCartFromMensCategory();
         menCategoriesPage.assertSuccessfulAddToCardMessageIsPresent();
-        menCategoriesPage.assertElementDenimShirt(PRODUCT_PATH, "$60.99");
+        menCategoriesPage.assertDenimShirtPrice(PRODUCT_PRICE_PATH, "$60.99");
         menCategoriesPage.assertItemQuantityInCart("Denim Shirt", 1);
         menCategoriesPage.assertItemPresentInCart("Denim Shirt");
         menCategoriesPage.assertTotalPrice("$60.99");
@@ -44,7 +43,7 @@ public class AddItemsToCartTest extends BaseTestSetup {
         menCategoriesPage.assertPageNavigated();
         menCategoriesPage.addBlueItemsToCartFromMensCategory();
         menCategoriesPage.assertSuccessfulAddToCardMessageIsPresent();
-        menCategoriesPage.assertElementBlueColorShirt(BLUE_COLOR_PRODUCT_PATH, "$41.99");
+        menCategoriesPage.assertBlueColorShirtPrice(BLUE_COLOR_PRODUCT_PRICE_PATH, "$41.99");
         menCategoriesPage.assertItemQuantityInCart("Covered Placket Shirt", 1);
         menCategoriesPage.assertItemPresentInCart("Covered Placket Shirt");
         menCategoriesPage.assertTotalPrice("$41.99");
@@ -59,7 +58,7 @@ public class AddItemsToCartTest extends BaseTestSetup {
         menCategoriesPage.assertPageNavigated();
         menCategoriesPage.addLSizeItemToCardFromMensCategory();
         menCategoriesPage.assertSuccessfulAddToCardMessageIsPresent();
-        menCategoriesPage.assertProductNameIsPresent();
+        menCategoriesPage.assertProductAnorakIsPresent();
         menCategoriesPage.assertItemQuantityInCart("Anorak With Hood", 1);
         menCategoriesPage.assertItemPresentInCart("Anorak With Hood");
         menCategoriesPage.assertTotalPrice("$37.99");
@@ -67,5 +66,19 @@ public class AddItemsToCartTest extends BaseTestSetup {
         menCategoriesPage.assertSuccessfulDeleteItemMessageIsPresent();
     }
 
-
+    @Test
+    @Description("SDP-40 [Shopping Cart] Add items to the shopping cart from men's category with price less than " +
+            "$50 USD")
+    public void shouldAddItemsFromMensCategoryToCartWithPriceLessThan50USD() {
+        menCategoriesPage.navigateToPage();
+        menCategoriesPage.assertPageNavigated();
+        menCategoriesPage.AddItemsFromMensCategoryWithPriceLessThan50USD();
+        menCategoriesPage.assertSuccessfulAddToCardMessageIsPresent();
+        menCategoriesPage.assertProductShirtIsPresent();
+        menCategoriesPage.assertItemQuantityInCart("Polo T Shirt", 1);
+        menCategoriesPage.assertItemPresentInCart("Polo T Shirt");
+        menCategoriesPage.assertTotalPrice("$10.99");
+        menCategoriesPage.deleteItemFromCard();
+        menCategoriesPage.assertSuccessfulDeleteItemMessageIsPresent();
+    }
 }

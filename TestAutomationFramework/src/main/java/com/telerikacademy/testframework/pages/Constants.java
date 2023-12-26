@@ -68,8 +68,8 @@ public class Constants {
     public static final String ADD_TO_CARD_BUTTON = "categoriesPage.addToCardButton";
     public static final String SUCCESSFUL_ADD_TO_CARD_MESSAGE = "categoriesPage.successfulAddToCardMessage";
     public static final String VIEW_CARD_BUTTON = "categoriesPage.viewCartButton";
-    public static final String PRODUCT_PATH = "categoriesPage.productPriceText";
-    public static final String BLUE_COLOR_PRODUCT_PATH = "categoriesPage.productBlueColorPrice";
+    public static final String PRODUCT_PRICE_PATH = "categoriesPage.productPriceText";
+    public static final String BLUE_COLOR_PRODUCT_PRICE_PATH = "categoriesPage.productBlueColorPrice";
     public static final String DELETE_ITEM_BUTTON = "categoriesPage.deleteItemButton";
     public static final String EMPTY_CARD_MESSAGE = "categoriesPage.emptyCardMessage";
     public static final String COLOR_FILTER_BUTTON = "categoriesPage.colorFilterButton";
@@ -80,6 +80,12 @@ public class Constants {
     public static final String PRODUCT_ANORAK = "categoriesPage.productAnorak";
     public static final String ADD_PRODUCT_ANORAK = "categoriesPage.addProductAnorak";
     public static final String PRODUCT_NAME_TEXT_PATH = "categoriesPage.productNameText";
+    public static final String PRICE_FILTER_BUTTON = "categoriesPage.priceFilterButton";
+    public static final String PRICE_LESS_BUTTON = "categoriesPage.priceLessThan50Button";
+    public static final String PRODUCT_POLO_SHIRT = "categoriesPage.productPoloShirt";
+    public static final String PRODUCT_POLO_SHIRT_NAME_TEXT_PATH = "categoriesPage.productShirtName";
+
+
 
     //#################### USER DATA ####################
     public static final String HEIDI_DIXON_USERNAME = "spree.heidiDixon.username";
