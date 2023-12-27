@@ -16,6 +16,7 @@ public class BaseTestSetup {
     WomenCategoriesPage womenCategoriesPage;
     MenCategoriesPage menCategoriesPage;
     SportswearCategoriesPage sportswearCategoriesPage;
+    CategoriesPage categoriesPage;
 
     @BeforeEach
     public void setUp() {
@@ -27,6 +28,7 @@ public class BaseTestSetup {
         womenCategoriesPage = new WomenCategoriesPage(actions.getDriver());
         menCategoriesPage = new MenCategoriesPage(actions.getDriver());
         sportswearCategoriesPage = new SportswearCategoriesPage(actions.getDriver());
+        categoriesPage = new CategoriesPage(actions.getDriver());
 
 
         UserActions.loadBrowser(HOME_PAGE);
