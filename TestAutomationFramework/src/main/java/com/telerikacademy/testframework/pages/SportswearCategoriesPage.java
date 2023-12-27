@@ -28,6 +28,15 @@ public class SportswearCategoriesPage extends BasePage {
         clickButton(VIEW_CARD_BUTTON);
     }
 
+    public void addSizeMediumItemsToCartFromSportswearCategory() {
+        clickButton(SIZE_FILTER_BUTTON);
+        clickButton(SIZE_M_BUTTON);
+        clickButton(PRODUCT_LACED_CROP_TOP);
+        clickButton(ADD_PRODUCT_LACED_CROP_TOP);
+        clickButton(ADD_TO_CARD_BUTTON);
+        clickButton(VIEW_CARD_BUTTON);
+    }
+
     public void assertRunningSweatshirtPrice(String locator, String expectedPrice) {
         actions.waitForElementPresent(PRODUCT_RUNNING_SWEATSHIRT_UNIT_PRICE);
         String actualText = driver.findElement(By.xpath(getUIMappingByKey(locator))).getText();
@@ -39,4 +48,11 @@ public class SportswearCategoriesPage extends BasePage {
         String actualText = driver.findElement(By.xpath(getUIMappingByKey(locator))).getText();
         assertEquals(expectedPrice, actualText, "Price does not match for element: " + locator);
     }
+
+    public void assertLacedCropTopPrice(String locator, String expectedPrice) {
+        actions.waitForElementPresent(PRODUCT_LACED_CROP_TOP_UNIT_PRICE);
+        String actualText = driver.findElement(By.xpath(getUIMappingByKey(locator))).getText();
+        assertEquals(expectedPrice, actualText, "Price does not match for element: " + locator);
+    }
+
 }

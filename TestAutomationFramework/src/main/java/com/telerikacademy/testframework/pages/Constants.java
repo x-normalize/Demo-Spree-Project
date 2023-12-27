@@ -103,6 +103,10 @@ public class Constants {
     public static final String PRODUCT_SHORT_PANTS = "categoriesPage.productShortPants";
     public static final String ADD_PRODUCT_SHORT_PANTS = "categoriesPage.addProductShortPants";
     public static final String PRODUCT_SHORT_PANTS_UNIT_PRICE = "categoriesPage.productShortPantsUnitPrice";
+    public static final String SIZE_M_BUTTON = "categoriesPage.sizeMButton";
+    public static final String PRODUCT_LACED_CROP_TOP = "categoriesPage.productLacedCropTop";
+    public static final String ADD_PRODUCT_LACED_CROP_TOP = "categoriesPage.addProductLacedCropTop";
+    public static final String PRODUCT_LACED_CROP_TOP_UNIT_PRICE = "categoriesPage.productLacedCropTopUnitPrice";
 
 
 

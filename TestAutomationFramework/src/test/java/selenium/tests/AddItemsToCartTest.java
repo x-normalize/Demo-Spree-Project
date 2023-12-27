@@ -174,4 +174,18 @@ public class AddItemsToCartTest extends BaseTestSetup {
         sportswearCategoriesPage.assertSuccessfulDeleteItemMessageIsPresent();
     }
 
+    @Test
+    @Description("SDP-47 [Shopping Cart] Add items to the shopping cart from sportswear category with size M")
+    public void shouldAddMSizesItemsFromSportswearCategoryToCart() {
+        sportswearCategoriesPage.navigateToPage();
+        sportswearCategoriesPage.assertPageNavigated();
+        sportswearCategoriesPage.addSizeMediumItemsToCartFromSportswearCategory();
+        sportswearCategoriesPage.assertSuccessfulAddToCardMessageIsPresent();
+        sportswearCategoriesPage.assertLacedCropTopPrice(PRODUCT_LACED_CROP_TOP_UNIT_PRICE, "$63.99");
+        actions.assertItemQuantityInCart("Laced Crop Top", 1);
+        actions.assertItemPresentInCart("Laced Crop Top");
+        actions.assertTotalPrice("$63.99");
+        sportswearCategoriesPage.deleteItemFromCard();
+        sportswearCategoriesPage.assertSuccessfulDeleteItemMessageIsPresent();
+    }
 }
