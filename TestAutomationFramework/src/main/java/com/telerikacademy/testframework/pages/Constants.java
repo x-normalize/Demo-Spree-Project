@@ -89,6 +89,10 @@ public class Constants {
     public static final String COLOR_RED_BUTTON = "categoriesPage.colorRedButton";
     public static final String PRODUCT_CROP_TOP = "categoriesPage.productCropTop";
     public static final String PRODUCT_CROP_TOP_NAME_TEXT_PATH = "categoriesPage.productCropTopName";
+    public static final String SIZE_S_BUTTON = "categoriesPage.sizeSButton";
+    public static final String PRODUCT_FLARED_SKIRT = "categoriesPage.productFlaredSkirt";
+    public static final String ADD_PRODUCT_FLARED_SKIRT = "categoriesPage.addProductFlaredSkirt";
+    public static final String PRODUCT_FLARED_SKIRT_UNIT_PRICE = "categoriesPage.productFlaredSkirtUnitPrice";
 
 
 
@@ -117,7 +121,6 @@ public class Constants {
     public static final String CITY = "New York";
     public static final String ZIP_CODE = "10018";
     public static final String PHONE = "(381) 719-2148";
-    public static final String DENIM_SHIRT_PRICE = "60.99";
 
 
 }

@@ -1,7 +1,6 @@
 package com.telerikacademy.testframework.pages;
 
 import com.telerikacademy.testframework.Utils;
-import org.checkerframework.checker.units.qual.C;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;

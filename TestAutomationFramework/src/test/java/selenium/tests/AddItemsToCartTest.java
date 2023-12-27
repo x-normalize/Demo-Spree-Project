@@ -84,7 +84,7 @@ public class AddItemsToCartTest extends BaseTestSetup {
 
     @Test
     @Description("SDP-41 [Shopping Cart] Add items to the shopping cart from women's category")
-    public void shouldAddItemsToCartFromWomenSCategory() {
+    public void shouldAddItemsToCartFromWomensCategory() {
         womenCategoriesPage.navigateToPage();
         womenCategoriesPage.assertPageNavigated();
         womenCategoriesPage.addItemsToCartFromWomenSCategory();
@@ -99,7 +99,7 @@ public class AddItemsToCartTest extends BaseTestSetup {
 
     @Test
     @Description("SDP-42 [Shopping Cart] Add items to the shopping cart from women's category with red color")
-    public void shouldAddRedItemsFromWomenSCategoryToCart() {
+    public void shouldAddRedItemsFromWomensCategoryToCart() {
         womenCategoriesPage.navigateToPage();
         womenCategoriesPage.assertPageNavigated();
         womenCategoriesPage.addRedItemsToCartFromWomenCategory();
@@ -108,6 +108,21 @@ public class AddItemsToCartTest extends BaseTestSetup {
         actions.assertItemQuantityInCart("Crop Top With Tie", 1);
         actions.assertItemPresentInCart("Crop Top With Tie");
         actions.assertTotalPrice("$26.99");
+        womenCategoriesPage.deleteItemFromCard();
+        womenCategoriesPage.assertSuccessfulDeleteItemMessageIsPresent();
+    }
+
+    @Test
+    @Description("SDP-43 [Shopping Cart] Add items to the shopping cart from women's category with size S")
+    public void shouldAddSizeSItemsFromWomensCategoryToCart() {
+        womenCategoriesPage.navigateToPage();
+        womenCategoriesPage.assertPageNavigated();
+        womenCategoriesPage.addSSizeItemToCardFromWomensCategory();
+        womenCategoriesPage.assertSuccessfulAddToCardMessageIsPresent();
+        womenCategoriesPage.assertSizeSFlaredSkirtPrice(PRODUCT_FLARED_SKIRT_UNIT_PRICE, "$34.99");
+        actions.assertItemQuantityInCart("Flared Skirt", 1);
+        actions.assertItemPresentInCart("Flared Skirt");
+        actions.assertTotalPrice("$34.99");
         womenCategoriesPage.deleteItemFromCard();
         womenCategoriesPage.assertSuccessfulDeleteItemMessageIsPresent();
     }
