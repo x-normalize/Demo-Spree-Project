@@ -27,7 +27,7 @@ public class WomenCategoriesPage extends BasePage {
         clickButton(VIEW_CARD_BUTTON);
     }
 
-    public void addSSizeItemToCardFromWomensCategory() {
+    public void addSmallSizeItemToCartFromWomensCategory() {
         clickButton(SIZE_FILTER_BUTTON);
         clickButton(SIZE_S_BUTTON);
         clickButton(PRODUCT_FLARED_SKIRT);
@@ -36,8 +36,22 @@ public class WomenCategoriesPage extends BasePage {
         clickButton(VIEW_CARD_BUTTON);
     }
 
+    public void addItemsToCartFromWomensCategoryWithinPriceRange() {
+        clickButton(PRICE_FILTER_BUTTON);
+        clickButton(PRICE_RANGE_BUTTON);
+        clickButton(PRODUCT_STRIPED_SHIRT);
+        clickButton(ADD_TO_CARD_BUTTON);
+        clickButton(VIEW_CARD_BUTTON);
+    }
+
     public void assertSizeSFlaredSkirtPrice(String locator, String expectedPrice) {
         actions.waitForElementPresent(PRODUCT_FLARED_SKIRT_UNIT_PRICE);
+        String actualText = driver.findElement(By.xpath(getUIMappingByKey(locator))).getText();
+        assertEquals(expectedPrice, actualText, "Price does not match for element: " + locator);
+    }
+
+    public void assertStripedShirtPrice(String locator, String expectedPrice) {
+        actions.waitForElementPresent(PRODUCT_STRIPED_SHIRT_UNIT_PRICE);
         String actualText = driver.findElement(By.xpath(getUIMappingByKey(locator))).getText();
         assertEquals(expectedPrice, actualText, "Price does not match for element: " + locator);
     }

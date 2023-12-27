@@ -117,12 +117,28 @@ public class AddItemsToCartTest extends BaseTestSetup {
     public void shouldAddSizeSItemsFromWomensCategoryToCart() {
         womenCategoriesPage.navigateToPage();
         womenCategoriesPage.assertPageNavigated();
-        womenCategoriesPage.addSSizeItemToCardFromWomensCategory();
+        womenCategoriesPage.addSmallSizeItemToCartFromWomensCategory();
         womenCategoriesPage.assertSuccessfulAddToCardMessageIsPresent();
         womenCategoriesPage.assertSizeSFlaredSkirtPrice(PRODUCT_FLARED_SKIRT_UNIT_PRICE, "$34.99");
         actions.assertItemQuantityInCart("Flared Skirt", 1);
         actions.assertItemPresentInCart("Flared Skirt");
         actions.assertTotalPrice("$34.99");
+        womenCategoriesPage.deleteItemFromCard();
+        womenCategoriesPage.assertSuccessfulDeleteItemMessageIsPresent();
+    }
+
+    @Test
+    @Description("SDP-44 [Shopping Cart] Add items to the shopping cart from women's Category with price " +
+            "$50 - $100 USD")
+    public void shouldAddItemsToCartFromWomensCategoryWithinPriceRange() {
+        womenCategoriesPage.navigateToPage();
+        womenCategoriesPage.assertPageNavigated();
+        womenCategoriesPage.addItemsToCartFromWomensCategoryWithinPriceRange();
+        womenCategoriesPage.assertSuccessfulAddToCardMessageIsPresent();
+        womenCategoriesPage.assertStripedShirtPrice(PRODUCT_STRIPED_SHIRT_UNIT_PRICE, "$71.99");
+        actions.assertItemQuantityInCart("Striped Shirt", 1);
+        actions.assertItemPresentInCart("Striped Shirt");
+        actions.assertTotalPrice("$71.99");
         womenCategoriesPage.deleteItemFromCard();
         womenCategoriesPage.assertSuccessfulDeleteItemMessageIsPresent();
     }
