@@ -99,6 +99,10 @@ public class Constants {
     public static final String PRODUCT_RUNNING_SWEATSHIRT_PATH = "categoriesPage.productRunningSweatshirt";
     public static final String PRODUCT_RUNNING_SWEATSHIRT_UNIT_PRICE =
             "categoriesPage.productRunningSweatshirtUnitPrice";
+    public static final String COLOR_BLACK_BUTTON = "categoriesPage.colorBlackButton";
+    public static final String PRODUCT_SHORT_PANTS = "categoriesPage.productShortPants";
+    public static final String ADD_PRODUCT_SHORT_PANTS = "categoriesPage.addProductShortPants";
+    public static final String PRODUCT_SHORT_PANTS_UNIT_PRICE = "categoriesPage.productShortPantsUnitPrice";
 
 
 

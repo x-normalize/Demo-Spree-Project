@@ -144,7 +144,7 @@ public class AddItemsToCartTest extends BaseTestSetup {
     }
 
     @Test
-    @Description("[Shopping Cart] Add items to the shopping cart from sportswear category")
+    @Description("SDP-45 [Shopping Cart] Add items to the shopping cart from sportswear category")
     public void shouldAddItemsToCartFromSportWearCategory() {
         sportswearCategoriesPage.navigateToPage();
         sportswearCategoriesPage.assertPageNavigated();
@@ -155,6 +155,21 @@ public class AddItemsToCartTest extends BaseTestSetup {
         actions.assertItemQuantityInCart("Running Sweatshirt", 1);
         actions.assertItemPresentInCart("Running Sweatshirt");
         actions.assertTotalPrice("$78.99");
+        sportswearCategoriesPage.deleteItemFromCard();
+        sportswearCategoriesPage.assertSuccessfulDeleteItemMessageIsPresent();
+    }
+
+    @Test
+    @Description("SDP-46 [Shopping Cart] Add items to the shopping cart from sportswear category with black color")
+    public void shouldAddBlackColorItemsFromSportswearCategoryToCart() {
+        sportswearCategoriesPage.navigateToPage();
+        sportswearCategoriesPage.assertPageNavigated();
+        sportswearCategoriesPage.addBlackItemsToCartFromSportswearCategory();
+        sportswearCategoriesPage.assertSuccessfulAddToCardMessageIsPresent();
+        sportswearCategoriesPage.assertShortPantsPrice(PRODUCT_SHORT_PANTS_UNIT_PRICE, "$82.99");
+        actions.assertItemQuantityInCart("Short Pants", 1);
+        actions.assertItemPresentInCart("Short Pants");
+        actions.assertTotalPrice("$82.99");
         sportswearCategoriesPage.deleteItemFromCard();
         sportswearCategoriesPage.assertSuccessfulDeleteItemMessageIsPresent();
     }
