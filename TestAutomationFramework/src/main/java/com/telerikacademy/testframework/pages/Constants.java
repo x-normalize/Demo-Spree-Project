@@ -86,6 +86,9 @@ public class Constants {
     public static final String PRODUCT_POLO_SHIRT_NAME_TEXT_PATH = "categoriesPage.productShirtName";
     public static final String PRODUCT_WOMEN_DRESS_PATH = "categoriesPage.productDress";
     public static final String PRODUCT_WOMEN_DRESS_NAME_TEXT_PATH = "categoriesPage.productDressIsPresent";
+    public static final String COLOR_RED_BUTTON = "categoriesPage.colorRedButton";
+    public static final String PRODUCT_CROP_TOP = "categoriesPage.productCropTop";
+    public static final String PRODUCT_CROP_TOP_NAME_TEXT_PATH = "categoriesPage.productCropTopName";
 
 
 

@@ -97,4 +97,19 @@ public class AddItemsToCartTest extends BaseTestSetup {
         womenCategoriesPage.assertSuccessfulDeleteItemMessageIsPresent();
     }
 
+    @Test
+    @Description("SDP-42 [Shopping Cart] Add items to the shopping cart from women's category with red color")
+    public void shouldAddRedItemsFromWomenSCategoryToCart() {
+        womenCategoriesPage.navigateToPage();
+        womenCategoriesPage.assertPageNavigated();
+        womenCategoriesPage.addRedItemsToCartFromWomenCategory();
+        womenCategoriesPage.assertSuccessfulAddToCardMessageIsPresent();
+        womenCategoriesPage.assertProductCropTopIsPresent();
+        actions.assertItemQuantityInCart("Crop Top With Tie", 1);
+        actions.assertItemPresentInCart("Crop Top With Tie");
+        actions.assertTotalPrice("$26.99");
+        womenCategoriesPage.deleteItemFromCard();
+        womenCategoriesPage.assertSuccessfulDeleteItemMessageIsPresent();
+    }
+
 }
