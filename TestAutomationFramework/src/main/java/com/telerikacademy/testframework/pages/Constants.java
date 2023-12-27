@@ -96,6 +96,9 @@ public class Constants {
     public static final String PRICE_RANGE_BUTTON = "categoriesPage.priceRangeButton";
     public static final String PRODUCT_STRIPED_SHIRT = "categoriesPage.productStripedShirt";
     public static final String PRODUCT_STRIPED_SHIRT_UNIT_PRICE = "categoriesPage.productStripedShirtUnitPrice";
+    public static final String PRODUCT_RUNNING_SWEATSHIRT_PATH = "categoriesPage.productRunningSweatshirt";
+    public static final String PRODUCT_RUNNING_SWEATSHIRT_UNIT_PRICE =
+            "categoriesPage.productRunningSweatshirtUnitPrice";
 
 
 

@@ -143,4 +143,20 @@ public class AddItemsToCartTest extends BaseTestSetup {
         womenCategoriesPage.assertSuccessfulDeleteItemMessageIsPresent();
     }
 
+    @Test
+    @Description("[Shopping Cart] Add items to the shopping cart from sportswear category")
+    public void shouldAddItemsToCartFromSportWearCategory() {
+        sportswearCategoriesPage.navigateToPage();
+        sportswearCategoriesPage.assertPageNavigated();
+        sportswearCategoriesPage.addItemsToCartFromSportWearCategory();
+        sportswearCategoriesPage.assertSuccessfulAddToCardMessageIsPresent();
+        sportswearCategoriesPage.assertRunningSweatshirtPrice(PRODUCT_RUNNING_SWEATSHIRT_UNIT_PRICE,
+                "$78.99");
+        actions.assertItemQuantityInCart("Running Sweatshirt", 1);
+        actions.assertItemPresentInCart("Running Sweatshirt");
+        actions.assertTotalPrice("$78.99");
+        sportswearCategoriesPage.deleteItemFromCard();
+        sportswearCategoriesPage.assertSuccessfulDeleteItemMessageIsPresent();
+    }
+
 }
