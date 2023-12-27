@@ -17,12 +17,9 @@ public class AccountPage extends BasePage {
 
     public void logout() {
         try {
-            actions.waitForElementClickable(HOME_BUTTON_PATH);
-            actions.clickElement(HOME_BUTTON_PATH);
-            actions.waitForElementClickable(ACCOUNT_BUTTON_PATH);
-            actions.clickElement(ACCOUNT_BUTTON_PATH);
-            actions.waitForElementClickable(LOGOUT_BUTTON_PATH);
-            actions.clickElement(LOGOUT_BUTTON_PATH);
+            clickButton(HOME_BUTTON_PATH);
+            clickButton(ACCOUNT_BUTTON_PATH);
+            clickButton(LOGOUT_BUTTON_PATH);
         } catch (StaleElementReferenceException e) {
             // Retry the logout operation
             logout();
