@@ -18,6 +18,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import static com.telerikacademy.testframework.Utils.*;
 import static java.lang.String.format;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class UserActions {
 
@@ -249,7 +251,6 @@ public class UserActions {
         return longString.toString();
     }
 
-
     public String generateRandomText(int minLength, int maxLength) {
         int length = generateRandomNumber(minLength, maxLength);
 
@@ -287,6 +288,42 @@ public class UserActions {
 
     private String getLocatorValueByKey(String locator, Object[] arguments) {
         return format(getUIMappingByKey(locator), arguments);
+    }
+
+    public void assertItemQuantityInCart(String itemName, int expectedQuantity) {
+        List<WebElement> itemsInCart = driver.findElements(By.cssSelector(".item-name-css-selector"));
+        // Initialize a variable to store the actual quantity
+        int actualQuantity = -1;
+        // Loop through each item and check if the name matches the given item name
+        for (WebElement item : itemsInCart) {
+            if (item.getText().equals(itemName)) {
+                // If the names match, find the quantity input element for this item
+                WebElement quantityElement = item.findElement(By.xpath(
+                        "../following-sibling::div/input[@class='shopping-cart-item-quantity-input']"));
+                // Get the value of the quantity input element
+                actualQuantity = Integer.parseInt(quantityElement.getAttribute("value"));
+                break;
+            }
+        }
+
+    }
+
+    public void assertItemPresentInCart(String itemName) {
+        List<WebElement> itemsInCart = driver.findElements(By.cssSelector(".item-title a"));
+        boolean itemFound = false;
+        for (WebElement item : itemsInCart) {
+            if (item.getText().equals(itemName)) {
+                itemFound = true;
+                break;
+            }
+        }
+        assertTrue(itemFound, "Item '" + itemName + "' not found in cart!");
+    }
+
+    public void assertTotalPrice(String expectedTotalPrice) {
+        WebElement totalPriceElement = driver.findElement(By.className("shopping-cart-total-amount"));
+        String actualTotalPrice = totalPriceElement.getText().trim();
+        assertEquals(expectedTotalPrice, actualTotalPrice, "Total price does not match!");
     }
 
 

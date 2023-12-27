@@ -84,6 +84,8 @@ public class Constants {
     public static final String PRICE_LESS_BUTTON = "categoriesPage.priceLessThan50Button";
     public static final String PRODUCT_POLO_SHIRT = "categoriesPage.productPoloShirt";
     public static final String PRODUCT_POLO_SHIRT_NAME_TEXT_PATH = "categoriesPage.productShirtName";
+    public static final String PRODUCT_WOMEN_DRESS_PATH = "categoriesPage.productDress";
+    public static final String PRODUCT_WOMEN_DRESS_NAME_TEXT_PATH = "categoriesPage.productDressIsPresent";
 
 
 

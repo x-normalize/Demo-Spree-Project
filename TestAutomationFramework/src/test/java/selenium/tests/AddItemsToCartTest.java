@@ -29,9 +29,9 @@ public class AddItemsToCartTest extends BaseTestSetup {
         menCategoriesPage.addItemsToCartFromMensCategory();
         menCategoriesPage.assertSuccessfulAddToCardMessageIsPresent();
         menCategoriesPage.assertDenimShirtPrice(PRODUCT_PRICE_PATH, "$60.99");
-        menCategoriesPage.assertItemQuantityInCart("Denim Shirt", 1);
-        menCategoriesPage.assertItemPresentInCart("Denim Shirt");
-        menCategoriesPage.assertTotalPrice("$60.99");
+        actions.assertItemQuantityInCart("Denim Shirt", 1);
+        actions.assertItemPresentInCart("Denim Shirt");
+        actions.assertTotalPrice("$60.99");
         menCategoriesPage.deleteItemFromCard();
         menCategoriesPage.assertSuccessfulDeleteItemMessageIsPresent();
     }
@@ -44,9 +44,9 @@ public class AddItemsToCartTest extends BaseTestSetup {
         menCategoriesPage.addBlueItemsToCartFromMensCategory();
         menCategoriesPage.assertSuccessfulAddToCardMessageIsPresent();
         menCategoriesPage.assertBlueColorShirtPrice(BLUE_COLOR_PRODUCT_PRICE_PATH, "$41.99");
-        menCategoriesPage.assertItemQuantityInCart("Covered Placket Shirt", 1);
-        menCategoriesPage.assertItemPresentInCart("Covered Placket Shirt");
-        menCategoriesPage.assertTotalPrice("$41.99");
+        actions.assertItemQuantityInCart("Covered Placket Shirt", 1);
+        actions.assertItemPresentInCart("Covered Placket Shirt");
+        actions.assertTotalPrice("$41.99");
         menCategoriesPage.deleteItemFromCard();
         menCategoriesPage.assertSuccessfulDeleteItemMessageIsPresent();
     }
@@ -59,9 +59,9 @@ public class AddItemsToCartTest extends BaseTestSetup {
         menCategoriesPage.addLSizeItemToCardFromMensCategory();
         menCategoriesPage.assertSuccessfulAddToCardMessageIsPresent();
         menCategoriesPage.assertProductAnorakIsPresent();
-        menCategoriesPage.assertItemQuantityInCart("Anorak With Hood", 1);
-        menCategoriesPage.assertItemPresentInCart("Anorak With Hood");
-        menCategoriesPage.assertTotalPrice("$37.99");
+        actions.assertItemQuantityInCart("Anorak With Hood", 1);
+        actions.assertItemPresentInCart("Anorak With Hood");
+        actions.assertTotalPrice("$37.99");
         menCategoriesPage.deleteItemFromCard();
         menCategoriesPage.assertSuccessfulDeleteItemMessageIsPresent();
     }
@@ -75,9 +75,9 @@ public class AddItemsToCartTest extends BaseTestSetup {
         menCategoriesPage.AddItemsFromMensCategoryWithPriceLessThan50USD();
         menCategoriesPage.assertSuccessfulAddToCardMessageIsPresent();
         menCategoriesPage.assertProductShirtIsPresent();
-        menCategoriesPage.assertItemQuantityInCart("Polo T Shirt", 1);
-        menCategoriesPage.assertItemPresentInCart("Polo T Shirt");
-        menCategoriesPage.assertTotalPrice("$10.99");
+        actions.assertItemQuantityInCart("Polo T Shirt", 1);
+        actions.assertItemPresentInCart("Polo T Shirt");
+        actions.assertTotalPrice("$10.99");
         menCategoriesPage.deleteItemFromCard();
         menCategoriesPage.assertSuccessfulDeleteItemMessageIsPresent();
     }
@@ -85,7 +85,16 @@ public class AddItemsToCartTest extends BaseTestSetup {
     @Test
     @Description("SDP-41 [Shopping Cart] Add items to the shopping cart from women's category")
     public void shouldAddItemsToCartFromWomenSCategory() {
-
+        womenCategoriesPage.navigateToPage();
+        womenCategoriesPage.assertPageNavigated();
+        womenCategoriesPage.addItemsToCartFromWomenSCategory();
+        womenCategoriesPage.assertSuccessfulAddToCardMessageIsPresent();
+        womenCategoriesPage.assertProductDressIsPresent();
+        actions.assertItemQuantityInCart("Floral Wrap Dress", 1);
+        actions.assertItemPresentInCart("Floral Wrap Dress");
+        actions.assertTotalPrice("$71.99");
+        womenCategoriesPage.deleteItemFromCard();
+        womenCategoriesPage.assertSuccessfulDeleteItemMessageIsPresent();
     }
 
 }

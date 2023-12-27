@@ -7,6 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import static com.telerikacademy.testframework.pages.Constants.*;
+
 public abstract class BasePage {
 
     protected String url;
@@ -18,10 +20,6 @@ public abstract class BasePage {
         this.driver = driver;
         this.url = pageUrl;
         actions = new UserActions();
-    }
-
-    public String getUrl() {
-        return url;
     }
 
     public void navigateToPage() {
@@ -44,9 +42,21 @@ public abstract class BasePage {
         actions.clickElement(buttonPath);
     }
 
+    public void deleteItemFromCard() {
+        clickButton(DELETE_ITEM_BUTTON);
+    }
+
     public void assertElementPresent(String elementPath) {
         actions.waitForElementPresent(elementPath);
         actions.assertElementPresent(elementPath);
+    }
+
+    public void assertSuccessfulDeleteItemMessageIsPresent() {
+        assertElementPresent(EMPTY_CARD_MESSAGE);
+    }
+
+    public void assertSuccessfulAddToCardMessageIsPresent() {
+        assertElementPresent(SUCCESSFUL_ADD_TO_CARD_MESSAGE);
     }
 
 }
