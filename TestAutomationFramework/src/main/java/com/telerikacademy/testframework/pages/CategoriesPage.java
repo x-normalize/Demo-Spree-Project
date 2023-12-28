@@ -24,6 +24,22 @@ public class CategoriesPage extends BasePage{
         clickButton(SEARCH_SUBMIT_BUTTON_PATH);
     }
 
+    public void performSearchWithInvalidInput() {
+        clickButton(SEARCH_BUTTON_PATH);
+        enterCredentials(SEARCH_FIELD_PATH, "###");
+        clickButton(SEARCH_SUBMIT_BUTTON_PATH);
+    }
+
+    public void assertNoResultMessage(String locator, String message) {
+        String actualText = driver.findElement(By.xpath(getUIMappingByKey(locator))).getText();
+        Assertions.assertEquals(message, actualText, "The message is different than expected: "
+                + locator);
+    }
+
+    public void assertErrorMessageIsPresent(String message) {
+        assertElementPresent(message);
+    }
+
     public void assertSearchedProductIsPresent(String productPath) {
         assertElementPresent(productPath);
     }

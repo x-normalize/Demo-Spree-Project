@@ -110,7 +110,7 @@ public class Constants {
     public static final String SEARCH_BUTTON_PATH = "categoriesPage.searchButton";
     public static final String SEARCH_FIELD_PATH = "categoriesPage.searchField";
     public static final String SEARCH_SUBMIT_BUTTON_PATH = "categoriesPage.searchSubmitButton";
-
+    public static final String SEARCH_NO_RESULT_MESSAGE_PATH = "categoriesPage.noResultMessage";
 
 
 

@@ -30,5 +30,14 @@ public class ItemSearchTests extends BaseTestSetup {
         accountPage.logout();
     }
 
+    @Test
+    @Description("SDP-61 [Search] Verify search functionality with invalid input")
+    public void verifySearchWithInvalidInput() {
+        categoriesPage.navigateToPage();
+        categoriesPage.assertPageNavigated();
+        categoriesPage.performSearchWithInvalidInput();
+        categoriesPage.assertErrorMessageIsPresent(SEARCH_NO_RESULT_MESSAGE_PATH);
+        categoriesPage.assertNoResultMessage(SEARCH_NO_RESULT_MESSAGE_PATH, "No results found");
+    }
 
 }
