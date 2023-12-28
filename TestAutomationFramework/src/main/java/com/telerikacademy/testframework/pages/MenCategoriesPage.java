@@ -2,14 +2,10 @@ package com.telerikacademy.testframework.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
-import java.util.List;
 
 import static com.telerikacademy.testframework.Utils.getUIMappingByKey;
 import static com.telerikacademy.testframework.pages.Constants.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MenCategoriesPage extends BasePage {
     public MenCategoriesPage(WebDriver driver) {

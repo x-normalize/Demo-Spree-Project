@@ -107,6 +107,10 @@ public class Constants {
     public static final String PRODUCT_LACED_CROP_TOP = "categoriesPage.productLacedCropTop";
     public static final String ADD_PRODUCT_LACED_CROP_TOP = "categoriesPage.addProductLacedCropTop";
     public static final String PRODUCT_LACED_CROP_TOP_UNIT_PRICE = "categoriesPage.productLacedCropTopUnitPrice";
+    public static final String SEARCH_BUTTON_PATH = "categoriesPage.searchButton";
+    public static final String SEARCH_FIELD_PATH = "categoriesPage.searchField";
+    public static final String SEARCH_SUBMIT_BUTTON_PATH = "categoriesPage.searchSubmitButton";
+
 
 
 
