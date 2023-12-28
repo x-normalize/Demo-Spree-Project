@@ -3,9 +3,6 @@ package com.telerikacademy.testframework.pages;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
-import java.util.List;
 
 import static com.telerikacademy.testframework.Utils.getUIMappingByKey;
 import static com.telerikacademy.testframework.pages.Constants.*;
@@ -15,9 +12,15 @@ public class CategoriesPage extends BasePage{
         super(driver, CATEGORIES_PAGE);
     }
 
-    public void performSearch() {
+    public void performSearchDenimShirt() {
         clickButton(SEARCH_BUTTON_PATH);
         enterCredentials(SEARCH_FIELD_PATH, "Denim Shirt");
+        clickButton(SEARCH_SUBMIT_BUTTON_PATH);
+    }
+
+    public void performSearchCoveredPlacketShirt() {
+        clickButton(SEARCH_BUTTON_PATH);
+        enterCredentials(SEARCH_FIELD_PATH, "Covered Placket Shirt");
         clickButton(SEARCH_SUBMIT_BUTTON_PATH);
     }
 
