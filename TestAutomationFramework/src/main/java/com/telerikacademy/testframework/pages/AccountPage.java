@@ -26,14 +26,12 @@ public class AccountPage extends BasePage {
     }
 
     public void updatePassword(String password, String updatePassword) {
-        actions.waitForElementPresent(EDIT_PROFILE_BUTTON);
-        actions.clickElement(EDIT_PROFILE_BUTTON);
+        clickButton(EDIT_PROFILE_BUTTON);
         actions.waitForElementPresent(PASSWORD_UPDATE_FIELD_PATH);
         actions.typeValueInField(Utils.getConfigPropertyByKey(password), PASSWORD_UPDATE_FIELD_PATH);
         actions.waitForElementPresent(PASSWORD_UPDATE_CONFIRMATION_FIELD_PATH);
         actions.typeValueInField(Utils.getConfigPropertyByKey(updatePassword), PASSWORD_UPDATE_CONFIRMATION_FIELD_PATH);
-        actions.waitForElementPresent(PASSWORD_UPDATE_BUTTON);
-        actions.clickElement(PASSWORD_UPDATE_BUTTON);
+        clickButton(PASSWORD_UPDATE_BUTTON);
     }
 
     public void addNewAddress() {
