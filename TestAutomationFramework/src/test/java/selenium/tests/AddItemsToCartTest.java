@@ -28,7 +28,7 @@ public class AddItemsToCartTest extends BaseTestSetup {
         menCategoriesPage.assertPageNavigated();
         menCategoriesPage.addItemsToCartFromMensCategory();
         menCategoriesPage.assertSuccessfulAddToCardMessageIsPresent();
-        menCategoriesPage.assertDenimShirtPrice(PRODUCT_PRICE_PATH, "$60.99");
+        menCategoriesPage.assertDenimShirtPrice(PRODUCT_DENIM_SHIRT_UNIT_PRICE, "$60.99");
         actions.assertItemQuantityInCart("Denim Shirt", 1);
         actions.assertItemPresentInCart("Denim Shirt");
         actions.assertTotalPrice("$60.99");
@@ -43,7 +43,7 @@ public class AddItemsToCartTest extends BaseTestSetup {
         menCategoriesPage.assertPageNavigated();
         menCategoriesPage.addBlueItemsToCartFromMensCategory();
         menCategoriesPage.assertSuccessfulAddToCardMessageIsPresent();
-        menCategoriesPage.assertBlueColorShirtPrice(BLUE_COLOR_PRODUCT_PRICE_PATH, "$41.99");
+        menCategoriesPage.assertBlueColorShirtPrice(PRODUCT_BLUE_COLOR_UNIT_PRICE, "$41.99");
         actions.assertItemQuantityInCart("Covered Placket Shirt", 1);
         actions.assertItemPresentInCart("Covered Placket Shirt");
         actions.assertTotalPrice("$41.99");

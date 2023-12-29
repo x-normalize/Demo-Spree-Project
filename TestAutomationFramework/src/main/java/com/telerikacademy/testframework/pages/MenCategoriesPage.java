@@ -43,16 +43,16 @@ public class MenCategoriesPage extends BasePage {
         clickButton(VIEW_CARD_BUTTON);
     }
 
-    public void assertDenimShirtPrice(String locator, String expectedText) {
-        actions.waitForElementPresent(PRODUCT_PRICE_PATH);
+    public void assertDenimShirtPrice(String locator, String expectedPrice) {
+        actions.waitForElementPresent(PRODUCT_DENIM_SHIRT_UNIT_PRICE);
         String actualText = driver.findElement(By.xpath(getUIMappingByKey(locator))).getText();
-        assertEquals(expectedText, actualText, "Price does not match for element: " + locator);
+        assertEquals(expectedPrice, actualText, "Price does not match for element: " + locator);
     }
 
-    public void assertBlueColorShirtPrice(String locator, String expectedText) {
-        actions.waitForElementPresent(BLUE_COLOR_PRODUCT_PRICE_PATH);
+    public void assertBlueColorShirtPrice(String locator, String expectedPrice) {
+        actions.waitForElementPresent(PRODUCT_BLUE_COLOR_UNIT_PRICE);
         String actualText = driver.findElement(By.xpath(getUIMappingByKey(locator))).getText();
-        assertEquals(expectedText, actualText, "Price does not match for element: " + locator);
+        assertEquals(expectedPrice, actualText, "Price does not match for element: " + locator);
     }
 
     public void assertProductAnorakIsPresent() {

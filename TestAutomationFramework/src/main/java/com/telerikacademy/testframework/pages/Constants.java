@@ -68,8 +68,8 @@ public class Constants {
     public static final String ADD_TO_CARD_BUTTON = "categoriesPage.addToCardButton";
     public static final String SUCCESSFUL_ADD_TO_CARD_MESSAGE = "categoriesPage.successfulAddToCardMessage";
     public static final String VIEW_CARD_BUTTON = "categoriesPage.viewCartButton";
-    public static final String PRODUCT_PRICE_PATH = "categoriesPage.productPriceText";
-    public static final String BLUE_COLOR_PRODUCT_PRICE_PATH = "categoriesPage.productBlueColorPrice";
+    public static final String PRODUCT_DENIM_SHIRT_UNIT_PRICE = "categoriesPage.productPriceText";
+    public static final String PRODUCT_BLUE_COLOR_UNIT_PRICE = "categoriesPage.productBlueColorPrice";
     public static final String DELETE_ITEM_BUTTON = "categoriesPage.deleteItemButton";
     public static final String EMPTY_CARD_MESSAGE = "categoriesPage.emptyCardMessage";
     public static final String COLOR_FILTER_BUTTON = "categoriesPage.colorFilterButton";
