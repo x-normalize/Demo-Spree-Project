@@ -16,7 +16,7 @@ The project utilizes a stack of various technologies and tools, including:
 
 - **Testing Framework**: Java with Selenium WebDriver
 - **API Testing**: Postman, RestAssured, and Newman (Command-line collection runner for Postman)
-- **Issue Tracking**: JIRA
+- **Issue Tracking**: Jira, Xray
 - **Build and Dependency Management**: Apache Maven
 - **Scripts for Execution of Automated Tests**: MVN Test (Command-line collection runner for Rest Assured and Selenium), Batch and Bash files, Maven Surefire Report.
 
