@@ -56,9 +56,9 @@ public class AccountPage extends BasePage {
         System.out.println("URLs are equal.");
     }
 
-    public void assertElementTextEquals(String locator, String expectedText) {
+    public void assertElementTextEquals(String locator, String expectedMessage) {
         String actualText = driver.findElement(By.xpath(getUIMappingByKey(locator))).getText();
-        Assertions.assertEquals(expectedText, actualText, "Text does not match for element: " + locator);
+        Assertions.assertEquals(expectedMessage, actualText, "Text does not match for element: " + locator);
     }
 
     public void assertSuccessfulLogoutMessageIsPresent() {
