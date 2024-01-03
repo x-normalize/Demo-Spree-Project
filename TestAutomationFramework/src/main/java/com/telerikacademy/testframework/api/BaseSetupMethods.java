@@ -2,13 +2,14 @@ package com.telerikacademy.testframework.api;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import org.json.JSONObject;
 
 import static com.telerikacademy.testframework.api.utils.Endpoints.BASE_URL;
 import static io.restassured.RestAssured.given;
 
 public class BaseSetupMethods {
 
-    public String CreateRefreshToken(String username, String password) {
+    public String createRefreshToken(String username, String password) {
         RestAssured.baseURI = BASE_URL;
 
         String requestBody = "{ " +
@@ -28,6 +29,22 @@ public class BaseSetupMethods {
         String token = response.jsonPath().getString("access_token");
         System.out.println("Token: " + token);
         return token;
+    }
+
+
+    public String unauthorizedAccess(String endpoint) {
+        Response response = given()
+                .when()
+                .get(endpoint)
+                .andReturn();
+
+        response.then().statusCode(403);
+
+        JSONObject jsonResponse = new JSONObject(response.asString());
+        String errorMessage = jsonResponse.getString("error");
+        System.out.println(jsonResponse.toString(4)); // Print the response
+
+        return errorMessage;
     }
 
 }

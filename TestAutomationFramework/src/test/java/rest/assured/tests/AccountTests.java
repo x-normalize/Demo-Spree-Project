@@ -3,6 +3,7 @@ package rest.assured.tests;
 import com.telerikacademy.testframework.api.BaseSetupMethods;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import jdk.jfr.Description;
 import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -21,6 +22,7 @@ public class AccountTests extends BaseSetupMethods {
     }
 
     @Test
+    @Description("Test to verify successful retrieval of user details (Response code 200).")
     public void testGetUserDetailsSuccess() {
         Response response = given()
                 .auth()
