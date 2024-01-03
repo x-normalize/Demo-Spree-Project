@@ -1,11 +1,11 @@
 package com.telerikacademy.testframework.api;
 
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.json.JSONObject;
 
-import static com.telerikacademy.testframework.api.utils.Endpoints.BASE_URL;
-import static com.telerikacademy.testframework.api.utils.Endpoints.TOKEN_ENDPOINT;
+import static com.telerikacademy.testframework.api.utils.Endpoints.*;
 import static io.restassured.RestAssured.given;
 
 public class BaseSetupMethods {
@@ -46,6 +46,34 @@ public class BaseSetupMethods {
         System.out.println(jsonResponse.toString(4));
 
         return errorMessage;
+    }
+
+    public Response getUserDetails(String token) {
+        return given()
+                .auth()
+                .oauth2(token)
+                .log().all()
+                .when()
+                .get(ACCOUNT_ENDPOINT)
+                .andReturn();
+    }
+
+    public Response createAccount(String email, String password) {
+        JSONObject userObject = new JSONObject();
+        userObject.put("email", email);
+        userObject.put("password", password);
+        userObject.put("passwordConfirmation", password);
+
+        JSONObject requestBody = new JSONObject();
+        requestBody.put("user", userObject);
+
+        return given()
+                .contentType(ContentType.JSON)
+                .body(requestBody.toString())
+                .log().all()
+                .when()
+                .post(ACCOUNT_ENDPOINT)
+                .andReturn();
     }
 
 }
