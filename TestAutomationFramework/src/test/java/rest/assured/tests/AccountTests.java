@@ -58,7 +58,26 @@ public class AccountTests extends BaseSetupMethods {
         System.out.println(jsonResponse.toString(4));
     }
 
+    @Test
+    @Description("Test to verify account creation with missing fields")
+    public void testCreateAccountMissingFields() {
+        JSONObject requestBody = new JSONObject();
+        // Omitting password and passwordConfirmation to test missing field scenario
+        Response response = createAccountWithMissingFields(requestBody);
+        response.then()
+                .log().all()
+                .statusCode(400);
 
-
-
+        JSONObject jsonResponse = new JSONObject(response.asString());
+        String errorMessage = jsonResponse.getString("error");
+        assertEquals("param is missing or the value is empty: user", errorMessage,
+                "Unexpected error message");
+    }
 }
+
+
+
+
+
+
+

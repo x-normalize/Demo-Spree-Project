@@ -76,6 +76,16 @@ public class BaseSetupMethods {
                 .andReturn();
     }
 
+    public Response createAccountWithMissingFields(JSONObject requestBody) {
+        return given()
+                .contentType(ContentType.JSON)
+                .body(requestBody.toString())
+                .log().all()
+                .when()
+                .post(ACCOUNT_ENDPOINT)
+                .andReturn();
+    }
+
 }
 
 
