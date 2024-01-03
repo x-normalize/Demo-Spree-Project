@@ -5,6 +5,7 @@ import io.restassured.response.Response;
 import org.json.JSONObject;
 
 import static com.telerikacademy.testframework.api.utils.Endpoints.BASE_URL;
+import static com.telerikacademy.testframework.api.utils.Endpoints.TOKEN_ENDPOINT;
 import static io.restassured.RestAssured.given;
 
 public class BaseSetupMethods {
@@ -21,7 +22,7 @@ public class BaseSetupMethods {
                 .header("Content-Type", "application/json")
                 .body(requestBody)
                 .when()
-                .post("/spree_oauth/token")
+                .post(TOKEN_ENDPOINT)
                 .then()
                 .extract()
                 .response();
@@ -42,7 +43,7 @@ public class BaseSetupMethods {
 
         JSONObject jsonResponse = new JSONObject(response.asString());
         String errorMessage = jsonResponse.getString("error");
-        System.out.println(jsonResponse.toString(4)); // Print the response
+        System.out.println(jsonResponse.toString(4));
 
         return errorMessage;
     }

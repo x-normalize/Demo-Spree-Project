@@ -6,6 +6,7 @@ import io.restassured.response.Response;
 import jdk.jfr.Description;
 import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static com.telerikacademy.testframework.api.utils.Constants.*;
@@ -16,20 +17,28 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AccountTests extends BaseSetupMethods {
 
+    private String validToken;
+
     @BeforeAll
     public static void setup() {
         RestAssured.baseURI = BASE_URL;
     }
 
+    @BeforeEach
+    public void setupEach() {
+        // Generate a new token before each test
+        validToken = createRefreshToken(HEIDI_DIXON_USERNAME, HEIDI_DIXON_PASSWORD);
+    }
+
     @Test
-    @Description("Test to verify successful retrieval of user details (Response code 200).")
+    @Description("Test to verify successful retrieval of user details (Response code 200)")
     public void testGetUserDetailsSuccess() {
         Response response = given()
                 .auth()
-                .oauth2(HEIDI_TOKEN)
+                .oauth2(validToken)
                 .when()
                 .get(ACCOUNT_ENDPOINT)
-                .andReturn(); // Use andReturn() to get the Response object
+                .andReturn();
 
         response.then().statusCode(200);
 
@@ -42,6 +51,3 @@ public class AccountTests extends BaseSetupMethods {
     }
 
 }
-
-
-
