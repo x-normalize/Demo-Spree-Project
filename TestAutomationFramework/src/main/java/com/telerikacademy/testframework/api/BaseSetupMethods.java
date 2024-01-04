@@ -159,6 +159,19 @@ public class BaseSetupMethods {
                 .statusCode(204);
     }
 
+    public static Response listUserAddress(String token) {
+        return given()
+                .header("Authorization", "Bearer " + token)
+                .header("Accept", "application/vnd.api+json")
+                .when()
+                .get(ACCOUNT_ENDPOINT)
+                .then()
+                .statusCode(200)
+                .log().all()
+                .extract()
+                .response();
+    }
+
 }
 
 

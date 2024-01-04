@@ -3,12 +3,12 @@ package rest.assured.tests;
 import com.telerikacademy.testframework.api.BaseSetupMethods;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
 import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static com.telerikacademy.testframework.api.utils.Constants.LANDON_BUTLER_PASSWORD;
-import static com.telerikacademy.testframework.api.utils.Constants.LANDON_BUTLER_USERNAME;
+import static com.telerikacademy.testframework.api.utils.Constants.*;
 import static com.telerikacademy.testframework.api.utils.Endpoints.BASE_URL;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -42,6 +42,16 @@ public class AccountTests extends BaseSetupMethods {
                 ("data").getJSONObject("attributes").getString("address1"));
 
         deleteAddress(token, addressId);
+    }
+
+    @Test
+    public void testListUserAddresses() {
+        String token = createRefreshToken(G_USERNAME, G_PASSWORD);
+
+        Response response = listUserAddress(token);
+
+        String email = JsonPath.from(response.asString()).getString("data.attributes.email");
+        assertEquals("g@abv.bg", email, "Email does not match expected value");
     }
 
 
