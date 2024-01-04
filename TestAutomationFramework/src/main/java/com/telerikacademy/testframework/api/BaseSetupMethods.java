@@ -105,6 +105,60 @@ public class BaseSetupMethods {
         return createRequestBody;
     }
 
+    public static void createRequestBodyForUpdateAddress(JSONObject addressUpdateDetails) {
+        addressUpdateDetails.put("firstname", "Stephen");
+        addressUpdateDetails.put("address1", "234 Old Georgetown Road");
+    }
+
+    public JSONObject createAddress(String token, JSONObject requestBody) {
+        Response response = given()
+                .header("Authorization", "Bearer " + token)
+                .header("Accept", "application/vnd.api+json")
+                .header("Content-Type", "application/vnd.api+json")
+                .body(requestBody.toString())
+                .log().all()
+                .when()
+                .post(ADDRESS_ENDPOINT)
+                .then()
+                .statusCode(200)
+                .extract()
+                .response();
+
+        return new JSONObject(response.asString());
+    }
+
+    public JSONObject updateAddress(String token, int addressId, JSONObject updateDetails) {
+        JSONObject updateRequestBody = new JSONObject();
+        updateRequestBody.put("address", updateDetails);
+
+        Response response = given()
+                .header("Authorization", "Bearer " + token)
+                .header("Accept", "application/vnd.api+json")
+                .header("Content-Type", "application/vnd.api+json")
+                .body(updateRequestBody.toString())
+                .log().all()
+                .when()
+                .patch(ADDRESS_ENDPOINT + "/" + addressId)
+                .then()
+                .statusCode(200)
+                .extract()
+                .response();
+
+        return new JSONObject(response.asString());
+    }
+
+
+    public void deleteAddress(String token, int addressId) {
+        given()
+                .header("Authorization", "Bearer " + token)
+                .header("Accept", "application/vnd.api+json")
+                .when()
+                .log().all()
+                .delete(ADDRESS_ENDPOINT + "/" + addressId)
+                .then()
+                .statusCode(204);
+    }
+
 }
 
 
