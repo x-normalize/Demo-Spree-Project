@@ -21,13 +21,5 @@ public class Constants {
     // Token-related constants
     public static final String INVALID_BEARER_TOKEN = "MEPQ7Jb-KRo"; // Example invalid token for testing
 
-    // Address details for creating/updating addresses in tests
-    public static final String ADDRESS_NAME = "HOME";
-    public static final String FIRST_NAME = "Heidi";
-    public static final String LAST_NAME = "Dixon";
-    public static final String ADDRESS = "793 Bell Street";
-    public static final String CITY = "New York";
-    public static final String ZIP_CODE = "10018";
-    public static final String PHONE = "(381) 719-2148";
 
 }

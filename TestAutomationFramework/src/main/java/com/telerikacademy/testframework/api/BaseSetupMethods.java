@@ -86,6 +86,25 @@ public class BaseSetupMethods {
                 .andReturn();
     }
 
+    public static JSONObject createRequestBodyForNewAddress() {
+        JSONObject addressDetails = new JSONObject();
+        addressDetails.put("firstname", "Mark");
+        addressDetails.put("lastname", "Winterburn");
+        addressDetails.put("company", "Paper Street Soap Co.");
+        addressDetails.put("address1", "775 Old Georgetown Road");
+        addressDetails.put("address2", "3rd Floor");
+        addressDetails.put("city", "Qethesda");
+        addressDetails.put("phone", "3488545445002");
+        addressDetails.put("zipcode", "90210");
+        addressDetails.put("state_name", "CA");
+        addressDetails.put("country_iso", "US");
+        addressDetails.put("label", "Work");
+
+        JSONObject createRequestBody = new JSONObject();
+        createRequestBody.put("address", addressDetails);
+        return createRequestBody;
+    }
+
 }
 
 
