@@ -172,6 +172,17 @@ public class BaseSetupMethods {
                 .response();
     }
 
+    public static Response listAllProducts() {
+        return given()
+                .header("Accept", "application/vnd.api+json")
+                .when()
+                .log().all()
+                .get(PRODUCT_ENDPOINT)
+                .then()
+                .extract()
+                .response();
+    }
+
 }
 
 

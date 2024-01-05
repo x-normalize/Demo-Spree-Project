@@ -4,6 +4,7 @@ import com.telerikacademy.testframework.api.BaseSetupMethods;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import jdk.jfr.Description;
 import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -20,31 +21,32 @@ public class AccountTests extends BaseSetupMethods {
     }
 
     @Test
+    @Description("Test to create, update, and delete an address")
     public void testCreateUpdateDeleteAddress() {
+        // Token generation for user authentication
         String token = createRefreshToken(LANDON_BUTLER_USERNAME, LANDON_BUTLER_PASSWORD);
 
-        // Create new Address
+        // Creating a new Address
         JSONObject createRequestBody = createRequestBodyForNewAddress();
         JSONObject createResponse = createAddress(token, createRequestBody);
         int addressId = createResponse.getJSONObject("data").getInt("id");
-        assertEquals("Mark", createResponse.getJSONObject
-                ("data").getJSONObject("attributes").getString("firstname"));
-        assertEquals("Winterburn", createResponse.getJSONObject
-                ("data").getJSONObject("attributes").getString("lastname"));
+        assertEquals("Mark", createResponse.getJSONObject("data").getJSONObject("attributes").
+                getString("firstname"));
+        assertEquals("Winterburn", createResponse.getJSONObject("data").getJSONObject("attributes").
+                getString("lastname"));
 
-        // Update Address
+        // Updating the newly created Address
         JSONObject addressUpdateDetails = new JSONObject();
         prepareUpdateAddressRequestBody(addressUpdateDetails);
         JSONObject updateResponse = updateAddress(token, addressId, addressUpdateDetails);
-        assertEquals("Stephen", updateResponse.getJSONObject
-                ("data").getJSONObject("attributes").getString("firstname"));
-        assertEquals("234 Old Georgetown Road", updateResponse.getJSONObject
-                ("data").getJSONObject("attributes").getString("address1"));
+        assertEquals("Stephen", updateResponse.getJSONObject("data").getJSONObject("attributes").
+                getString("firstname"));
+        assertEquals("234 Old Georgetown Road", updateResponse.getJSONObject("data").getJSONObject
+                ("attributes").getString("address1"));
 
-        // Delete Address
+        // Deleting the Address
         Response deleteResponse = deleteAddress(token, addressId);
-        assertEquals(204, deleteResponse.getStatusCode(),
-                "Expected status code 204 for delete operation");
+        assertEquals(204, deleteResponse.getStatusCode(), "Expected status code 204 for delete operation");
     }
 
     @Test
