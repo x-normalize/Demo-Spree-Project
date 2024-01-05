@@ -194,6 +194,47 @@ public class BaseSetupMethods {
                 .response();
     }
 
+    public static Response addItemToCart(String cartToken, String variantId, int quantity) {
+        JSONObject requestBody = new JSONObject();
+        requestBody.put("variant_id", variantId);
+        requestBody.put("quantity", quantity);
+        requestBody.put("public_metadata", new JSONObject().put("first_item_order", true));
+        requestBody.put("private_metadata", new JSONObject().put("recommended_by_us", false));
+
+        return given()
+                .header("Accept", "application/vnd.api+json")
+                .header("Content-Type", "application/vnd.api+json")
+                .header("X-Spree-Order-Token", cartToken)
+                .body(requestBody.toString())
+                .log().all()
+                .when()
+                .post(ADD_ITEM_ENDPOINT)
+                .then()
+                .extract()
+                .response();
+    }
+    public JSONObject createCart() {
+        RestAssured.baseURI = BASE_URL;
+
+        JSONObject requestBody = new JSONObject();
+        requestBody.put("public_metadata", new JSONObject().put("total_weight", 3250));
+        requestBody.put("private_metadata", new JSONObject().put("had_same_cart_items", true));
+
+        Response response = given()
+                .header("Accept", "application/vnd.api+json")
+                .header("Content-Type", "application/vnd.api+json")
+                .body(requestBody.toString())
+                .log().all()
+                .when()
+                .post(BASE_URL + "/api/v2/storefront/cart") // make sure this points to the correct API endpoint
+                .then()
+                .statusCode(201)
+                .extract()
+                .response();
+
+        return new JSONObject(response.asString());
+    }
+
 }
 
 
