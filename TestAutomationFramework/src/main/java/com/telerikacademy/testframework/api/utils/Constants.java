@@ -15,7 +15,6 @@ public class Constants {
     public static final String G_PASSWORD = "123456";
 
 
-
     // User-specific data for testing
     public static final String HEIDI_ID = "7634"; // Example user ID for Heidi
 
@@ -25,5 +24,7 @@ public class Constants {
     // Token-related constants
     public static final String INVALID_BEARER_TOKEN = "MEPQ7Jb-KRo"; // Example invalid token for testing
 
+    public static final String PRODUCT_DENIM_SHIRT_NAME = "Denim Shirt";
+    public static final String PRODUCT_DENIM_SHIRT_PRICE = "60.99";
 
 }

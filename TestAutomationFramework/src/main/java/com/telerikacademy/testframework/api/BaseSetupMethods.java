@@ -183,6 +183,17 @@ public class BaseSetupMethods {
                 .response();
     }
 
+    public static Response singleProductData(String productData) {
+        return given()
+                .header("Accept", "application/vnd.api+json")
+                .when()
+                .log().all()
+                .get(PRODUCT_ENDPOINT + productData)
+                .then()
+                .extract()
+                .response();
+    }
+
 }
 
 

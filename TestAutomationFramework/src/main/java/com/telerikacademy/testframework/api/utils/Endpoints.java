@@ -7,6 +7,7 @@ public class Endpoints {
     public static final String TOKEN_ENDPOINT = "/spree_oauth/token";
     public static final String ADDRESS_ENDPOINT = "/api/v2/storefront/account/addresses";
     public static final String PRODUCT_ENDPOINT = "/api/v2/storefront/products";
+    public static final String PRODUCT_DENIM_SHIRT_ENDPOINT = "/denim-shirt";
 
 
 
