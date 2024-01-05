@@ -148,15 +148,15 @@ public class BaseSetupMethods {
     }
 
 
-    public void deleteAddress(String token, int addressId) {
-        given()
+    public Response deleteAddress(String token, int addressId) {
+        return given()
                 .header("Authorization", "Bearer " + token)
                 .header("Accept", "application/vnd.api+json")
                 .when()
-                .log().all()
                 .delete(ADDRESS_ENDPOINT + "/" + addressId)
                 .then()
-                .statusCode(204);
+                .extract()
+                .response();
     }
 
     public static Response listUserAddress(String token) {

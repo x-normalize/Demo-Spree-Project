@@ -26,7 +26,6 @@ public class AccountTests extends BaseSetupMethods {
 
         JSONObject createResponse = createAddress(token, createRequestBody);
         int addressId = JsonPath.from(createResponse.toString()).getInt("data.id");
-
         assertEquals("Mark", createResponse.getJSONObject
                 ("data").getJSONObject("attributes").getString("firstname"));
         assertEquals("Winterburn", createResponse.getJSONObject
@@ -41,7 +40,12 @@ public class AccountTests extends BaseSetupMethods {
         assertEquals("234 Old Georgetown Road", updateResponse.getJSONObject
                 ("data").getJSONObject("attributes").getString("address1"));
 
-        deleteAddress(token, addressId);
+
+        Response deleteResponse = deleteAddress(token, addressId);
+        assertEquals(204, deleteResponse.getStatusCode(),
+                "Expected status code 204 for delete operation");
+
+
     }
 
     @Test
