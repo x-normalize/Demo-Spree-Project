@@ -29,7 +29,6 @@ public class RegistrationTests extends BaseSetupMethods {
         JSONObject jsonResponse = new JSONObject(response.asString());
         JSONObject data = jsonResponse.getJSONObject("data");
         JSONObject attributes = data.getJSONObject("attributes");
-
         assertNotNull(data.getString("id"), "User ID should not be null");
         assertEquals(randomEmail, attributes.getString("email"), "Email addresses do not match");
 
@@ -38,18 +37,17 @@ public class RegistrationTests extends BaseSetupMethods {
 
     @Test
     @Description("Test to verify account creation with missing fields")
-    public void testCreateAccountMissingFields() {
+    public void testCreateAccountWithMissingFields() {
         JSONObject requestBody = new JSONObject();
-        // Omitting password and passwordConfirmation to test missing field scenario
         Response response = createAccountWithMissingFields(requestBody);
-        response.then()
-                .log().all()
-                .statusCode(400);
 
+        assertEquals(400, response.getStatusCode(), "Expected status code 400 for missing fields");
         JSONObject jsonResponse = new JSONObject(response.asString());
         String errorMessage = jsonResponse.getString("error");
         assertEquals("param is missing or the value is empty: user", errorMessage,
                 "Unexpected error message");
+
+        System.out.println(jsonResponse.toString(4));
     }
 
     @Test
@@ -57,10 +55,7 @@ public class RegistrationTests extends BaseSetupMethods {
     public void testGetUserDetailsSuccess() {
         String validToken = createRefreshToken(HEIDI_DIXON_USERNAME, HEIDI_DIXON_PASSWORD);
         Response response = getUserDetails(validToken);
-
-        response.then()
-                .log().all()
-                .statusCode(200);
+        assertEquals(200, response.getStatusCode(), "Expected status code 200 for missing fields");
 
         JSONObject jsonResponse = new JSONObject(response.asString());
         JSONObject data = jsonResponse.getJSONObject("data");

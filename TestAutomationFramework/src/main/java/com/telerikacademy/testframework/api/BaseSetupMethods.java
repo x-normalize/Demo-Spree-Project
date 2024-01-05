@@ -105,7 +105,7 @@ public class BaseSetupMethods {
         return createRequestBody;
     }
 
-    public static void createRequestBodyForUpdateAddress(JSONObject addressUpdateDetails) {
+    public static void prepareUpdateAddressRequestBody(JSONObject addressUpdateDetails) {
         addressUpdateDetails.put("firstname", "Stephen");
         addressUpdateDetails.put("address1", "234 Old Georgetown Road");
     }
