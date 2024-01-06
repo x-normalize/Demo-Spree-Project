@@ -150,5 +150,30 @@ public class ProductAndCartTest extends BaseSetupMethods {
         System.out.println(jsonResponse.toString(4));
     }
 
+    @Test
+    @Description("SDP-45 [Shopping Cart] Add items to the shopping cart from sportswear category")
+    public void testAddItemsToCartFromSportWearCategory() {
+
+        // Create a new cart and get its token
+        JSONObject cartResponse = createCart();
+        String cartToken = cartResponse.getJSONObject("data").getJSONObject("attributes").getString("token");
+
+        // Add items to the shopping cart from sportswear category
+        Response addItem = addItemToCart(cartToken, "222", 1);
+        assertEquals(200, addItem.getStatusCode(), "Expected status code 200");
+
+        // Validate card details
+        JSONObject jsonResponse = new JSONObject(addItem.asString());
+        int itemCount = jsonResponse.getJSONObject("data").getJSONObject("attributes").getInt("item_count");
+        String itemTotal = jsonResponse.getJSONObject("data").getJSONObject("attributes").getString("item_total");
+        String currency = jsonResponse.getJSONObject("data").getJSONObject("attributes").getString("currency");
+
+        assertEquals(1, itemCount, "Item count does not match expected value");
+        assertEquals("51.99", itemTotal);
+        assertEquals("USD", currency);
+
+        System.out.println(jsonResponse.toString(4));
+    }
+
 
 }
