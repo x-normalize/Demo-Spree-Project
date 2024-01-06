@@ -3,6 +3,7 @@ package com.telerikacademy.testframework.api;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import static com.telerikacademy.testframework.api.utils.Endpoints.*;
@@ -153,6 +154,7 @@ public class BaseSetupMethods {
                 .header("Authorization", "Bearer " + token)
                 .header("Accept", "application/vnd.api+json")
                 .when()
+                .log().all()
                 .delete(ADDRESS_ENDPOINT + "/" + addressId)
                 .then()
                 .extract()
@@ -214,6 +216,21 @@ public class BaseSetupMethods {
                 .response();
     }
 
+    public static Response deleteItemToCart(String token, String lineItemId) {
+        String url = DELETE_ITEM_ENDPOINT.replace("{id}", lineItemId);
+
+        return given()
+                .header("X-Spree-Order-Token", token)
+                .header("Accept", "application/vnd.api+json")
+                .header("Content-Type", "application/vnd.api+json")
+                .when()
+                .log().all()
+                .delete(url)
+                .then()
+                .extract()
+                .response();
+    }
+
     public JSONObject createCart() {
         RestAssured.baseURI = BASE_URL;
 
@@ -234,6 +251,15 @@ public class BaseSetupMethods {
                 .response();
 
         return new JSONObject(response.asString());
+    }
+
+    public static String extractTheItemID(Response addItem) {
+        JSONObject jsonResponse = new JSONObject(addItem.asString());
+        JSONArray lineItems = jsonResponse.getJSONObject("data")
+                .getJSONObject("relationships")
+                .getJSONObject("line_items")
+                .getJSONArray("data");
+        return lineItems.getJSONObject(0).getString("id");
     }
 
 }
