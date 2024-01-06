@@ -33,7 +33,6 @@ public class BaseSetupMethods {
         return token;
     }
 
-
     public String unauthorizedAccess(String endpoint) {
         Response response = given()
                 .when()
@@ -147,7 +146,6 @@ public class BaseSetupMethods {
 
         return new JSONObject(response.asString());
     }
-
 
     public Response deleteAddress(String token, int addressId) {
         return given()

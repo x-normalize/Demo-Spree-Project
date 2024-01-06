@@ -9,17 +9,12 @@ public class Constants {
     public static final String YOLANDA_WHEELER_PASSWORD = "elvisp";
     public static final String LANDON_BUTLER_USERNAME = "landon.butler@example.com";
     public static final String LANDON_BUTLER_PASSWORD = "test12";
-    public static final String VIOLET_DIAZ_USERNAME = "violet.diaz@example.com";
-    public static final String VIOLET_DIAZ_PASSWORD = "123456";
     public static final String G_USERNAME = "g@abv.bg";
     public static final String G_PASSWORD = "123456";
 
 
-    // User-specific data for testing
-    public static final String HEIDI_ID = "7634"; // Example user ID for Heidi
-
-
-
+    // Specific data for testing
+    public static final String HEIDI_ID = "7634";
     public static final String PRODUCT_DENIM_SHIRT_NAME = "Denim Shirt";
     public static final String PRODUCT_DENIM_SHIRT_PRICE = "60.99";
 
