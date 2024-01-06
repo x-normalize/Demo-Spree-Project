@@ -50,7 +50,7 @@ public class ProductAndCartTest extends BaseSetupMethods {
 
     @Test
     @Description("SDP-37 [Shopping Cart] Add items to the shopping cart from men's category")
-    public void testAddItemToCart() {
+    public void testAddItemToCartFromMenCategory() {
 
         // Create a new cart and get its token
         JSONObject cartResponse = createCart();
@@ -107,7 +107,7 @@ public class ProductAndCartTest extends BaseSetupMethods {
         JSONObject cartResponse = createCart();
         String cartToken = cartResponse.getJSONObject("data").getJSONObject("attributes").getString("token");
 
-        // Add items Floral Wrap Dress to the shopping cart from women's category
+        // Add item Floral Wrap Dress to the shopping cart from women's category
         Response addItem = addItemToCart(cartToken, "162", 1);
         assertEquals(200, addItem.getStatusCode(), "Expected status code 200");
 
@@ -121,6 +121,31 @@ public class ProductAndCartTest extends BaseSetupMethods {
         assertEquals("71.99", itemTotal);
         assertEquals("USD", currency);
 
+        System.out.println(jsonResponse.toString(4));
+    }
+
+    @Test
+    @Description("SDP-44 [Shopping Cart] Add items to the shopping cart from women's Category with price " +
+            "$50 - $100 USD")
+    public void testAddItemsToCartFromWomenCategoryWithinPriceRange() {
+
+        // Create a new cart and get its token
+        JSONObject cartResponse = createCart();
+        String cartToken = cartResponse.getJSONObject("data").getJSONObject("attributes").getString("token");
+
+        // Add items Striped Shirt to the shopping cart from women's category
+        Response addItem = addItemToCart(cartToken, "167", 2);
+        assertEquals(200, addItem.getStatusCode(), "Expected status code 200");
+
+        // Validate card details
+        JSONObject jsonResponse = new JSONObject(addItem.asString());
+        int itemCount = jsonResponse.getJSONObject("data").getJSONObject("attributes").getInt("item_count");
+        String itemTotal = jsonResponse.getJSONObject("data").getJSONObject("attributes").getString("item_total");
+        String currency = jsonResponse.getJSONObject("data").getJSONObject("attributes").getString("currency");
+
+        assertEquals(2, itemCount, "Item count does not match expected value");
+        assertEquals("139.98", itemTotal);
+        assertEquals("USD", currency);
 
         System.out.println(jsonResponse.toString(4));
     }

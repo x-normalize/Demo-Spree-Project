@@ -17,14 +17,8 @@ public class Constants {
 
     // User-specific data for testing
     public static final String HEIDI_ID = "7634"; // Example user ID for Heidi
-    public static final int VARIANT_ID = 117;
-    public static final int QUANTITY = 5;
 
-    // Common error messages used in assertions
-    public static final String UNAUTHORIZED_ERROR_MESSAGE = "You are not authorized to access this page.";
 
-    // Token-related constants
-    public static final String INVALID_BEARER_TOKEN = "MEPQ7Jb-KRo"; // Example invalid token for testing
 
     public static final String PRODUCT_DENIM_SHIRT_NAME = "Denim Shirt";
     public static final String PRODUCT_DENIM_SHIRT_PRICE = "60.99";
