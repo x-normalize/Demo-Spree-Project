@@ -213,6 +213,7 @@ public class BaseSetupMethods {
                 .extract()
                 .response();
     }
+
     public JSONObject createCart() {
         RestAssured.baseURI = BASE_URL;
 
@@ -226,7 +227,7 @@ public class BaseSetupMethods {
                 .body(requestBody.toString())
                 .log().all()
                 .when()
-                .post(BASE_URL + "/api/v2/storefront/cart") // make sure this points to the correct API endpoint
+                .post(BASE_URL + ADD_CART_TOKEN_ENDPOINT)
                 .then()
                 .statusCode(201)
                 .extract()
