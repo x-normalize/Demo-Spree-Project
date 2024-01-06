@@ -9,7 +9,8 @@ import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static com.telerikacademy.testframework.api.utils.Constants.*;
+import static com.telerikacademy.testframework.api.utils.Constants.PRODUCT_DENIM_SHIRT_NAME;
+import static com.telerikacademy.testframework.api.utils.Constants.PRODUCT_DENIM_SHIRT_PRICE;
 import static com.telerikacademy.testframework.api.utils.Endpoints.BASE_URL;
 import static com.telerikacademy.testframework.api.utils.Endpoints.PRODUCT_DENIM_SHIRT_ENDPOINT;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -98,8 +99,31 @@ public class ProductAndCartTest extends BaseSetupMethods {
         System.out.println(jsonResponse.toString(4));
     }
 
+    @Test
+    @Description("SDP-41 [Shopping Cart] Add items to the shopping cart from women's category")
+    public void testAddItemFromWomanCategory() {
+
+        // Create a new cart and get its token
+        JSONObject cartResponse = createCart();
+        String cartToken = cartResponse.getJSONObject("data").getJSONObject("attributes").getString("token");
+
+        // Add items Floral Wrap Dress to the shopping cart from women's category
+        Response addItem = addItemToCart(cartToken, "162", 1);
+        assertEquals(200, addItem.getStatusCode(), "Expected status code 200");
+
+        // Validate card details
+        JSONObject jsonResponse = new JSONObject(addItem.asString());
+        int itemCount = jsonResponse.getJSONObject("data").getJSONObject("attributes").getInt("item_count");
+        String itemTotal = jsonResponse.getJSONObject("data").getJSONObject("attributes").getString("item_total");
+        String currency = jsonResponse.getJSONObject("data").getJSONObject("attributes").getString("currency");
+
+        assertEquals(1, itemCount, "Item count does not match expected value");
+        assertEquals("71.99", itemTotal);
+        assertEquals("USD", currency);
 
 
+        System.out.println(jsonResponse.toString(4));
+    }
 
 
 }

@@ -12,4 +12,5 @@ public class Endpoints {
     public static final String ADD_CART_TOKEN_ENDPOINT = "/api/v2/storefront/cart";
 
 
+
 }
