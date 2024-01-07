@@ -11,6 +11,8 @@ public class Constants {
     public static final String LANDON_BUTLER_PASSWORD = "test12";
     public static final String G_USERNAME = "g@abv.bg";
     public static final String G_PASSWORD = "123456";
+    public static final String OVER_LENGTH_PASSWORD = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. " +
+            "Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque pena";
 
 
     // Specific data for testing
