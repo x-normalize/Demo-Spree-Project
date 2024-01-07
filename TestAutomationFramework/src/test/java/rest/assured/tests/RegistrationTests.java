@@ -9,7 +9,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static com.telerikacademy.testframework.api.utils.Constants.*;
-import static com.telerikacademy.testframework.api.utils.Constants.HEIDI_DIXON_USERNAME;
 import static com.telerikacademy.testframework.api.utils.Endpoints.BASE_URL;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
