@@ -69,6 +69,21 @@ public class RegistrationTests extends BaseSetupMethods {
     }
 
     @Test
+    @Description("SDP-23 [Registration] Attempt registration with an already registered email")
+    public void testRegistrationWithExistingEmail() {
+        Response response = createAccount(YOLANDA_WHEELER_USERNAME, YOLANDA_WHEELER_PASSWORD);
+
+        JSONObject jsonResponse = new JSONObject(response.asString());
+        String errorMessage = jsonResponse.getString("error");
+        assertEquals("Email has already been taken", errorMessage,
+                "Unexpected error message");
+        assertEquals(422, response.getStatusCode(),
+                "Expected status code 422 for over length password");
+
+        System.out.println(jsonResponse.toString(4));
+    }
+
+    @Test
     @Description("Test to verify account creation with missing fields")
     public void testCreateAccountWithMissingFields() {
         JSONObject requestBody = new JSONObject();
