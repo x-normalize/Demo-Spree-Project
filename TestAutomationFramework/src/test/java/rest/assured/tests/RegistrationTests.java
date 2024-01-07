@@ -35,6 +35,22 @@ public class RegistrationTests extends BaseSetupMethods {
     }
 
     @Test
+    @Description("SDP-12 [Registration] Attempt registration with 1-character password")
+    public void testCreateAccountWhenPasswordIsSingleCharacter() {
+        String randomEmail = "user" + System.currentTimeMillis() + "@example.com";
+        Response response = createAccount(randomEmail, "s");
+
+        JSONObject jsonResponse = new JSONObject(response.asString());
+        String errorMessage = jsonResponse.getString("error");
+        assertEquals("Password is too short (minimum is 6 characters)", errorMessage,
+                "Unexpected error message");
+        assertEquals(422, response.getStatusCode(), "Expected status code 422 for missing fields");
+
+        System.out.println(jsonResponse.toString(4));
+    }
+
+
+    @Test
     @Description("Test to verify account creation with missing fields")
     public void testCreateAccountWithMissingFields() {
         JSONObject requestBody = new JSONObject();
