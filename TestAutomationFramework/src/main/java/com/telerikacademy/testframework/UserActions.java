@@ -142,15 +142,6 @@ public class UserActions {
         System.out.println("Elements are present.");
     }
 
-    public void assertElementNotPresent(String locator) {
-        try {
-            driver.findElement(By.xpath(getUIMappingByKey(locator)));
-            Assertions.fail(format("Element with %s is present but should not be.", locator));
-        } catch (NoSuchElementException e) {
-            System.out.println("Element is not present.");
-        }
-    }
-
     public void assertElementTextEquals(String locator, String expectedText) {
         String actualText = driver.findElement(By.xpath(getUIMappingByKey(locator))).getText();
         Assertions.assertEquals(expectedText, actualText, "Text does not match for element: " + locator);
