@@ -63,12 +63,6 @@ public class UserActions {
         element.sendKeys(value);
     }
 
-    public void clearValueInField(String field, Object... fieldArguments) {
-        String locator = getLocatorValueByKey(field, fieldArguments);
-        WebElement element = driver.findElement(By.xpath(locator));
-        element.clear();
-    }
-
     public void dragAndDropElement(String fromElementLocator, String toElementLocator) {
 
         String fromLocator = getLocatorValueByKey(fromElementLocator);
