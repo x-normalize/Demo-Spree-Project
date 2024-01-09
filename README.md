@@ -20,7 +20,28 @@ The project utilizes a stack of various technologies and tools, including:
 - **Build and Dependency Management**: Apache Maven
 - **Scripts for Execution of Automated Tests**: MVN Test (Command-line collection runner for Rest Assured and Selenium), Batch and Bash files, Maven Surefire Report.
 
-## III. Features
+## III. Prerequisites Tools:
+- Jira
+- Postman v10.18.9
+- IntelliJ IDEA 2023.3
+- Selenium WebDriver
+
+## IV. Instructions:
+1. Clone repository
+2. Open Framework as an IntelliJ IDEA Project
+3. Build
+4. Navigate to TestAutomationFramework/src/test/java
+5. Run tests from the rest-assured folder
+6. Run tests from the selenium folder
+   
+### Running Tests via Scripts:
+You can also run the REST Assured and Selenium tests through the included scripts:
+
+1. For Windows users, use the run-selenuim-and-rest-tests.bat file.
+2. For Unix-based systems, use the run-selenium-and-rest-tests-bash.sh file.
+
+
+## V. Features
 
 ### User Management
 
