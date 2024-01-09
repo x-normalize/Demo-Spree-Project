@@ -5,14 +5,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -63,30 +61,7 @@ public class UserActions {
         element.sendKeys(value);
     }
 
-    public void dragAndDropElement(String fromElementLocator, String toElementLocator) {
-
-        String fromLocator = getLocatorValueByKey(fromElementLocator);
-        WebElement fromElement = driver.findElement(By.xpath(fromLocator));
-
-        String toLocator = getLocatorValueByKey(toElementLocator);
-        WebElement toElement = driver.findElement(By.xpath(toLocator));
-
-        Actions actions = new Actions(driver);
-
-        Action dragAndDrop = actions.clickAndHold(fromElement)
-                .moveToElement(toElement)
-                .release(toElement)
-                .build();
-        dragAndDrop.perform();
-    }
-
     //############# WAITS #########
-    public void waitForElementVisible(String locatorKey, Object... arguments) {
-        int defaultTimeout = Integer.parseInt(getConfigPropertyByKey("config.defaultTimeoutSeconds"));
-
-        waitForElementVisibleUntilTimeout(locatorKey, defaultTimeout, arguments);
-    }
-
     public void waitForElementClickable(String locatorKey, Object... arguments) {
         int defaultTimeout = Integer.parseInt(getConfigPropertyByKey("config.defaultTimeoutSeconds"));
 
