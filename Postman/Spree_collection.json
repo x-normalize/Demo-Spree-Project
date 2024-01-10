@@ -1,0 +1,3150 @@
+{
+	"info": {
+		"_postman_id": "c44ef5fd-92b6-4017-a4ee-552cee48f85e",
+		"name": "Spree",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30343943",
+		"_collection_link": "https://planetary-firefly-93288.postman.co/workspace/Demo-Spree-Project~1240eef4-a616-472c-8bc1-18841f43c360/collection/30343943-c44ef5fd-92b6-4017-a4ee-552cee48f85e?action=share&source=collection_link&creator=30343943"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Create or Refresh a Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"console.log(jsonData.access_token)\r",
+									"pm.environment.set(\"token\", jsonData.access_token)\r",
+									"\r",
+									"pm.test(\"Token type is Bearer\", function () {\r",
+									"    pm.expect(jsonData.token_type).to.equal(\"Bearer\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Access token is not empty\", function () {\r",
+									"    pm.expect(jsonData.access_token).to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Refresh token is not empty\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.refresh_token).to.exist.and.to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"grant_type\": \"password\",\r\n  \"username\": \"{{HeidiDixonUsername}}\",\r\n  \"password\": \"{{HeidiDixonPassword}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{createAndRefreshTokenEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{createAndRefreshTokenEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SDP-2 [Login] Log in with valid credentials",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"console.log(jsonData.access_token)\r",
+									"pm.environment.set(\"token\", jsonData.access_token)\r",
+									"\r",
+									"pm.test(\"Token type is Bearer\", function () {\r",
+									"    pm.expect(jsonData.token_type).to.equal(\"Bearer\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Access token is not empty\", function () {\r",
+									"    pm.expect(jsonData.access_token).to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Refresh token is not empty\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.refresh_token).to.exist.and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"grant_type\": \"password\",\r\n  \"username\": \"{{YolandaWheelerUsername}}\",\r\n  \"password\": \"{{YolandaWheelerPassword}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{createAndRefreshTokenEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{createAndRefreshTokenEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SDP-3 [Login] Try to log in with an empty email and an empty password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error_description is a non-empty string\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.error_description).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error description contains specific text\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.error_description).to.include(\"The provided authorization grant is invalid, expired, revoked, does not match the redirection URI used in the authorization request, or was issued to another client.\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error description contains specific text\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.error).to.include(\"invalid_grant\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"grant_type\": \"password\",\r\n  \"username\": \"\",\r\n  \"password\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{createAndRefreshTokenEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{createAndRefreshTokenEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SDP-5 [Login] Try to log in with a valid email and invalid password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error description contains specific text\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.error_description).to.include(\"The provided authorization grant is invalid, expired, revoked, does not match the redirection URI used in the authorization request, or was issued to another client.\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error description contains specific text\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.error).to.include(\"invalid_grant\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"grant_type\": \"password\",\r\n  \"username\": \"{{YolandaWheelerUsername}}\",\r\n  \"password\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{createAndRefreshTokenEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{createAndRefreshTokenEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SDP-6 [Login] Try to log in with an invalid email and a valid password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error description contains specific text\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.error_description).to.include(\"The provided authorization grant is invalid, expired, revoked, does not match the redirection URI used in the authorization request, or was issued to another client.\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error description contains specific text\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.error).to.include(\"invalid_grant\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"grant_type\": \"password\",\r\n  \"username\": \"\",\r\n  \"password\": \"{{YolandaWheelerPassword}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{createAndRefreshTokenEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{createAndRefreshTokenEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Registration",
+			"item": [
+				{
+					"name": "SDP-10 [Registration] Successful registration",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									"function randomString(minValue, maxValue, dataSet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ') {\r",
+									"    if (!minValue) {\r",
+									"        minValue = 6;\r",
+									"        maxValue = 20;\r",
+									"    }\r",
+									"    if (!maxValue) {\r",
+									"        maxValue = minValue;\r",
+									"    }\r",
+									"    let length = _.random(minValue, maxValue),\r",
+									"        randomString = \"\";\r",
+									"    for (let i = 0; i < length; i++)\r",
+									"        randomString += dataSet.charAt(Math.floor(Math.random() * dataSet.length));\r",
+									"    return randomString;\r",
+									"}\r",
+									"pm.environment.set('randomUsername', randomString());\r",
+									"var userEmail = pm.environment.get('randomUsername') + `@example.com`;\r",
+									"pm.environment.set(\"randomEmail\", userEmail)\r",
+									"\r",
+									"pm.environment.set('randomPassword', randomString)\r",
+									"var userPassword = pm.environment.get('randomPassword');\r",
+									"pm.environment.set(\"randomPassword\", userPassword)\r",
+									"\r",
+									"console.log(pm.environment.get(\"randomUsername\"));\r",
+									"console.log(pm.environment.get(\"randomPassword\"));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id should not be null\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.data.id).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Email is a string with a valid format\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"\r",
+									"    pm.expect(responseData.data.attributes.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user\": {\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"password\": \"{{randomPassword}}\",\r\n    \"password_confirmation\": \"{{randomPassword}}\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{accountEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{accountEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create or Refresh a Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"console.log(jsonData.access_token)\r",
+									"pm.environment.set(\"token\", jsonData.access_token)\r",
+									"\r",
+									"pm.test(\"Token type is Bearer\", function () {\r",
+									"    pm.expect(jsonData.token_type).to.equal(\"Bearer\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Access token is not empty\", function () {\r",
+									"    pm.expect(jsonData.access_token).to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Refresh token is not empty\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.refresh_token).to.exist.and.to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"grant_type\": \"password\",\r\n  \"username\": \"{{HeidiDixonUsername}}\",\r\n  \"password\": \"{{HeidiDixonPassword}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{createAndRefreshTokenEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{createAndRefreshTokenEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve an Account Information after successful registration",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body email matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"heidi.dixon@example.com\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}{{accountEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{accountEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SDP-11 [Registration] Attempt registration with empty fields",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response includes an 'error' field\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.have.property('error');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Email and Password can't be blank\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Email can't be blank, Password can't be blank\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user\": {\r\n    \"email\": \"\",\r\n    \"password\": \"\",\r\n    \"password_confirmation\": \"\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{accountEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{accountEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SDP-12 [Registration] Attempt registration with 1-character password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response includes an 'error' field\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.have.property('error');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Password error\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Password is too short (minimum is 6 characters)\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user\": {\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"password\": \"{{singleCharacterPassword}}\",\r\n    \"password_confirmation\": \"{{singleCharacterPassword}}\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{accountEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{accountEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SDP-13 [Registration] Attempt registration with 5-character password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response includes an 'error' field\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.have.property('error');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Password error\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Password is too short (minimum is 6 characters)\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user\": {\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"password\": \"{{fiveCharacterPassword}}\",\r\n    \"password_confirmation\": \"{{fiveCharacterPassword}}\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{accountEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{accountEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SDP-14 [Registration] Successful registration with 6-character password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id should not be null\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.data.id).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Email is a string with a valid format\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"\r",
+									"    pm.expect(responseData.data.attributes.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user\": {\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"password\": \"{{sixCharacterPassword}}\",\r\n    \"password_confirmation\": \"{{sixCharacterPassword}}\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{accountEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{accountEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SDP-18 Registration] Attempt registration with 129-character password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response includes an 'error' field\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.have.property('error');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Password error\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Password is too long (maximum is 128 characters)\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user\": {\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"password\": \"{{129CharacterPassword}}\",\r\n    \"password_confirmation\": \"{{129CharacterPassword}}\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{accountEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{accountEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SDP-20 [Registration] Attempt registration with empty email and valid password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response includes an 'error' field\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.have.property('error');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Email error\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Email can't be blank\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user\": {\r\n    \"email\": \"\",\r\n    \"password\": \"{{validPassword}}\",\r\n    \"password_confirmation\": \"{{validPassword}}\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{accountEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{accountEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SDP-22 [Registration] Attempt registration with mismatched passwords",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response includes an 'error' field\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.have.property('error');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Password Confirmation Error\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Password Confirmation doesn't match Password\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user\": {\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"password\": \"{{$randomPassword}}\",\r\n    \"password_confirmation\": \"{{$randomPassword}}\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{accountEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{accountEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SDP-23 [Registration] Attempt registration with an already registered email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response includes an 'error' field\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.have.property('error');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Email already taken Error\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Email has already been taken\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error message is not empty\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.errors.email[0]).to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": {\r\n        \"email\": \"{{YolandaWheelerUsername}}\",\r\n        \"password\": \"{{YolandaWheelerPassword}}\",\r\n        \"password_confirmation\": \"{{YolandaWheelerPassword}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{accountEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{accountEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AccountManagement",
+			"item": [
+				{
+					"name": "Create or Refresh a Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"console.log(jsonData.access_token)\r",
+									"pm.environment.set(\"token\", jsonData.access_token)\r",
+									"\r",
+									"pm.test(\"Token type is Bearer\", function () {\r",
+									"    pm.expect(jsonData.token_type).to.equal(\"Bearer\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Access token is not empty\", function () {\r",
+									"    pm.expect(jsonData.access_token).to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Refresh token is not empty\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.refresh_token).to.exist.and.to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"grant_type\": \"password\",\r\n  \"username\": \"{{usernameForEdit}}\",\r\n  \"password\": \"{{passwordForEdit}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{createAndRefreshTokenEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{createAndRefreshTokenEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SDP-27 [Account Management] Successful password update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Account updated\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"edit@example.com\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Email is in a valid format\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.data.attributes.email).to.be.a('string').and.to.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is not empty\", function () {\r",
+									"    pm.expect(pm.response.json().data.id).to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is 7703\", function () {\r",
+									"    pm.expect(pm.response.json().data.id).to.equal(\"7703\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user\": {\r\n    \"email\": \"{{usernameForEdit}}\",\r\n    \"password\": \"{{editedPassword}}\",\r\n    \"password_confirmation\": \"{{editedPassword}}\"\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{accountEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{accountEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Restore the old password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Account updated\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"edit@example.com\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Email is in a valid format\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.data.attributes.email).to.be.a('string').and.to.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is not empty\", function () {\r",
+									"    pm.expect(pm.response.json().data.id).to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is 7703\", function () {\r",
+									"    pm.expect(pm.response.json().data.id).to.equal(\"7703\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user\": {\r\n    \"email\": \"{{usernameForEdit}}\",\r\n    \"password\": \"{{passwordForEdit}}\",\r\n    \"password_confirmation\": \"{{passwordForEdit}}\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{accountEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{accountEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SDP-31 [Account Management] Successful password update with 128-Character",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Account updated\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"edit@example.com\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Email is in a valid format\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.data.attributes.email).to.be.a('string').and.to.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is not empty\", function () {\r",
+									"    pm.expect(pm.response.json().data.id).to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is 7703\", function () {\r",
+									"    pm.expect(pm.response.json().data.id).to.equal(\"7703\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user\": {\r\n    \"email\": \"{{usernameForEdit}}\",\r\n    \"password\": \"{{128CharacterPassword}}\",\r\n    \"password_confirmation\": \"{{128CharacterPassword}}\"\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{accountEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{accountEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Restore the old password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Account updated\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"edit@example.com\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Email is in a valid format\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.data.attributes.email).to.be.a('string').and.to.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is not empty\", function () {\r",
+									"    pm.expect(pm.response.json().data.id).to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is 7703\", function () {\r",
+									"    pm.expect(pm.response.json().data.id).to.equal(\"7703\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user\": {\r\n    \"email\": \"{{usernameForEdit}}\",\r\n    \"password\": \"{{passwordForEdit}}\",\r\n    \"password_confirmation\": \"{{passwordForEdit}}\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{accountEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{accountEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SDP-32 [Account Management] Attempt to change password with 129 characters",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response includes an 'error' field\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.have.property('error');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Password error\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Password is too long (maximum is 128 characters)\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": {\r\n        \"email\": \"{{usernameForEdit}}\",\r\n        \"password\": \"{{129CharacterPassword}}\",\r\n        \"password_confirmation\": \"{{129CharacterPassword}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{accountEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{accountEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve an Account Information after successful updates",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id should not be empty\", function () {\r",
+									"    pm.expect(jsonData.id).to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body email matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"edit@example.com\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is not empty\", function () {\r",
+									"    pm.expect(pm.response.json().data.id).to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is 7703\", function () {\r",
+									"    pm.expect(pm.response.json().data.id).to.equal(\"7703\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}{{accountEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{accountEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SDP-33 [Account Management]  Successful add new address",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"var responseBody = pm.response.json();\r",
+									"var addressId = responseBody.data.id;\r",
+									"pm.environment.set(\"addressId\", addressId);\r",
+									"\r",
+									"pm.test(\"Id is not null\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.data.id).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Mark\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"Winterburn\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"Qethesda\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"90210\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"3488545445002\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate the data object structure with id, type, and attributes\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData.data).to.be.an('object');\r",
+									"    pm.expect(responseData.data.id).to.exist;\r",
+									"    pm.expect(responseData.data.type).to.exist;\r",
+									"    pm.expect(responseData.data.attributes).to.exist;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"address\": {\r\n    \"firstname\": \"{{firstName}}\",\r\n    \"lastname\": \"{{lastName}}\",\r\n    \"address1\": \"{{address1Name}}\",\r\n    \"city\": \"{{cityName}}\",\r\n    \"country_iso\": \"{{countryIsoName}}\",\r\n    \"address2\": \"{{address2Name}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"zipcode\": \"{{zipcode}}\",\r\n    \"state_name\": \"{{stateName}}\",\r\n    \"company\": \"{{companyName}}\",\r\n    \"label\": \"{{labelName}}\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{addressEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{addressEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Successful update new address",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is not null\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.data.id).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Stephen\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"Smith\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"Aethesda\");\r",
+									"    pm.expect(pm.response.text()).to.include(\"Office\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"address\": {\r\n    \"firstname\": \"Stephen\",\r\n    \"lastname\": \"Smith\",\r\n    \"city\": \"Aethesda\",\r\n    \"label\": \"Office\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{addressEndpoint}}/{{addressId}}",
+							"host": [
+								"{{baseUrl}}{{addressEndpoint}}"
+							],
+							"path": [
+								"{{addressId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Successful delete new address",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body is empty\", function () {\r",
+									"    pm.expect(pm.response.text()).to.be.empty;\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}{{addressEndpoint}}/{{addressId}}",
+							"host": [
+								"{{baseUrl}}{{addressEndpoint}}"
+							],
+							"path": [
+								"{{addressId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ShoppingCart",
+			"item": [
+				{
+					"name": "Create a Cart",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"var cartToken = pm.response.json().data.attributes.token;\r",
+									"pm.environment.set(\"cartToken\", cartToken);\r",
+									"\r",
+									"pm.test(\"Data object is present in the response\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.have.property('data');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Token is not empty or null\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    const token = responseData.data.attributes.token;\r",
+									"    \r",
+									"    pm.expect(token).to.exist.and.to.not.be.null.and.to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is not empty or null\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    const id = responseData.data.attributes.number;\r",
+									"    \r",
+									"    pm.expect(id).to.exist.and.to.not.be.null.and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"public_metadata\": {},\r\n  \"private_metadata\": {}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{shopingCartEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{shopingCartEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve a Cart",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Token is not empty or null\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    const token = responseData.data.attributes.token;\r",
+									"    \r",
+									"    pm.expect(token).to.exist.and.to.not.be.null.and.to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is not empty or null\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    const id = responseData.data.attributes.number;\r",
+									"    \r",
+									"    pm.expect(id).to.exist.and.to.not.be.null.and.to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Token is not empty or null\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    const token = responseData.data.attributes.token;\r",
+									"    \r",
+									"    pm.expect(token).to.exist.and.to.not.be.null.and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{cartToken}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-Spree-Order-Token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}{{shopingCartEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{shopingCartEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SDP-37 [Shopping Cart] Add items to the shopping cart from men's category",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"var lineItemsId = pm.response.json().data.relationships.line_items.data[0].id;\r",
+									"pm.environment.set(\"lineItemsId\", lineItemsId);\r",
+									"\r",
+									"pm.test(\"Item count is 2\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.data.attributes.item_count).to.equal(2);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Total price for display_item_total is $121.98\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.data.attributes.display_item_total).to.equal(\"$121.98\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is not null\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.data.id).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Item count is a non-negative integer\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.data.attributes.item_count).to.be.a('number').and.to.be.at.least(0);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{cartToken}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-Spree-Order-Token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"variant_id\": \"117\",\r\n  \"quantity\": \"2\",\r\n  \"public_metadata\": {},\r\n  \"private_metadata\": {},\r\n  \"options\": {}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{addItemEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{addItemEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove a Item from the cart",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{cartToken}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-Spree-Order-Token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}{{deleteItemEndpoint}}/{{lineItemsId}}",
+							"host": [
+								"{{baseUrl}}{{deleteItemEndpoint}}"
+							],
+							"path": [
+								"{{lineItemsId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all Products",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Data array is present and contains at least one element\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData.data).to.be.an('array').and.to.have.lengthOf.at.least(1);\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}{{productsEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{productsEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SDP-38 [Shopping Cart] Add items to the shopping cart from men's category with blue color",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"var lineItemsId = pm.response.json().data.relationships.line_items.data[0].id;\r",
+									"pm.environment.set(\"lineItemsId\", lineItemsId);\r",
+									"\r",
+									"pm.test(\"Unit price for display_item_total is $41.99\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.data.attributes.display_item_total).to.equal(\"$41.99\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is not null\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.data.id).to.not.be.null;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{cartToken}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-Spree-Order-Token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"variant_id\": \"{{blueColorProduct}}\",\r\n  \"quantity\": 1,\r\n  \"public_metadata\": {\r\n    \"first_item_order\": true\r\n  },\r\n  \"private_metadata\": {\r\n    \"recommended_by_us\": false\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{addItemEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{addItemEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove a Item from the cart",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{cartToken}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-Spree-Order-Token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}{{deleteItemEndpoint}}/{{lineItemsId}}",
+							"host": [
+								"{{baseUrl}}{{deleteItemEndpoint}}"
+							],
+							"path": [
+								"{{lineItemsId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SDP-39 [Shopping Cart] Add Items to the shopping cart from men's category with size L",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"var lineItemsId = pm.response.json().data.relationships.line_items.data[0].id;\r",
+									"pm.environment.set(\"lineItemsId\", lineItemsId);\r",
+									"\r",
+									"pm.test(\"Unit price for display_item_total is $37.99\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.data.attributes.display_item_total).to.equal(\"$37.99\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is not null\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.data.id).to.not.be.null;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{cartToken}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-Spree-Order-Token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"variant_id\": \"{{LsizesProduct}}\",\r\n  \"quantity\": 1,\r\n  \"public_metadata\": {\r\n    \"first_item_order\": true\r\n  },\r\n  \"private_metadata\": {\r\n    \"recommended_by_us\": false\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{addItemEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{addItemEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove a Item from the cart",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{cartToken}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-Spree-Order-Token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}{{deleteItemEndpoint}}/{{lineItemsId}}",
+							"host": [
+								"{{baseUrl}}{{deleteItemEndpoint}}"
+							],
+							"path": [
+								"{{lineItemsId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SDP-40 [Shopping Cart] Add items to the shopping cart from men's category with price less than $50 USD",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"var lineItemsId = pm.response.json().data.relationships.line_items.data[0].id;\r",
+									"pm.environment.set(\"lineItemsId\", lineItemsId);\r",
+									"\r",
+									"pm.test(\"Unit price for display_item_total is $10.99\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.data.attributes.display_item_total).to.equal(\"$10.99\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is not null\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.data.id).to.not.be.null;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{cartToken}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-Spree-Order-Token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"variant_id\": \"{{LessThan50UsdProduct}}\",\r\n  \"quantity\": 1,\r\n  \"public_metadata\": {\r\n    \"first_item_order\": true\r\n  },\r\n  \"private_metadata\": {\r\n    \"recommended_by_us\": false\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{addItemEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{addItemEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove a Item from the cart",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{cartToken}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-Spree-Order-Token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}{{deleteItemEndpoint}}/{{lineItemsId}}",
+							"host": [
+								"{{baseUrl}}{{deleteItemEndpoint}}"
+							],
+							"path": [
+								"{{lineItemsId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SDP-41 [Shopping Cart] Add items to the shopping cart from women's category",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"var lineItemsId = pm.response.json().data.relationships.line_items.data[0].id;\r",
+									"pm.environment.set(\"lineItemsId\", lineItemsId);\r",
+									"\r",
+									"pm.test(\"Unit price for display_item_total is $71.99\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.data.attributes.display_item_total).to.equal(\"$71.99\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is not null\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.data.id).to.not.be.null;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{cartToken}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-Spree-Order-Token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"variant_id\": \"{{stripedShirt}}\",\r\n  \"quantity\": 1,\r\n  \"public_metadata\": {\r\n    \"first_item_order\": true\r\n  },\r\n  \"private_metadata\": {\r\n    \"recommended_by_us\": false\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{addItemEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{addItemEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove a Item from the cart",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{cartToken}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-Spree-Order-Token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}{{deleteItemEndpoint}}/{{lineItemsId}}",
+							"host": [
+								"{{baseUrl}}{{deleteItemEndpoint}}"
+							],
+							"path": [
+								"{{lineItemsId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SDP-42 [Shopping Cart] Add items to the shopping cart from women's category with red color",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"var lineItemsId = pm.response.json().data.relationships.line_items.data[0].id;\r",
+									"pm.environment.set(\"lineItemsId\", lineItemsId);\r",
+									"\r",
+									"pm.test(\"Unit price for display_item_total is $77.99\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.data.attributes.display_item_total).to.equal(\"$77.99\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is not null\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.data.id).to.not.be.null;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{cartToken}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-Spree-Order-Token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"variant_id\": \"{{redColorProduct}}\",\r\n  \"quantity\": 1,\r\n  \"public_metadata\": {\r\n    \"first_item_order\": true\r\n  },\r\n  \"private_metadata\": {\r\n    \"recommended_by_us\": false\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{addItemEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{addItemEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove a Item from the cart",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{cartToken}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-Spree-Order-Token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}{{deleteItemEndpoint}}/{{lineItemsId}}",
+							"host": [
+								"{{baseUrl}}{{deleteItemEndpoint}}"
+							],
+							"path": [
+								"{{lineItemsId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SDP-45 [Shopping Cart] Add items to the shopping cart from sportswear category",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"var lineItemsId = pm.response.json().data.relationships.line_items.data[0].id;\r",
+									"pm.environment.set(\"lineItemsId\", lineItemsId);\r",
+									"\r",
+									"pm.test(\"Unit price for display_item_total is $38.99\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.data.attributes.display_item_total).to.equal(\"$38.99\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is not null\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.data.id).to.not.be.null;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{cartToken}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-Spree-Order-Token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"variant_id\": \"{{sportsWearProduct}}\",\r\n  \"quantity\": 1,\r\n  \"public_metadata\": {\r\n    \"first_item_order\": true\r\n  },\r\n  \"private_metadata\": {\r\n    \"recommended_by_us\": false\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{addItemEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{addItemEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove a Item from the cart",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{cartToken}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-Spree-Order-Token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}{{deleteItemEndpoint}}/{{lineItemsId}}",
+							"host": [
+								"{{baseUrl}}{{deleteItemEndpoint}}"
+							],
+							"path": [
+								"{{lineItemsId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Checkout",
+			"item": [
+				{
+					"name": "Create a Cart",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"var cartToken = pm.response.json().data.attributes.token;\r",
+									"pm.environment.set(\"cartToken\", cartToken);\r",
+									"\r",
+									"pm.test(\"Data object is present in the response\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.have.property('data');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Token is not empty or null\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    const token = responseData.data.attributes.token;\r",
+									"    \r",
+									"    pm.expect(token).to.exist.and.to.not.be.null.and.to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is not empty or null\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    const id = responseData.data.attributes.number;\r",
+									"    \r",
+									"    pm.expect(id).to.exist.and.to.not.be.null.and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"public_metadata\": {},\r\n  \"private_metadata\": {}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{shopingCartEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{shopingCartEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve a Cart",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Token is not empty or null\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    const token = responseData.data.attributes.token;\r",
+									"    \r",
+									"    pm.expect(token).to.exist.and.to.not.be.null.and.to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is not empty or null\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    const id = responseData.data.attributes.number;\r",
+									"    \r",
+									"    pm.expect(id).to.exist.and.to.not.be.null.and.to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Token is not empty or null\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    const token = responseData.data.attributes.token;\r",
+									"    \r",
+									"    pm.expect(token).to.exist.and.to.not.be.null.and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{cartToken}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-Spree-Order-Token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}{{shopingCartEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{shopingCartEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SDP-40 [Shopping Cart] Add items to the shopping cart from men's category with price less than $50 USD",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"var lineItemsId = pm.response.json().data.relationships.line_items.data[0].id;\r",
+									"pm.environment.set(\"lineItemsId\", lineItemsId);\r",
+									"\r",
+									"pm.test(\"Unit price for display_item_total is $10.99\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.data.attributes.display_item_total).to.equal(\"$10.99\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is not null\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.data.id).to.not.be.null;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{cartToken}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-Spree-Order-Token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"variant_id\": \"{{LessThan50UsdProduct}}\",\r\n  \"quantity\": 1,\r\n  \"public_metadata\": {\r\n    \"first_item_order\": true\r\n  },\r\n  \"private_metadata\": {\r\n    \"recommended_by_us\": false\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{addItemEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{addItemEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Next Checkout Step",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Total sum matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"10.99\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is not null\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.data.id).to.exist;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{cartToken}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-Spree-Order-Token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}{{nextCheckoutEndopoint}}",
+							"host": [
+								"{{baseUrl}}{{nextCheckoutEndopoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Advance Checkout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Total sum matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"10.99\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is not null\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.data.id).to.exist;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{cartToken}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-Spree-Order-Token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}{{advancedCheckoutEndpoint}}",
+							"host": [
+								"{{baseUrl}}{{advancedCheckoutEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

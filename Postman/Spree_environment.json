@@ -1,0 +1,311 @@
+{
+	"id": "fe6efa72-51ca-4712-a7ff-6e3bb343a3f9",
+	"name": "SpreeEnvironment",
+	"values": [
+		{
+			"key": "baseUrl",
+			"value": "https://demo.spreecommerce.org",
+			"enabled": true
+		},
+		{
+			"key": "accountEndpoint",
+			"value": "/api/v2/storefront/account",
+			"enabled": true
+		},
+		{
+			"key": "createAndRefreshTokenEndpoint",
+			"value": "/spree_oauth/token",
+			"enabled": true
+		},
+		{
+			"key": "addressEndpoint",
+			"value": "/api/v2/storefront/account/addresses",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "shopingCartEndpoint",
+			"value": "/api/v2/storefront/cart",
+			"enabled": true
+		},
+		{
+			"key": "addItemEndpoint",
+			"value": "/api/v2/storefront/cart/add_item",
+			"enabled": true
+		},
+		{
+			"key": "productsEndpoint",
+			"value": "/api/v2/storefront/products",
+			"enabled": true
+		},
+		{
+			"key": "deleteItemEndpoint",
+			"value": "/api/v2/storefront/cart/remove_line_item",
+			"enabled": true
+		},
+		{
+			"key": "nextCheckoutEndopoint",
+			"value": "/api/v2/storefront/checkout/next",
+			"enabled": true
+		},
+		{
+			"key": "advancedCheckoutEndpoint",
+			"value": "/api/v2/storefront/checkout/advance",
+			"enabled": true
+		},
+		{
+			"key": "completeCheckoutEndpoint",
+			"value": "/api/v2/storefront/checkout/complete",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "shippingRatesEndpoint",
+			"value": "/api/v2/storefront/checkout/shipping_rates",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "shippingMethodEndpoint",
+			"value": "/api/v2/storefront/checkout/select_shipping_method",
+			"enabled": true
+		},
+		{
+			"key": "HeidiDixonUsername",
+			"value": "heidi.dixon@example.com",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "HeidiDixonPassword",
+			"value": "lightning",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "YolandaWheelerUsername",
+			"value": "yolanda.wheeler@example.com",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "YolandaWheelerPassword",
+			"value": "elvisp",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "randomUsername",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "randomEmail",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "randomPassword",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "singleCharacterPassword",
+			"value": "s",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "fiveCharacterPassword",
+			"value": "dfgwd",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sixCharacterPassword",
+			"value": "tgqabc",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "129CharacterPassword",
+			"value": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque pena",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "validPassword",
+			"value": "LoremIpsumDolor",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "passwordForEdit",
+			"value": "edit123",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "usernameForEdit",
+			"value": "edit@example.com",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "editedPassword",
+			"value": "edit123456",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "128CharacterPassword",
+			"value": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque pen",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "LandonButlerUsername",
+			"value": "landon.butler@example.com",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "LandonButlerPassword",
+			"value": "test12",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "addressId",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "firstName",
+			"value": "Mark",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "lastName",
+			"value": "Winterburn",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "address1Name",
+			"value": "775 Old Georgetown Road",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "cityName",
+			"value": "Qethesda",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "countryIsoName",
+			"value": "US",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "address2Name",
+			"value": "3rd Floor",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "phone",
+			"value": "3488545445002",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "zipcode",
+			"value": "90210",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "companyName",
+			"value": "Paper Street Soap Co.",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "stateName",
+			"value": "CA",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "labelName",
+			"value": "Work",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "cartToken",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "lineItemsId",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "blueColorProduct",
+			"value": "119",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "LsizesProduct",
+			"value": "304",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "LessThan50UsdProduct",
+			"value": "128",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "stripedShirt",
+			"value": "175",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "redColorProduct",
+			"value": "191",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "sportsWearProduct",
+			"value": "216",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2024-01-10T13:16:06.553Z",
+	"_postman_exported_using": "Postman/10.21.14"
+}
