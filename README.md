@@ -49,7 +49,7 @@ You can also run the REST Assured and Selenium tests through the included script
 -  <a href= "https://github.com/x-normalize/Spree-Project/tree/main/Reports"> Test Plans Metrics Report<a/>
 -  <a href= "https://github.com/x-normalize/Spree-Project/tree/main/Reports"> Newman report for Postman<a/> 
 -  <a href= "https://github.com/x-normalize/Spree-Project/tree/main/Reports"> Selenium And RestAssured Reports<a/>
--  Final Test Report
+-  <a href= "https://github.com/x-normalize/Spree-Project/tree/main/Documentation"> Final Test Report<a/>
 
 ## VII. Author
 - Yordan Nikolov
