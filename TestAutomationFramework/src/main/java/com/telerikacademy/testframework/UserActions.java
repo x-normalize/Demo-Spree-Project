@@ -147,7 +147,6 @@ public class UserActions {
         System.out.println("Attributes are correct.");
     }
 
-
     public void assertSearchedUsersContainsName(String name, String path) {
         var users = getElements(path);
         for (var user : users) {
@@ -170,26 +169,6 @@ public class UserActions {
         String locator = getLocatorValueByKey(key, arguments);
         LOGGER.info("Hovering on element " + key);
         return driver.findElements(By.xpath(locator));
-    }
-
-    public String getElementAttribute(String locator, String attributeName) { // attributeName = po id, x-path..
-        // TODO: Implement the method
-        // 1. Find Element using the locator value from Properties
-        String locatorKey = getLocatorValueByKey(locator);
-        WebElement element = driver.findElement(By.xpath(locatorKey));
-        // 2. Get the element attribute
-        // 3. Return the expected value
-        return element.getAttribute(attributeName);
-    }
-
-    public void scrollDown(String locator) {
-        String xpath = getLocatorValueByKey(locator);
-        WebElement element = driver.findElement(By.xpath(xpath));
-
-        Actions actions = new Actions(driver);
-        actions.scrollToElement(element);
-        //  actions.moveToElement(element);
-        actions.perform();
     }
 
     public static String generateLongString() {
