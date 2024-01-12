@@ -40,35 +40,18 @@ You can also run the REST Assured and Selenium tests through the included script
 1. For Windows users, use the run-selenuim-and-rest-tests.bat file.
 2. For Unix-based systems, use the run-selenium-and-rest-tests-bash.sh file.
 
+## VI. Resources
+-  <a href= "https://github.com/x-normalize/Spree-Project">Spree project repo<a/>
+-  <a href= "https://github.com/x-normalize/Spree-Project/tree/main/Documentation"> Test Plan<a/>
+-  <a href= "https://github.com/x-normalize/Spree-Project/tree/main/Documentation"> Exploratory testing<a/>
+-  <a href= "https://github.com/x-normalize/Spree-Project/tree/main/Documentation"> Test Cases<a/>
+-  <a href= "https://spreecommerce-team10.atlassian.net/jira/software/c/projects/SDP/issues"> Logged bugs and issues in Jira<a/>
+-  <a href= "https://github.com/x-normalize/Spree-Project/tree/main/Reports"> Test Plans Metrics Report<a/>
+-  <a href= "https://github.com/x-normalize/Spree-Project/tree/main/Reports"> Newman report for Postman<a/> 
+-  <a href= "https://github.com/x-normalize/Spree-Project/tree/main/Reports"> Selenium And RestAssured Reports<a/>
+-  <a href= "https://github.com/x-normalize/Spree-Project/tree/main/Documentation"> Final Test Report<a/>
 
-## V. Features
+## VII. Author
+- Yordan Nikolov
 
-### User Management
-
-- **Registration, Login, and Account Management**: The platform provides a fully functional storefront that fits well with most use cases and offers a mobile-friendly experience.
-- **Password Recovery/Reset Mechanisms**: Standard password recovery and reset mechanisms are included to ensure user security.
-
-### Product Management
-
-- **Adding, Editing, and Deleting Products**: The platform allows for easy management of products.
-- **Product Categorization and Filtering**: Product discovery features with customizable product filters are included for easy product listing browsing.
-
-### Shopping Cart
-
-- **Adding/Removing Items from the Shopping Cart**: Users can easily manage their shopping cart.
-- **Total Amount Calculation**: The total amount of items in the shopping cart is automatically calculated.
-
-### Checkout Process
-
-- **Various Steps in the Checkout Process**: The platform provides a streamlined checkout process.
-- **Payment Method Verification**: All major cards are accepted through one of the 144 supported payment gateways.
-
-### Localization
-
-- **Language Switching Functionality**: Multiple languages are supported.
-- **Currency Display and Conversion**: Multiple currencies are supported.
-
-### Search Functionality
-
-- **Search Different Products**: Combined with Elasticsearch, a powerful search engine, the platform provides amazing user experiences at high speeds, even with millions of SKUs.
 
