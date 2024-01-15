@@ -40,7 +40,7 @@ You can also run the REST Assured and Selenium tests through the included script
 1. For Windows users, use the run-selenuim-and-rest-tests.bat file.
 2. For Unix-based systems, use the run-selenium-and-rest-tests-bash.sh file.
 
-## VI. Resources
+## V. Resources
 -  <a href= "https://github.com/x-normalize/Spree-Project">Spree project repo<a/>
 -  <a href= "https://github.com/x-normalize/Spree-Project/tree/main/Documentation"> Test Plan<a/>
 -  <a href= "https://github.com/x-normalize/Spree-Project/tree/main/Documentation"> Exploratory testing<a/>
@@ -51,7 +51,7 @@ You can also run the REST Assured and Selenium tests through the included script
 -  <a href= "https://github.com/x-normalize/Spree-Project/tree/main/Reports"> Selenium And RestAssured Reports<a/>
 -  <a href= "https://github.com/x-normalize/Spree-Project/tree/main/Documentation"> Final Test Report<a/>
 
-## VII. Author
+## VI. Author
 - Yordan Nikolov
 
 
