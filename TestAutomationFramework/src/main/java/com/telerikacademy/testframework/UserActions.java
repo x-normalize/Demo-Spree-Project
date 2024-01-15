@@ -184,10 +184,6 @@ public class UserActions {
         return number.nextInt(max - min) + min;
     }
 
-    private String getLocatorValueByKey(String locator) {
-        return format(getUIMappingByKey(locator));
-    }
-
     private String getLocatorValueByKey(String locator, Object[] arguments) {
         return format(getUIMappingByKey(locator), arguments);
     }
