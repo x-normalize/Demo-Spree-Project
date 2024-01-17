@@ -117,24 +117,6 @@ public class UserActions {
         System.out.println("URLs are equal.");
     }
 
-    public void assertUsersAttribute(String name, String path) {
-        var users = getElements(path);
-        for (var user : users) {
-            String result = user.getText();
-            if (!result.contains(name)) {
-                throw new IllegalArgumentException(format("Expected attribute is different than actual. " +
-                        "Actual is %s, expected is %s.", result, name));
-            }
-        }
-        System.out.println("Attributes are correct.");
-    }
-
-    public WebElement getElement(String key, Object... arguments) {
-        String locator = getLocatorValueByKey(key, arguments);
-        LOGGER.info("Hovering on element " + key);
-        return driver.findElement(By.xpath(locator));
-    }
-
     public List<WebElement> getElements(String key, Object... arguments) {
         String locator = getLocatorValueByKey(key, arguments);
         LOGGER.info("Hovering on element " + key);
