@@ -77,7 +77,6 @@ public class UserActions {
         waitForElementPresenceUntilTimeout(locator, defaultTimeout, arguments);
     }
 
-
     private void waitForElementToBeClickableUntilTimeout(String locator, int seconds, Object... locatorArguments) {
         Duration timeout = Duration.ofSeconds(seconds);
         WebDriverWait wait = new WebDriverWait(driver, timeout);
@@ -115,12 +114,6 @@ public class UserActions {
     public void assertUrlsAreEquals(String expectedUrl, String actualUrl) {
         Assertions.assertEquals(expectedUrl, actualUrl, "Expected URL is different than actual.");
         System.out.println("URLs are equal.");
-    }
-
-    public List<WebElement> getElements(String key, Object... arguments) {
-        String locator = getLocatorValueByKey(key, arguments);
-        LOGGER.info("Hovering on element " + key);
-        return driver.findElements(By.xpath(locator));
     }
 
     public String generateRandomText(int minLength, int maxLength) {
@@ -193,6 +186,4 @@ public class UserActions {
         String actualTotalPrice = totalPriceElement.getText().trim();
         assertEquals(expectedTotalPrice, actualTotalPrice, "Total price does not match!");
     }
-
-
 }
