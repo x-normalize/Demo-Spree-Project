@@ -7,8 +7,7 @@
 </div>
 
 ## I. Project Description
-
-This project is an end-to-end testing of the Spree E-commerce platform, a headless open-source solution designed for global brands. It offers a comprehensive suite of features to provide a seamless online shopping experience. The platform includes robust user management with secure password mechanisms, efficient product management, and a user-friendly shopping cart. It also provides a streamlined checkout process with support for multiple payment gateways. With support for multiple languages and currencies, the platform caters to a global audience. 
+This project is an end-to-end testing of the Spree E-commerce platform, a headless open-source solution designed for global brands. It offers a comprehensive suite of features to provide a seamless online shopping experience. The platform includes robust user management with secure password mechanisms, efficient product management, and a user-friendly shopping cart. It also provides a streamlined checkout process with support for multiple payment gateways. With support for multiple languages and currencies, the platform caters to a global audience.
 
 ## II. Used Technologies
 
