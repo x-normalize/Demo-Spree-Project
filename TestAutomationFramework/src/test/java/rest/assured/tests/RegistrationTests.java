@@ -53,6 +53,22 @@ public class RegistrationTests extends BaseSetupMethods {
     }
 
     @Test
+    @Description("SDP-13 [Registration] Attempt registration with 5-character password")
+    public void testCreateAccountWhenPasswordIsFiveCharacter() {
+        String randomEmail = "user" + System.currentTimeMillis() + "@example.com";
+        Response response = createAccount(randomEmail, "sBdBA");
+
+        JSONObject jsonResponse = new JSONObject(response.asString());
+        String errorMessage = jsonResponse.getString("error");
+        assertEquals("Password is too short (minimum is 6 characters)", errorMessage,
+                "Unexpected error message");
+        assertEquals(422, response.getStatusCode(),
+                "Expected status code 422 for single character password");
+
+        System.out.println(jsonResponse.toString(4));
+    }
+
+    @Test
     @Description("SDP-18 [Registration] Attempt registration with 129-character password")
     public void testCreateAccountWithOverLengthPassword() {
         String randomEmail = "user" + System.currentTimeMillis() + "@example.com";
