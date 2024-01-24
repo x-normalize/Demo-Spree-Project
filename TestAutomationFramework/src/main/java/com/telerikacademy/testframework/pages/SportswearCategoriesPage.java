@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 
 import static com.telerikacademy.testframework.Utils.getUIMappingByKey;
 import static com.telerikacademy.testframework.pages.Constants.*;
-import static com.telerikacademy.testframework.pages.Constants.VIEW_CARD_BUTTON;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SportswearCategoriesPage extends BasePage {

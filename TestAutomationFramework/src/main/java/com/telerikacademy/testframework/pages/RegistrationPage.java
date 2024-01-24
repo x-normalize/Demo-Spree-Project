@@ -5,7 +5,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 import static com.telerikacademy.testframework.pages.Constants.*;
-import static com.telerikacademy.testframework.pages.Constants.WELCOME_MESSAGE_PATH;
 
 public class RegistrationPage extends BasePage {
 
